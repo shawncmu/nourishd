@@ -12,4 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-deparam/jquery-deparam.js
+//= require jquery-cookie/jquery.cookie.js
+//= require pubsub-js/src/pubsub.js
+//= require j-toker/dist/jquery.j-toker.js
+//= require bootstrap/dist/js/bootstrap
+//= require moment
+//= require angular/angular
+//= require angular-route/angular-route
 //= require_tree .
