@@ -26,14 +26,14 @@ ActiveRecord::Schema.define(version: 20160325060416) do
 
   create_table "challenges", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "ingredient_id"
+    t.integer  "recipe_id"
     t.datetime "completion_date"
     t.text     "notes"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
 
-  add_index "challenges", ["ingredient_id"], name: "index_challenges_on_ingredient_id", using: :btree
+  add_index "challenges", ["recipe_id"], name: "index_challenges_on_recipe_id", using: :btree
   add_index "challenges", ["user_id"], name: "index_challenges_on_user_id", using: :btree
 
   create_table "ingredients", force: :cascade do |t|
