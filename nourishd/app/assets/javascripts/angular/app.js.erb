@@ -14,7 +14,15 @@ app.config(['$routeProvider', '$authProvider', function($routeProvider, $authPro
     when('/login', {
       templateUrl: "<%= asset_path('auth/login.html') %>",
       controller: 'LoginCtrl'
-    });;
+    }).
+    when('/newrecipe', {
+      templateUrl: "<%= asset_path('recipes/create.html') %>",
+      controller: 'NewRecipeCtrl'
+    }).
+    when('/mychallenges', {
+      templateUrl: "<%= asset_path('recipes/index.html') %>",
+      controller: 'ChallengesCtrl'
+    });
 
   $authProvider.configure({
     apiUrl: 'http://localhost:3000'
