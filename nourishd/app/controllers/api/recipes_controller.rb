@@ -4,8 +4,7 @@ class Api::RecipesController < ApplicationController
   def index
     @recipes = Recipe.all
     respond_to do |format|
-      # format.json { render 'index.jbuilder' }
-      format.json {render json: @recipes}
+      format.json { render 'index.jbuilder' }
     end
   end
 
