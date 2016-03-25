@@ -6,7 +6,10 @@
   "dependencies": {
     "angular": "^1.5.2",
     "angular-route": "^1.5.2",
-    "ng-token-auth": "^0.0.28"
+    "ng-token-auth": "^0.0.28",
+    "moment": "^2.12.0",
+    "bootstrap": "^3.3.6",
+    "ng-file-upload": "^12.0.4"
   },
   "resolutions": {
     "angular": "1.5.2"

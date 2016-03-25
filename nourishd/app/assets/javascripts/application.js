@@ -10,8 +10,14 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
+//= require jquery_ujs
+//= require moment
 //= require angular/angular
 //= require angular-route/angular-route
-//= require ng-token-auth/dist/ng-token-auth
 //= require angular-cookie/angular-cookie
+//= require ng-token-auth/dist/ng-token-auth
+//= require ng-file-upload/ng-file-upload.min
+//= require ng-file-upload/ng-file-upload-shim.min
+//= require bootstrap/dist/js/bootstrap
 //= require_tree .
