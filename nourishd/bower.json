@@ -5,6 +5,10 @@
   "private": true,
   "dependencies": {
     "angular": "^1.5.2",
-    "angular-route": "^1.5.2"
+    "angular-route": "^1.5.2",
+    "ng-token-auth": "^0.0.28"
+  },
+  "resolutions": {
+    "angular": "1.5.2"
   }
 }
