@@ -1,9 +1,10 @@
 app.controller('ChallengesCtrl', ['$scope','$auth','$location','$http', function($scope, $auth, $location,$http){
 
+$scope.challenges = {};
   var getAllRecipes = function () {
     $http({
       method: "GET",
-      url: "http://localhost:3000/api/recipes"
+      url: "http://localhost:3000/api/recipes.json"
     }).then(function (response){
       console.log(response.data);
       $scope.challenges = response.data;

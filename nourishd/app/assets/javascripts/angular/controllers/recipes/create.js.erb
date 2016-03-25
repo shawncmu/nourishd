@@ -1,0 +1,40 @@
+app.controller('NewRecipeCtrl', ['$scope', '$http', 'Upload', function($scope, $http, Upload){
+
+  var url = "<%= ENV['URL'] %>" || "http://localhost:3000/";
+
+  $scope.recipe = {};
+  $scope.dishImage = {};
+  $scope.ingredientsImage = {};
+  $scope.form = {};
+
+  $scope.form.create = function(){
+    var data = {
+      'newRecipe[name]': $scope.recipe.name,
+      'newRecipe[instructions]': $scope.recipe.instructions,
+      'newRecipe[video_url]': $scope.recipe.video,
+      'newRecipe[cook_time]': $scope.recipe.cookingTime,
+      'newRecipe[serving]': $scope.recipe.serving,
+      'newRecipe[course]': $scope.recipe.course,
+      'newRecipe[vegan]': $scope.recipe.vegan,
+      'newRecipe[gluten_free]': $scope.recipe.glutenFree,
+      'newRecipe[low_carb]': $scope.recipe.lowCarb,
+      'newRecipe[exp_value]': $scope.recipe.experience,
+      'newRecipe[equipment]': $scope.recipe.equipment,
+      'newRecipe[ingredients_image]':$scope.ingredientsImage.file,
+      'newRecipe[dish_image]':$scope.dishImage.file
+    };
+
+    // ngFileUpload's method to upload a file
+    Upload.upload({
+      url: 'http://localhost:3000/api/recipes.json',
+      method:'POST',
+      fields: data,
+      file: $scope.dishImage.file,
+      fileFormDataName: 'newRecipe[dish_image]'
+    }).success(function(response) {
+        console.log(response);
+    });
+  };
+}]);
+// $scope.ingredientsImage.file]
+// ,'newRecipe[ingredients_image]']
