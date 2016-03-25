@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     # #maps
     # resources :maps, only: [:index]
     #quotes
-    resources :recipes
+    resources :recipes, :defaults => {:format => "json"}
   end
 
   # pages
