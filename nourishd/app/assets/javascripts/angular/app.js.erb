@@ -14,7 +14,11 @@ app.config(['$routeProvider', '$authProvider', function($routeProvider, $authPro
     when('/login', {
       templateUrl: "<%= asset_path('auth/login.html') %>",
       controller: 'LoginCtrl'
-    });;
+    }).
+    when('/newrecipe', {
+      templateUrl: "<%= asset_path('recipe/newrecipe.html') %>",
+      controller: 'NewRecipeCtrl'
+    });
 
   $authProvider.configure({
     apiUrl: 'http://localhost:3000'
