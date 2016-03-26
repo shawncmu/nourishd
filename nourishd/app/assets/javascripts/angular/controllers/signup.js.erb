@@ -1,4 +1,6 @@
 app.controller('SignUpCtrl', ['$scope','$auth','$location', function($scope, $auth, $location){
+  $scope.registrationForm = {};
+  $scope.registrationForm.exp_gained = 0;
 
   $scope.signup = function () {
     $auth.submitRegistration($scope.registrationForm).
@@ -6,7 +8,7 @@ app.controller('SignUpCtrl', ['$scope','$auth','$location', function($scope, $au
       // handle success response
       console.log(resp);
        // redirect back to root when registration succesfull
-      $location.path('/');
+      $location.path('/dashboard');
     }).
     catch(function(resp) {
       // handle error response

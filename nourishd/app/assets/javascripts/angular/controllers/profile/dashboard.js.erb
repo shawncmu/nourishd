@@ -1,0 +1,17 @@
+app.controller('DashCtrl', ['$scope','$auth','$location','$http', function($scope, $auth, $location,$http){
+
+$scope.challenges = {};
+  var getAllRecipes = function () {
+    $http({
+      method: "GET",
+      url: "http://localhost:3000/api/recipes.json"
+    }).then(function (response){
+      console.log(response.data);
+      $scope.challenges = response.data;
+    },function (response){
+      console.log(response);
+    });
+  };
+
+getAllRecipes();
+}]);
