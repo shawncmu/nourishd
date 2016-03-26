@@ -10,6 +10,50 @@ body {
 a {
   text-decoration: none;
 }
+.signupbody {
+  height:100vh;
+  margin-top: -50px;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("http://wallpapersandmore.com/admin/wllpapers/1512160534304Italian-Pizza-Close-Up-Food-Wallpaper.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.loginbody {
+  height:100vh;
+  margin-top: -50px;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("http://michaelarbore.com/sites/default/files/soba.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.homebody {
+  height:100vh;
+  margin-top: -50px;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://www.davidgriffen.co.uk/slides-lge/slide-index-04.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.shiftuprow {
+  margin-top: 100px;
+}
+
+#home-about {
+  width:500px;
+  height:700px;
+  position: absolute;
+  top: 100px;
+  margin:0 auto;
+  background: rgba(126,59,0,0.6);
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+}
 
 a:-webkit-any-link {
   color: white;
