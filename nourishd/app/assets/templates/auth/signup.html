@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
 
-    <form ng-submit="signup()" role="form" ng-init="registrationForm = {}">
+    <form ng-submit="signup()" role="form">
 
       <a href="#" class="inputFacebook" onclick="facebookLogin()">Register with Facebook </a>
 
@@ -10,11 +10,15 @@
       </div>
 
       <div class="form-group">
-        <input type="text" name="first-name" ng-model="registrationForm.firstName" required="required" class="form-control inputName" placeholder="First Name"/>
+        <input type="text" name="first-name" ng-model="registrationForm.first_name" required="required" class="form-control inputName" placeholder="First Name"/>
       </div>
 
       <div class="form-group">
-        <input type="text" name="last-name" ng-model="registrationForm.lastName" required="required" class="form-control inputName" placeholder="Last Name"/>
+        <input type="text" name="last-name" ng-model="registrationForm.last_name" required="required" class="form-control inputName" placeholder="Last Name"/>
+      </div>
+
+      <div class="form-group">
+        <input type="text" name="username" ng-model="registrationForm.username" required="required" class="form-control inputName" placeholder="Username"/>
       </div>
 
       <div class="form-group">

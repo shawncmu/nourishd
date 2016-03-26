@@ -22,6 +22,10 @@ app.config(['$routeProvider', '$authProvider', function($routeProvider, $authPro
     when('/mychallenges', {
       templateUrl: "<%= asset_path('recipes/index.html') %>",
       controller: 'ChallengesCtrl'
+    }).
+    when('/dashboard', {
+      templateUrl: "<%= asset_path('profile/dashboard.html') %>",
+      controller: 'DashCtrl'
     });
 
   $authProvider.configure({

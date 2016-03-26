@@ -5,7 +5,7 @@ app.controller('LoginCtrl', ['$scope','$auth','$location', function($scope, $aut
       // handle success response
       console.log(resp);
         // redirect back to root when registration succesfull
-      $location.path('/');
+      $location.path('/dashboard');
     }).
     catch(function(resp) {
       // handle error response
