@@ -1,0 +1,17 @@
+.navbar {
+  background-color: #82C639;
+  color: white;
+}
+.navbar-brand
+{
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  text-align: center;
+  margin: auto;
+  z-index: 0;
+}
+.navbar-toggle {
+  z-index: 10
+}

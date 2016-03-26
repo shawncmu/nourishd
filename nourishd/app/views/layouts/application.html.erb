@@ -9,7 +9,7 @@
 <body>
 
   <div ng-controller="NavCtrl">
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default" role="navigation">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -19,40 +19,23 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/"><img src="#"></a>
+          <a class="navbar-brand" href="/">nourishd</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav" id="not-home-page">
-            <li>
-              <a href="/posts?target=community" id="community"><span class="title">COMMUNITY</span><span class="icon"><i class="fa fa-users"></i></span></a>
-            </li>
-            <li><a href="/posts?target=youth" id="youth"><span class="title2">YOUTH</span><span class="icon2"><i class="fa fa-child"></i></span></a></li>
-            <li><a href="/posts?target=environment" id="environment"><span class="title3">ENVIRONMENT</span><span class="icon3 glyphicon glyphicon-tree-deciduous"></span></a></li>
-            <li><a href="/posts?target=animals" id="animals"><span class="title4">ANIMALS</span><span class="icon4"><i class="fa fa-bug"></span></i></a></li>
-            <li><a href="/posts?target=gooddeeds" id="gooddeeds"><span class="title5">GOOD DEEDS</span><span class="icon5 glyphicon glyphicon-gift"></span></a></li>
-            <li><a href="/posts?target=mostpopular" id="mostpopular"><span class="title6">MOST POPULAR</span><span class="icon6 glyphicon glyphicon-heart-empty"></span></a></li>
-            <li><a href="/neighbourhood" id="neighborhood"><span class="title7">IN MY HOOD</span><span class="icon7 glyphicon glyphicon-globe"></span></a></li>
-
+          <ul class="nav navbar-nav">
+            <li><a href="/"><span>COMMUNITY</span></a></li>
+            <li><a href="/"><span>YOUTH</span></a></li>
+            <li><a href="/"><span>ENVIRONMENT</span></a></li>
           </ul>
 
-    <!--       SIGN UP/ SIGN IN BUTTON -->
-          <ul id="user-navbar-section" class="nav navbar-nav navbar-right">
-            <li id="user-name-dashboard" style="display: none">
-              <span><a href ="/profile" id="nav-profile"></a></span>
-            </li>
-    <!--         <li>
-              <div id="status"> - this is the facebook "status" line to say you have logged in
-              </div>
-            </li> -->
-            <li id="logout" style="display: none">
-              <button class="btn btn-info" id="logout-button">LOGOUT</button>
-            </li>
-            <li id="signin-signup">
-              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">SIGN UP/SIGN IN</button>
-            </li>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/#/signup"><button class="btn btn-primary">Signup</button></a></li>
+            <li><a href="/#/login"><button class="btn btn-primary">Login</button></a></li>
+            <li><a><button class="btn btn-danger" ng-click="logout()">Logout</button></a></li>
           </ul>
+
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
