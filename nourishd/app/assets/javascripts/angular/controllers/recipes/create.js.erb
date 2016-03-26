@@ -28,13 +28,11 @@ app.controller('NewRecipeCtrl', ['$scope', '$http', 'Upload', function($scope, $
     Upload.upload({
       url: 'http://localhost:3000/api/recipes.json',
       method:'POST',
-      fields: data,
-      file: $scope.dishImage.file,
-      fileFormDataName: 'newRecipe[dish_image]'
+      fields: data
+      // file: $scope.dishImage.file,
+      // fileFormDataName: 'newRecipe[dish_image]'
     }).success(function(response) {
         console.log(response);
     });
   };
 }]);
-// $scope.ingredientsImage.file]
-// ,'newRecipe[ingredients_image]']
