@@ -1,12 +1,3 @@
-a {
-  text-decoration: none;
-}
-a:-webkit-any-link {
-  color: white;
-  text-decoration: none;
-  cursor: auto;
-}
-
 body {
   font-family: 'Nunito','Signika', sans-serif;
   height: 100%;
@@ -14,6 +5,16 @@ body {
   background-color: #EBEBEB;
   width: 100%;
   overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:-webkit-any-link {
+  color: white;
+  text-decoration: none;
+  cursor: auto;
 }
 
 .inputFacebook {
@@ -32,8 +33,9 @@ body {
   background-repeat: no-repeat;
   background-color: #507BBC;
 }
+
 div {
-    display: block;
+  display: block;
 }
 
 .facebookEmailSeparater {
@@ -72,6 +74,7 @@ div {
     background-color: rgba(255,255,255,0.3);
     border: 0;
 }
+
 .inputEmail {
   width: 320px;
   height: 60px;
@@ -88,6 +91,7 @@ div {
   background-color: rgba(255,255,255,0.3);
   border: 0;
 }
+
 .inputPassword {
   width: 320px;
   height: 60px;
@@ -104,6 +108,7 @@ div {
   background-color: rgba(255,255,255,0.3);
   border: 0;
 }
+
 .inputSubmit {
   width: 320px;
   height: 60px;
@@ -115,4 +120,18 @@ div {
   margin: 20px auto 0 auto;
   display: block;
   text-decoration: none;
+}
+
+.inputLoginOption {
+  width: 320px;
+  margin: 5px auto 0 auto;
+}
+
+.inputLoginOption .inputForget {
+  width: 100%;
+  text-align: right;
+  display: inline-block;
+  color: #FFFFFF;
+  font-size: 14px;
+  vertical-align: middle;
 }
