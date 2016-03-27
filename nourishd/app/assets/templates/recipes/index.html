@@ -1,12 +1,19 @@
 <section class="container-fluid">
   <div class="row wooden">
-
+    <button ng-click="showAll()" class="tosee">Show All</button>
+    <button class="tosee">Open</button>
+    <button ng-click="showVegan()" class="tosee">Vegan</button>
+    <button ng-click="showGlutenFree()" class="tosee">GF</button>
+    <button ng-click="showLowCarb()" class="tosee">LC</button>
+    <button ng-click="getMeal('Appetizer')" class="tosee">App</button>
+    <button ng-click="getMeal('Main')" class="tosee">Main</button>
+    <button ng-click="getMeal('Dessert')" class="tosee">Dessert</button>
   </div>
 </section>
 
 <section class="container-fluid">
   <div class="row">
-    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2" ng-repeat="recipe in challenges">
+    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2" ng-repeat="recipe in results | filter:{'course':meal}">
       <div class="lr hvr-grow" style="margin:10px">
         <div class="pickgradient"></div><div class="ontop"><div class="onbottom">{{recipe.name}}</div></div>
         <img  ng-src="{{recipe.image}}" class="main-images" ng-class="{'vegan': recipe.vegan,'gf': recipe.gluten_free,'lowcarb': recipe.low_carb}">
