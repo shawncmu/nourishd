@@ -12,4 +12,7 @@ app.controller('LoginCtrl', ['$scope','$auth','$location', function($scope, $aut
       console.log(resp);
     });
   };
+  $scope.facebookLogin = function (){
+    $auth.authenticate('facebook');
+  };
 }]);
