@@ -13,13 +13,13 @@
 
 <section class="container-fluid">
   <div class="row">
-    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 center-align" ng-repeat="recipe in results | filter:{'course':meal}">
-      <div class="hvr-grow add-margin">
+    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 center-align" ng-repeat="recipe in results | filter:{'course':meal} track by recipe.id">
+      <div class="hvr-grow add-margin" ng-click="goToRecipe(recipe.id)">
         <div class="gradient"></div>
         <div class="ontop">
           <div class="onbottom">{{recipe.name}}</div>
         </div>
-        <img  ng-src="{{recipe.image}}" class="main-images" ng-class="{'vegan': recipe.vegan,'gf': recipe.gluten_free,'lowcarb': recipe.low_carb}">
+        <img ng-src="{{recipe.image}}" class="main-images" ng-class="{'vegan': recipe.vegan,'gf': recipe.gluten_free,'lowcarb': recipe.low_carb}">
       </div>
     </div>
   </div>

@@ -16,6 +16,18 @@ $scope.results = [];
     });
   };
 
+  $scope.goToRecipe = function (id) {
+    console.log(id);
+    $http({
+      method: "GET",
+      url: "http://localhost:3000/api/recipes/"+id+".json"
+    }).then(function (response){
+      console.log(response.data);
+    },function (response){
+      console.log(response);
+    });
+  };
+
 $scope.getMeal = function (type) {
   $scope.meal = type;
 };
