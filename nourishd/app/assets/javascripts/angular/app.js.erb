@@ -16,11 +16,11 @@ app.config(['$routeProvider', '$authProvider', function($routeProvider, $authPro
       controller: 'LoginCtrl'
     }).
     when('/newrecipe', {
-      templateUrl: "<%= asset_path('recipes/new.html') %>",
+      templateUrl: "<%= asset_path('admin/create.html') %>",
       controller: 'NewRecipeCtrl'
     }).
     when('/mychallenges', {
-      templateUrl: "<%= asset_path('recipes/index.html') %>",
+      templateUrl: "<%= asset_path('challenges/index.html') %>",
       controller: 'ChallengesCtrl'
     }).
     when('/dashboard', {
@@ -35,20 +35,4 @@ app.config(['$routeProvider', '$authProvider', function($routeProvider, $authPro
         facebook: '/auth/facebook'
     }
   });
-
-  // app.filter('custom', function() {
-  // return function(input, search) {
-  //   if (!input) return input;
-  //   if (!search) return input;
-  //   var expected = ('' + search).toLowerCase();
-  //   var result = {};
-  //   angular.forEach(input, function(value, key) {
-  //     var actual = ('' + value).toLowerCase();
-  //     if (actual.indexOf(expected) !== -1) {
-  //       result[key] = value;
-  //     }
-  //   });
-  //   return result;
-  // };
-// });
 }]);

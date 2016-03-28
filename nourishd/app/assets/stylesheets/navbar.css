@@ -4,6 +4,7 @@
   border: none;
   border-radius: 0px;
 }
+
 .navbar-brand
 {
   position: absolute;
@@ -14,9 +15,11 @@
   margin: auto;
   z-index: 0;
 }
+
 .navbar-toggle {
   z-index: 10
 }
+
 .nav-right-link {
   color: white;
   display: block;

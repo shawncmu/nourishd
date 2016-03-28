@@ -2,6 +2,7 @@ app.controller('ChallengesCtrl', ['$scope','$auth','$location','$http', function
 
 $scope.challenges = [];
 $scope.results = [];
+
   var getAllRecipes = function () {
     $http({
       method: "GET",
@@ -15,19 +16,10 @@ $scope.results = [];
     });
   };
 
-// $scope.search = {vegan:false, glutenFree: false, lowCarb:false};
-// $scope.showResults = function () {
-//   $scope.results = [];
-//   if ($scope.search.vegan ==true)
-//   for (var i=0;i<$scope.challenges.length;i++){
-//     if ($scope.challenges[i].vegan==$scope.search.vegan || $scope.challenges[i].gluten_free==$scope.search.glutenFree || $scope.challenges[i].low_carb==$scope.search.lowCarb){
-//       $scope.results.push($scope.challenges[i]);
-//     };
-//   };
-// };
 $scope.getMeal = function (type) {
   $scope.meal = type;
 };
+
 $scope.showVegan = function () {
   $scope.results = [];
   for (var i=0;i<$scope.challenges.length;i++){
@@ -36,6 +28,7 @@ $scope.showVegan = function () {
     };
   };
 };
+
 $scope.showGlutenFree = function () {
   $scope.results = [];
   for (var i=0;i<$scope.challenges.length;i++){
@@ -44,6 +37,7 @@ $scope.showGlutenFree = function () {
     };
   };
 };
+
 $scope.showLowCarb = function () {
   $scope.results = [];
   for (var i=0;i<$scope.challenges.length;i++){
@@ -52,10 +46,11 @@ $scope.showLowCarb = function () {
     };
   };
 };
+
 $scope.showAll = function () {
   $scope.results = $scope.challenges;
+  $scope.meal = ""
 };
-
 
 getAllRecipes();
 }]);
