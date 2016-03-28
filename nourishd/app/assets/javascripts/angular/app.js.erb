@@ -1,4 +1,4 @@
-var app = angular.module('nourishd', ['ngRoute', 'ng-token-auth', 'ngFileUpload']);
+var app = angular.module('nourishd', ['ngRoute', 'ng-token-auth', 'ngFileUpload', 'ngAnimate']);
 
 app.config(['$routeProvider', '$authProvider', function($routeProvider, $authProvider) {
   // Configure Angular Routes
@@ -16,11 +16,11 @@ app.config(['$routeProvider', '$authProvider', function($routeProvider, $authPro
       controller: 'LoginCtrl'
     }).
     when('/newrecipe', {
-      templateUrl: "<%= asset_path('recipes/new.html') %>",
+      templateUrl: "<%= asset_path('admin/create.html') %>",
       controller: 'NewRecipeCtrl'
     }).
     when('/mychallenges', {
-      templateUrl: "<%= asset_path('recipes/index.html') %>",
+      templateUrl: "<%= asset_path('challenges/index.html') %>",
       controller: 'ChallengesCtrl'
     }).
     when('/dashboard', {

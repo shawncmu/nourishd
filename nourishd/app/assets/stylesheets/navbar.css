@@ -4,8 +4,8 @@
   border: none;
   border-radius: 0px;
 }
-.navbar-brand
-{
+
+.navbar-brand {
   position: absolute;
   width: 100%;
   left: 0;
@@ -14,9 +14,14 @@
   margin: auto;
   z-index: 0;
 }
+.navbar-brand > img {
+  display: inline;
+}
+
 .navbar-toggle {
   z-index: 10
 }
+
 .nav-right-link {
   color: white;
   display: block;
@@ -24,6 +29,13 @@
   letter-spacing: 1px;
   background: none;
   border: 1px solid white;
+}
+
+.logosize {
+  height:50px;
+  margin:0px;
+  position: relative;
+  top: -10px;
 }
 
 .hvr-fade {

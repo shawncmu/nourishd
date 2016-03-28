@@ -1,4 +1,5 @@
 app.controller('LoginCtrl', ['$scope','$auth','$location', function($scope, $auth, $location){
+
   $scope.login = function () {
     $auth.submitLogin($scope.loginForm).
     then(function(resp) {
@@ -12,7 +13,9 @@ app.controller('LoginCtrl', ['$scope','$auth','$location', function($scope, $aut
       console.log(resp);
     });
   };
+
   $scope.facebookLogin = function (){
     $auth.authenticate('facebook');
   };
+
 }]);

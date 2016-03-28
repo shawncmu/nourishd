@@ -1,0 +1,36 @@
+<section class="container-fluid">
+  <div class="row wooden-background">
+    <button ng-click="showAll()" class="position-button">Show All</button>
+    <button class="position-button">Open</button>
+    <button ng-click="showVegan()" class="position-button">Vegan</button>
+    <button ng-click="showGlutenFree()" class="position-button">GF</button>
+    <button ng-click="showLowCarb()" class="position-button">LC</button>
+    <button ng-click="getMeal('Appetizer')" class="position-button">App</button>
+    <button ng-click="getMeal('Main')" class="position-button">Main</button>
+    <button ng-click="getMeal('Dessert')" class="position-button">Dessert</button>
+  </div>
+</section>
+
+<section class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 center-align" ng-repeat="recipe in results | filter:{'course':meal}">
+      <div class="hvr-grow add-margin">
+        <div class="gradient"></div>
+        <div class="ontop">
+          <div class="onbottom">{{recipe.name}}</div>
+        </div>
+        <img  ng-src="{{recipe.image}}" class="main-images" ng-class="{'vegan': recipe.vegan,'gf': recipe.gluten_free,'lowcarb': recipe.low_carb}">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="container-fluid">
+  <div class="row">
+    <div class="col-xs-6 col-sm-4 col-md-3" ng-repeat="recipe in challenges">
+      <div ng-style="image_path != '' && {'background':'linear-gradient(to bottom,rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.6)),url({{recipe.image}})','background-size':'cover'}" class="main-images" ng-class="{'vegan': recipe.vegan,'gf': recipe.gluten_free,'lowcarb': recipe.low_carb}">
+        <p>{{recipe.name}}</p>
+      </div>
+    </div>
+  </div>
+</section> -->
