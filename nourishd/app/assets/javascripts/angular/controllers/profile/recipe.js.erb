@@ -1,4 +1,4 @@
-app.controller('RecipeCtrl', ['$scope','$auth','$location','$http','$routeParams', function($scope, $auth, $location,$http,$routeParams){
+app.controller('RecipeCtrl', ['$scope','$auth','$location','$http','$routeParams','$sce', function($scope, $auth, $location,$http,$routeParams,$sce){
 
   $scope.recipe = {};
 
@@ -11,6 +11,7 @@ app.controller('RecipeCtrl', ['$scope','$auth','$location','$http','$routeParams
       $scope.recipe = response.data;
       $scope.ingredients = $scope.recipe.ingredients;
       $scope.tools = $scope.recipe.equipment.split(",");
+      $scope.video = $sce.trustAsHtml('<iframe height="100%" src="'+$scope.recipe.video_url+'" frameborder="0" allowfullscreen></iframe>');
     },function (response){
       console.log(response);
     });
