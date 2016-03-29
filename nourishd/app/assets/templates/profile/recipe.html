@@ -1,0 +1,38 @@
+<section class="container-fluid">
+  <div class="row recipe-background center-align">
+    <!-- <img class="dark-image" ng-src="{{recipe.dish_image}}"> -->
+    <img ng-src="{{recipe.dish_image}}" class="main-images center-profile">
+    <p class="info-position">{{recipe.name}} {{recipe.cook_time}} {{recipe.course}} {{recipe.exp_value}} {{recipe.serving}} <span ng-if="recipe.vegan">Vegan</span><span ng-if="recipe.gluten_free">Gluten Free</span><span ng-if="recipe.low_carb">Low Carb</span></p>
+  </div>
+</section>
+
+<section class="container-fluid" style="height:400px">
+
+  <div class="col-xs-12 col-md-4">
+    <div class="row" style="height:200px;overflow:hidden">
+        <img class="ingredients-image" ng-src="{{recipe.ingredients_image}}">
+    </div>
+    <div class="row" style="height:200px">
+      <div ng-repeat="ingredient in ingredients">
+        <p>{{ingredient.name}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-md-4">
+    <div class="row" style="height:200px">
+      <p>{{recipe.instructions}}</p>
+    </div>
+    <div class="row" style="height:200px"></div>
+  </div>
+  <div class="col-xs-12 col-md-4">
+    <div class="row" style="height:200px">
+      <div ng-bind-html="video"></div>
+    </div>
+    <div class="row" style="height:200px">
+      <div ng-repeat="tool in tools">
+        <p>{{tool}}</p>
+      </div>
+    </div>
+  </div>
+
+</section>

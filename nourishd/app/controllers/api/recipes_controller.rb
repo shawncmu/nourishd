@@ -1,4 +1,4 @@
-class Api::RecipesController < ApplicationController
+class API::RecipesController < ApplicationController
   # before_action :authenticate_current_user
 
   def index
@@ -12,7 +12,7 @@ class Api::RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     respond_to do |format|
-      format.json { render 'get_single_recipe.jbuilder' }
+      format.json { render 'showonerecipe.jbuilder' }
     end
   end
 

@@ -13,14 +13,14 @@
 
 <section class="container-fluid">
   <div class="row">
-    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 center-align" ng-repeat="recipe in results | filter:{'course':meal}">
-      <div class="hvr-grow add-margin">
+    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 center-align" ng-repeat="recipe in results | filter:{'course':meal} track by recipe.id">
+      <a href="/#/viewrecipe/{{recipe.id}}"><div class="hvr-grow add-margin">
         <div class="gradient"></div>
         <div class="ontop">
           <div class="onbottom">{{recipe.name}}</div>
         </div>
-        <img  ng-src="{{recipe.image}}" class="main-images" ng-class="{'vegan': recipe.vegan,'gf': recipe.gluten_free,'lowcarb': recipe.low_carb}">
-      </div>
+        <img ng-src="{{recipe.image}}" class="main-images" ng-class="{'vegan': recipe.vegan,'gf': recipe.gluten_free,'lowcarb': recipe.low_carb}">
+      </div></a>
     </div>
   </div>
 </section>
