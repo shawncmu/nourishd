@@ -22,7 +22,8 @@
   </div>
   <div class="col-xs-4">
     <div class="row" style="height:200px">
-    <div youtube code="{{recipe.video_url}}"></div>
+    <!-- <div youtube code="{{recipe.video_url}}"></div> -->
+    <embed-video data-ng-href="{{recipe.video_url}}" height=100%></embed-video>
       <!-- <iframe width="100%" ng-src="{{recipe.video_url}}" /> -->
     </div>
     <div class="row" style="height:200px"></div>

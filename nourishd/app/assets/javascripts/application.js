@@ -21,4 +21,5 @@
 //= require ng-file-upload/ng-file-upload.min
 //= require ng-file-upload/ng-file-upload-shim.min
 //= require bootstrap/dist/js/bootstrap
+//= require ng-videosharing-embed/build/ng-videosharing-embed.min
 //= require_tree .
