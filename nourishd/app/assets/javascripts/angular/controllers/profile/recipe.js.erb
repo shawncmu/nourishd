@@ -1,6 +1,7 @@
 app.controller('RecipeCtrl', ['$scope','$auth','$location','$http','$routeParams','$sce', function($scope, $auth, $location,$http,$routeParams,$sce){
 
   $scope.recipe = {};
+  $scope.showDialog = false;
 
   var getRecipeProfile = function () {
     $http({

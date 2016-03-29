@@ -1,6 +1,5 @@
 <section class="container-fluid">
   <div class="row recipe-background center-align">
-    <!-- <img class="dark-image" ng-src="{{recipe.dish_image}}"> -->
     <img ng-src="{{recipe.dish_image}}" class="main-images center-profile">
     <p class="info-position">{{recipe.name}} {{recipe.cook_time}} {{recipe.course}} {{recipe.exp_value}} {{recipe.serving}} <span ng-if="recipe.vegan">Vegan</span><span ng-if="recipe.gluten_free">Gluten Free</span><span ng-if="recipe.low_carb">Low Carb</span></p>
   </div>
@@ -21,6 +20,7 @@
   <div class="col-xs-12 col-md-4">
     <div class="row" style="height:200px">
       <p>{{recipe.instructions}}</p>
+      <button ng-click="showDialog = !showDialog">Complete</button>
     </div>
     <div class="row" style="height:200px"></div>
   </div>
@@ -36,3 +36,41 @@
   </div>
 
 </section>
+
+<div modal-show modal-visible="showDialog" class="modal fade" id="recipe-completed" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add a post!</h4>
+      </div>
+      <div class="modal-body">
+
+        <div id="createpost-profile">
+
+            <form id="createpost">
+              <p><input type="text" name="title" class="form-control" placeholder="Title"></p>
+              <div>
+                <label for="create-image">Upload Image:</label>
+                <input type="file" name="image" id="create-image">
+              </div>
+              <p><select class="form-control" name="category">
+                <option>Category</option>
+                <option>Community</option>
+                <option>Youth</option>
+                <option>Environment</option>
+                <option>Animals</option>
+                <option>Good deeds</option>
+              </select></p>
+              <p><input type="text" name="location" class="form-control controls" placeholder="Location" id="district"></p>
+              <div id="map" style="width:456px;height:400px"></div><br>
+              <p><textarea class="form-control" name="description" rows="3"></textarea></p>
+              <p><input type="submit" name="create" class="btn btn-info" value="Create Post!"></p>
+            </form>
+
+            <div id="create-form-message"></div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
