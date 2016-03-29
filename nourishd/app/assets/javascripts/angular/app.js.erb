@@ -27,7 +27,7 @@ app.config(['$routeProvider', '$authProvider', function($routeProvider, $authPro
       templateUrl: "<%= asset_path('profile/dashboard.html') %>",
       controller: 'DashCtrl'
     }).
-    when('/viewrecipe', {
+    when('/viewrecipe/:id',{
       templateUrl: "<%= asset_path('profile/recipe.html') %>",
       controller: 'RecipeCtrl'
     });
@@ -39,4 +39,5 @@ app.config(['$routeProvider', '$authProvider', function($routeProvider, $authPro
       facebook: '/auth/facebook'
     }
   });
+
 }]);

@@ -1,0 +1,19 @@
+app.controller('RecipeCtrl', ['$scope','$auth','$location','$http','$routeParams', function($scope, $auth, $location,$http,$routeParams){
+
+  $scope.recipe = {};
+  $scope.code=$scope.recipe.video_url;
+
+  var getRecipeProfile = function () {
+    $http({
+      method: "GET",
+      url: "/api/recipes/"+$routeParams.id+".json"
+    }).then(function (response){
+      console.log(response.data);
+      $scope.recipe = response.data;
+    },function (response){
+      console.log(response);
+    });
+  };
+
+getRecipeProfile();
+}]);

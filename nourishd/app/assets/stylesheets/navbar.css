@@ -8,12 +8,12 @@
 .navbar-brand {
   position: absolute;
   width: 100%;
-  left: 0;
   top: 0;
   text-align: center;
   margin: auto;
   z-index: 0;
 }
+
 .navbar-brand > img {
   display: inline;
 }
@@ -36,6 +36,16 @@
   margin:0px;
   position: relative;
   top: -10px;
+}
+
+.fb-logo {
+  position: relative;
+  left: -77px;
+  top: -3px;
+}
+
+.fb-logo > img{
+  height:30px;
 }
 
 .hvr-fade {
