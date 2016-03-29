@@ -1,7 +1,6 @@
 app.controller('RecipeCtrl', ['$scope','$auth','$location','$http','$routeParams', function($scope, $auth, $location,$http,$routeParams){
 
   $scope.recipe = {};
-  $scope.code=$scope.recipe.video_url;
 
   var getRecipeProfile = function () {
     $http({
@@ -10,6 +9,8 @@ app.controller('RecipeCtrl', ['$scope','$auth','$location','$http','$routeParams
     }).then(function (response){
       console.log(response.data);
       $scope.recipe = response.data;
+      $scope.ingredients = $scope.recipe.ingredients;
+      $scope.tools = $scope.recipe.equipment.split(",");
     },function (response){
       console.log(response);
     });
