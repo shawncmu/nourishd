@@ -139,23 +139,5 @@ qt77 = Quantity.create(ingredient_id: ing4.id,recipe_id: recipe10.id,measurement
 qt78 = Quantity.create(ingredient_id: ing5.id,recipe_id: recipe10.id,measurement:"1/2 Teaspoon")
 qt79 = Quantity.create(ingredient_id: ing6.id,recipe_id: recipe10.id,measurement:"1 cup")
 
-challenge1 = Challenge.create(user_id: user1.id,recipe_id: recipe1.id,completion_date: '2016-01-01',notes: "super easy")
-challenge2 = Challenge.create(user_id: user1.id,recipe_id: recipe2.id,completion_date: '2016-01-01',notes: "only easy")
-challenge3 = Challenge.create(user_id: user1.id,recipe_id: recipe3.id,completion_date: '2016-01-01',notes: "tough")
-challenge4 = Challenge.create(user_id: user2.id,recipe_id: recipe1.id,completion_date: '2016-01-01',notes: "ok")
-challenge5 = Challenge.create(user_id: user2.id,recipe_id: recipe4.id,completion_date: '2016-01-01',notes: "yummy")
-challenge6 = Challenge.create(user_id: user2.id,recipe_id: recipe6.id,completion_date: '2016-01-01',notes: "super easy")
-challenge7 = Challenge.create(user_id: user2.id,recipe_id: recipe8.id,completion_date: '2016-01-01',notes: "not so yummy")
-challenge8 = Challenge.create(user_id: user2.id,recipe_id: recipe10.id,completion_date: '2016-01-01',notes: "super easy")
-challenge9 = Challenge.create(user_id: user3.id,recipe_id: recipe1.id,completion_date: '2016-01-01',notes: "super easy")
-challenge10 = Challenge.create(user_id: user3.id,recipe_id: recipe2.id,completion_date: '2016-01-01',notes: "meh")
-challenge11 = Challenge.create(user_id: user3.id,recipe_id: recipe3.id,completion_date: '2016-01-01',notes: "yaaaaay!")
-challenge12 = Challenge.create(user_id: user3.id,recipe_id: recipe4.id,completion_date: '2016-01-01',notes: "good")
-challenge13 = Challenge.create(user_id: user3.id,recipe_id: recipe5.id,completion_date: '2016-01-01',notes: "bad")
-challenge14 = Challenge.create(user_id: user3.id,recipe_id: recipe6.id,completion_date: '2016-01-01',notes: "ugly")
-challenge15 = Challenge.create(user_id: user3.id,recipe_id: recipe7.id,completion_date: '2016-01-01',notes: "wow")
-challenge16 = Challenge.create(user_id: user3.id,recipe_id: recipe8.id,completion_date: '2016-01-01',notes: "good for movie")
-challenge17 = Challenge.create(user_id: user3.id,recipe_id: recipe9.id,completion_date: '2016-01-01',notes: "blech")
-
 
 

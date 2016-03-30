@@ -1,4 +1,4 @@
-app.controller('RecipeCtrl', ['$scope','$auth','$location','$http','$routeParams','$sce', function($scope, $auth, $location,$http,$routeParams,$sce){
+app.controller('RecipeCtrl', ['$scope','$auth','$location','$http','$routeParams','$sce','Upload', function($scope, $auth, $location,$http,$routeParams,$sce,Upload){
 
   $scope.recipe = {};
   $scope.showDialog = false;
@@ -19,4 +19,38 @@ app.controller('RecipeCtrl', ['$scope','$auth','$location','$http','$routeParams
   };
 
 getRecipeProfile();
+
+    $auth.validateUser().
+    then(function(resp) {
+      console.log(resp);
+      $scope.user = resp;
+    }).
+    catch(function(resp) {
+      console.log(resp);
+    });
+
+  $scope.myNotes = "";
+  $scope.myImage = {};
+  $scope.formComplete = {};
+
+  $scope.formComplete.create = function(){
+    var data = {
+      'completedRecipe[notes]': $scope.myNotes,
+      'completedRecipe[user_id]': $scope.user.id,
+      'completedRecipe[recipe_id]': $scope.recipe.id,
+      'completedRecipe[completed_image]':$scope.myImage.file
+    };
+
+    // ngFileUpload's method to upload a file
+    Upload.upload({
+      url: 'http://localhost:3000/api/challenges.json',
+      method:'POST',
+      fields: data
+      // file: $scope.dishImage.file,
+      // fileFormDataName: 'newRecipe[dish_image]'
+    }).success(function(response) {
+        console.log(response);
+    });
+  };
+
 }]);

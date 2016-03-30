@@ -7,10 +7,10 @@ Rails.application.routes.draw do
     # get '/users/profile', to: 'users#profile'
     # resources :users, only: [:index, :show, :update]
 
-    # #posts
-    # get '/posts/community', to: 'posts#community'
-    # get '/posts/youth', to: 'posts#youth'
-    # get '/posts/environment', to: 'posts#environment'
+    # challenges
+    get '/challenges/:id', to: 'challenges#my_challenges'
+    get '/challenges/:user/:id', to: 'challenges#show'
+    post '/challenges', to: 'challenges#create'
     # get '/posts/animals', to: 'posts#animals'
     # get '/posts/good_deeds', to: 'posts#good_deeds'
     # get '/posts/most_popular', to: 'posts#most_popular'

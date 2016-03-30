@@ -1,17 +1,25 @@
 app.controller('DashCtrl', ['$scope','$auth','$location','$http', function($scope, $auth, $location,$http){
 
-$scope.challenges = {};
-  var getAllRecipes = function () {
+$auth.validateUser().
+then(function(resp) {
+  $scope.user = resp;
+}).
+catch(function(resp) {
+  console.log(resp);
+});
+
+$scope.completedRecipes = {};
+  var getAllCompletedRecipes = function () {
     $http({
       method: "GET",
-      url: "/api/recipes.json"
+      url: "/api/challenges/"+$scope.user.id+".json"
     }).then(function (response){
       console.log(response.data);
-      $scope.challenges = response.data;
+      $scope.completedRecipes = response.data;
     },function (response){
       console.log(response);
     });
   };
 
-getAllRecipes();
+getAllCompletedRecipes();
 }]);

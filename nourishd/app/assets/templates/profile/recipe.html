@@ -42,30 +42,19 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add a post!</h4>
+        <h4 class="modal-title" id="myModalLabel">Recipe Completed!</h4>
       </div>
       <div class="modal-body">
 
-        <div id="createpost-profile">
+        <div>
 
-            <form id="createpost">
-              <p><input type="text" name="title" class="form-control" placeholder="Title"></p>
-              <div>
-                <label for="create-image">Upload Image:</label>
-                <input type="file" name="image" id="create-image">
-              </div>
-              <p><select class="form-control" name="category">
-                <option>Category</option>
-                <option>Community</option>
-                <option>Youth</option>
-                <option>Environment</option>
-                <option>Animals</option>
-                <option>Good deeds</option>
-              </select></p>
-              <p><input type="text" name="location" class="form-control controls" placeholder="Location" id="district"></p>
-              <div id="map" style="width:456px;height:400px"></div><br>
-              <p><textarea class="form-control" name="description" rows="3"></textarea></p>
-              <p><input type="submit" name="create" class="btn btn-info" value="Create Post!"></p>
+            <form ng-submit="formComplete.create()">
+              <p>Upload an image to complete this recipe</p>
+              <div class="button" ngf-select ng-model="myImage.file">Select File</div>
+              <img ngf-src="myImage.file" width="300" height="200">
+              <p>My Notes (if any):</p>
+              <p><textarea class="form-control" ng-model="myNotes" rows="5"></textarea></p>
+              <p><input type="submit" name="create" class="btn btn-info" value="Complete!"></p>
             </form>
 
             <div id="create-form-message"></div>
