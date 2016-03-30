@@ -1,8 +1,10 @@
 class Recipe < ActiveRecord::Base
   has_many :quantities
   has_many :ingredients, through: :quantities
+  belongs_to :creator, class_name: 'User', foreign_key: 'creator'
   has_many :challenges
-  has_many :users, through: :challenges
+  has_many :participants, through: :challenges, class_name: 'User', foreign_key: 'participant_id'
+  has_many :instructions
 
 
   has_attached_file :dish_image, styles: {
