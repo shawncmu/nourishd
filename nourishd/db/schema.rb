@@ -27,10 +27,13 @@ ActiveRecord::Schema.define(version: 20160325060416) do
   create_table "challenges", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "recipe_id"
-    t.datetime "completion_date"
     t.text     "notes"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.string   "completed_image_file_name"
+    t.string   "completed_image_content_type"
+    t.integer  "completed_image_file_size"
+    t.datetime "completed_image_updated_at"
   end
 
   add_index "challenges", ["recipe_id"], name: "index_challenges_on_recipe_id", using: :btree
