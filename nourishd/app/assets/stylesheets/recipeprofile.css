@@ -33,3 +33,7 @@
   width: 100%;
   height: auto;
 }
+.modal-dialog {
+  color: green;
+  border-radius: 0px;
+}
