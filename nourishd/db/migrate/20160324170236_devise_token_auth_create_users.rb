@@ -41,7 +41,14 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration
       t.string :first_name
       t.string :last_name
       t.string :username
-      t.integer :exp_gained
+      t.boolean :vegan
+      t.boolean :vegetarian
+      t.boolean :lacto_veg
+      t.boolean :dairy_free
+      t.boolean :gluten_free
+      t.boolean :nut_free
+      t.boolean :soy_free
+      t.string :skill
 
       ## Tokens
       t.json :tokens

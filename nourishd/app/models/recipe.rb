@@ -1,9 +1,10 @@
 class Recipe < ActiveRecord::Base
   has_many :quantities
   has_many :ingredients, through: :quantities
-  has_many :challenges
-  has_many :users, through: :challenges
+  has_many :instructions
 
+  belongs_to :user
+  has_many :challenges
 
   has_attached_file :dish_image, styles: {
     large: "1000x1000>",

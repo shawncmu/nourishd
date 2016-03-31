@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160325060416) do
+ActiveRecord::Schema.define(version: 20160330174526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,25 +25,63 @@ ActiveRecord::Schema.define(version: 20160325060416) do
   end
 
   create_table "challenges", force: :cascade do |t|
-    t.integer  "user_id"
     t.integer  "recipe_id"
+    t.integer  "creator_id"
+    t.integer  "participant_id"
+    t.string   "participant_status"
+    t.string   "post_status"
     t.text     "notes"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.string   "completed_image_file_name"
-    t.string   "completed_image_content_type"
-    t.integer  "completed_image_file_size"
-    t.datetime "completed_image_updated_at"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "creator_image_file_name"
+    t.string   "creator_image_content_type"
+    t.integer  "creator_image_file_size"
+    t.datetime "creator_image_updated_at"
+    t.string   "participant_image_file_name"
+    t.string   "participant_image_content_type"
+    t.integer  "participant_image_file_size"
+    t.datetime "participant_image_updated_at"
   end
 
   add_index "challenges", ["recipe_id"], name: "index_challenges_on_recipe_id", using: :btree
-  add_index "challenges", ["user_id"], name: "index_challenges_on_user_id", using: :btree
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "challenge_id"
+    t.text     "comment"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "comments", ["challenge_id"], name: "index_comments_on_challenge_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "ingredients", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "instructions", force: :cascade do |t|
+    t.integer  "recipe_id"
+    t.text     "step"
+    t.integer  "order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "instructions", ["recipe_id"], name: "index_instructions_on_recipe_id", using: :btree
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "challenge_id"
+    t.string   "winner"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "likes", ["challenge_id"], name: "index_likes_on_challenge_id", using: :btree
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
   create_table "quantities", force: :cascade do |t|
     t.integer  "ingredient_id"
@@ -58,7 +96,6 @@ ActiveRecord::Schema.define(version: 20160325060416) do
 
   create_table "recipes", force: :cascade do |t|
     t.string   "name"
-    t.text     "instructions"
     t.string   "video_url"
     t.integer  "cook_time"
     t.integer  "serving"
@@ -66,7 +103,9 @@ ActiveRecord::Schema.define(version: 20160325060416) do
     t.boolean  "vegan"
     t.boolean  "gluten_free"
     t.boolean  "low_carb"
-    t.integer  "exp_value"
+    t.boolean  "dairy_free"
+    t.boolean  "nut_free"
+    t.boolean  "soy_free"
     t.string   "equipment"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
@@ -81,13 +120,13 @@ ActiveRecord::Schema.define(version: 20160325060416) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "provider",               default: "email", null: false
-    t.string   "uid",                    default: "",      null: false
-    t.string   "encrypted_password",     default: "",      null: false
+    t.string   "provider",                  default: "email", null: false
+    t.string   "uid",                       default: "",      null: false
+    t.string   "encrypted_password",        default: "",      null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,       null: false
+    t.integer  "sign_in_count",             default: 0,       null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -99,10 +138,21 @@ ActiveRecord::Schema.define(version: 20160325060416) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "username"
-    t.integer  "exp_gained"
+    t.boolean  "vegan"
+    t.boolean  "vegetarian"
+    t.boolean  "lacto_veg"
+    t.boolean  "dairy_free"
+    t.boolean  "gluten_free"
+    t.boolean  "nut_free"
+    t.boolean  "soy_free"
+    t.string   "skill"
     t.json     "tokens"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "avatar_image_file_name"
+    t.string   "avatar_image_content_type"
+    t.integer  "avatar_image_file_size"
+    t.datetime "avatar_image_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
