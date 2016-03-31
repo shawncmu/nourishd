@@ -18,5 +18,5 @@ class Challenge < ActiveRecord::Base
   }
 
   validates_attachment_content_type :creator_image, content_type: /\Aimage\/.*\Z/
-  validates_attachment_content_type :particpant_image, content_type: /\Aimage\/.*\Z/
+  validates_attachment_content_type :participant_image, content_type: /\Aimage\/.*\Z/
 end

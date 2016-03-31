@@ -277,10 +277,6 @@ comment37 = Comment.create(challenge_id: challenge10.id,user_id: user1.id,commen
 comment38 = Comment.create(challenge_id: challenge10.id,user_id: user2.id,comment:'Loving Hong Kong right now!')
 comment39 = Comment.create(challenge_id: challenge10.id,user_id: user3.id,comment:'Nice')
 comment40 = Comment.create(challenge_id: challenge10.id,user_id: user4.id,comment:'Thanks for all your hard work!')
-comment41 = Comment.create(challenge_id: challenge11.id,user_id: user1.id,comment:'Inspiring read')
-comment42 = Comment.create(challenge_id: challenge11.id,user_id: user2.id,comment:'Loving Hong Kong right now!')
-comment43 = Comment.create(challenge_id: challenge11.id,user_id: user3.id,comment:'Nice')
-comment44 = Comment.create(challenge_id: challenge11.id,user_id: user4.id,comment:'Thanks for acomment')
 
 like1 = Like.create(user_id: user1.id,challenge_id: challenge1.id,winner: "creator")
 like2 = Like.create(user_id: user1.id,challenge_id: challenge2.id,winner: "participant")
