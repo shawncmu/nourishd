@@ -22,6 +22,17 @@ app.controller('RecipeCtrl', ['$scope','$auth','$location','$http','$routeParams
 
 getRecipeProfile();
 
+$scope.checkValid = function (num) {
+    $auth.validateUser().
+    then(function(resp) {
+      if (num==1){$scope.showDialog = !$scope.showDialog;};
+      if (num==2){$scope.showDialog2 = !$scope.showDialog2;};
+    }).
+    catch(function(resp) {
+      alert("PLease login to proceed");
+    });
+}
+
     $auth.validateUser().
     then(function(resp) {
       console.log(resp);
@@ -56,37 +67,52 @@ getRecipeProfile();
   };
 
 
-
   var getUsers = function () {
     $http({
       method: "GET",
       url: "/api/users.json"
     }).then(function (response){
       console.log(response.data);
-      $scope.users = response.data;
+      $scope.userlist = response.data;
     },function (response){
       console.log(response);
     });
   };
+
   getUsers();
+
+
+  $scope.confirmChallenger = function(index) {
+    $scope.selectedUser = $scope.userlist[index];
+  };
+
   // $scope.challengeUser = "";
   // $scope.userImage = {};
   // // $scope.createChallenge = {};
 
-  // $scope.createChallenge = function(){
-  //   $http({
-  //     method: "GET",
-  //     url: "/api/recipes/"+$routeParams.id+".json"
-  //   }).then(function (response){
-  //     console.log(response.data);
-  //     $scope.recipe = response.data;
-  //     $scope.ingredients = $scope.recipe.ingredients;
-  //     $scope.instructions = $scope.recipe.instructions;
-  //     $scope.tools = $scope.recipe.equipment.split(",");
-  //     $scope.video = $sce.trustAsHtml('<iframe height="100%" src="'+$scope.recipe.video_url+'" frameborder="0" allowfullscreen></iframe>');
-  //   },function (response){
-  //     console.log(response);
-  //   });
-  // };
+  $scope.createChallenge = function(){
+    var data = {
+      recipe_id: $scope.recipe.id,
+      creator_id: $scope.user.id,
+      participant_id: $scope.selectedUser.id,
+      participant_status: "pending",
+      post_status: "pending"
+    }
+    console.log(data);
+    // $http({
+    //   method: "POST",
+    //   url: "/api/challenges.json",
+    //   data: data,
+    // }).then(function (response){
+    //   console.log(response.data);
+    //   $scope.recipe = response.data;
+    //   $scope.ingredients = $scope.recipe.ingredients;
+    //   $scope.instructions = $scope.recipe.instructions;
+    //   $scope.tools = $scope.recipe.equipment.split(",");
+    //   $scope.video = $sce.trustAsHtml('<iframe height="100%" src="'+$scope.recipe.video_url+'" frameborder="0" allowfullscreen></iframe>');
+    // },function (response){
+    //   console.log(response);
+    // });
+  };
 
 }]);

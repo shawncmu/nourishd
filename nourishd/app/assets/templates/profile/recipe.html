@@ -21,8 +21,8 @@
     <div class="row" style="height:200px">
       <p  ng-repeat="instruction in instructions | orderBy: 'instruction.order'">{{instruction.step}}</p>
     </div>
-      <button ng-click="showDialog = !showDialog">Complete</button>
-      <button ng-click="showDialog2 = !showDialog2">Challenge</button>
+      <button ng-click="checkValid(1)">Complete</button>
+      <button ng-click="checkValid(2)">Challenge</button>
     <div class="row" style="height:200px"></div>
   </div>
   <div class="col-xs-12 col-md-4">
@@ -76,26 +76,30 @@
 
         <div>
 
-            <form ng-submit="formChallenge">
+            <form ng-submit="createChallenge()">
               <p>Select a user to challenge:</p>
               <input ng-model="search"><br>
 
               <section id="user-list">
-                <div class="panel panel-default">
+                <div class="panel panel-default panel-params">
                   <div class="panel-heading">Search:</div>
-                    <ul class="list-group">
-                      <li class="list-group-item" ng-repeat="user in users | filter:{username: search}">
+                    <div class="list-group">
+                      <button type="button" class="list-group-item" ng-repeat="user in userlist | filter:{username: search} track by $index" ng-click="confirmChallenger($index)">
                         <div class="comment-user-image">
                           <img  class="comment-image-raw" ng-src="{{user.avatar_image}}" onerror="this.src=\'http://camaleon.tuzitio.com/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png\'">
                         </div>
                         <div class="comment-user-div">{{user.username}}</div>
                         <div class="comment-user-diet pull-right"><span ng-if="user.vegan">Vegan</span><span ng-if="user.gluten_free">Gluten Free</span><span ng-if="user.dairy_free">Dairy Free</span><span ng-if="user.nut_free">Nut Free</span><span ng-if="user.soy_free">Soy Free</span></div>
-                      </li>
-                    </ul>
+                      </button>
+                    </div>
                 </div>
               </section>
 
-              <p><input type="submit" name="create" class="btn btn-info" value="Challenge!"></p>
+              <p><input type="submit" name="create" class="btn btn-info confirm" value="Challenge!"></p>
+              <div class="comment-user-image confirm">
+                <img  class="comment-image-raw" ng-src="{{selectedUser.avatar_image}}" onerror="this.src=\'http://camaleon.tuzitio.com/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png\'">
+              </div>
+              <div class="comment-user-div confirm">{{selectedUser.username}}</div>
             </form>
 
             <div id="create-form-message"></div>
