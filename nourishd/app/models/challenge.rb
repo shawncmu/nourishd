@@ -1,20 +1,22 @@
 class Challenge < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :creator, class_name: 'User', foreign_key: 'creator_id'
+  belongs_to :participant, class_name: 'User', foreign_key: 'participant_id'
+
   belongs_to :recipe
   has_many :likes
   has_many :comments
 
-  has_attached_file :completed_image1, styles: {
+  has_attached_file :creator_image, styles: {
     large: "500x500>",
     medium: "300x300>",
     thumb: "100x100>"
   }
-  has_attached_file :completed_image2, styles: {
+  has_attached_file :participant_image, styles: {
     large: "500x500>",
     medium: "300x300>",
     thumb: "100x100>"
   }
 
-  validates_attachment_content_type :completed_image1, content_type: /\Aimage\/.*\Z/
-  validates_attachment_content_type :completed_image2, content_type: /\Aimage\/.*\Z/
+  validates_attachment_content_type :creator_image, content_type: /\Aimage\/.*\Z/
+  validates_attachment_content_type :particpant_image, content_type: /\Aimage\/.*\Z/
 end
