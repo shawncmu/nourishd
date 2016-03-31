@@ -16,7 +16,7 @@ class API::ChallengesController < ApplicationController
   end
 
   def create
-    @challenge = Challenge.new(completed_params)
+    @challenge = Challenge.new(new_challenge_params)
     respond_to do |format|
       if @challenge.save
         format.json { render json: @challenge }
@@ -47,8 +47,11 @@ class API::ChallengesController < ApplicationController
 
   private
 
-  def completed_params
-    params.require(:completedRecipe).permit(:notes, :user_id, :recipe_id, :completed_image)
+  # def completed_params
+  #   params.require(:completedRecipe).permit(:notes, :user_id, :recipe_id, :completed_image)
+  # end
+  def new_challenge_params
+    params.permit(:recipe_id, :creator_id, :participant_id, :participant_status, :post_status)
   end
 
   # def edit_recipe_params
