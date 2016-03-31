@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   namespace :api do
     # # users
     # get '/users/profile', to: 'users#profile'
-    # resources :users, only: [:index, :show, :update]
+    resources :users, only: [:index, :show, :update]
 
     # challenges
     get '/challenges/:id', to: 'challenges#my_challenges'

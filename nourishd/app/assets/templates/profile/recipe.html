@@ -22,6 +22,7 @@
       <p  ng-repeat="instruction in instructions | orderBy: 'instruction.order'">{{instruction.step}}</p>
     </div>
       <button ng-click="showDialog = !showDialog">Complete</button>
+      <button ng-click="showDialog2 = !showDialog2">Challenge</button>
     <div class="row" style="height:200px"></div>
   </div>
   <div class="col-xs-12 col-md-4">
@@ -55,6 +56,46 @@
               <p>My Notes (if any):</p>
               <p><textarea class="form-control" ng-model="myNotes" rows="5"></textarea></p>
               <p><input type="submit" name="create" class="btn btn-info" value="Complete!"></p>
+            </form>
+
+            <div id="create-form-message"></div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div modal-show modal-visible="showDialog2" class="modal fade" id="challenge-user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myChellengeRequest">Challenge a User!</h4>
+      </div>
+      <div class="modal-body">
+
+        <div>
+
+            <form ng-submit="formChallenge">
+              <p>Select a user to challenge:</p>
+              <input ng-model="search"><br>
+
+              <section id="user-list">
+                <div class="panel panel-default">
+                  <div class="panel-heading">Search:</div>
+                    <ul class="list-group">
+                      <li class="list-group-item" ng-repeat="user in users | filter:{username: search}">
+                        <div class="comment-user-image">
+                          <img  class="comment-image-raw" ng-src="{{user.avatar_image}}" onerror="this.src=\'http://camaleon.tuzitio.com/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png\'">
+                        </div>
+                        <div class="comment-user-div">{{user.username}}</div>
+                        <div class="comment-user-diet pull-right"><span ng-if="user.vegan">Vegan</span><span ng-if="user.gluten_free">Gluten Free</span><span ng-if="user.dairy_free">Dairy Free</span><span ng-if="user.nut_free">Nut Free</span><span ng-if="user.soy_free">Soy Free</span></div>
+                      </li>
+                    </ul>
+                </div>
+              </section>
+
+              <p><input type="submit" name="create" class="btn btn-info" value="Challenge!"></p>
             </form>
 
             <div id="create-form-message"></div>

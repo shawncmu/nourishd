@@ -37,3 +37,36 @@
   color: green;
   border-radius: 0px;
 }
+
+.comment {
+  padding: 10px 0px 10px 0px;
+}
+
+.comment-user-image {
+  padding:0px;
+  display: inline;
+}
+.comment-user-div {
+  padding:0px;
+  display: inline;
+}
+.comment-user-diet {
+  padding:0px;
+  display: inline;
+}
+
+.comment-user {
+  padding:0px;
+  font-weight: 300;
+}
+
+.comment-text {
+  padding:0px;
+  font-weight: lighter;
+}
+
+.comment-image-raw {
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
+}

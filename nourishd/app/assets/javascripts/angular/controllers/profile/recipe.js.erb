@@ -2,6 +2,7 @@ app.controller('RecipeCtrl', ['$scope','$auth','$location','$http','$routeParams
 
   $scope.recipe = {};
   $scope.showDialog = false;
+  $scope.showDialog2 = false;
 
   var getRecipeProfile = function () {
     $http({
@@ -53,5 +54,39 @@ getRecipeProfile();
         console.log(response);
     });
   };
+
+
+
+  var getUsers = function () {
+    $http({
+      method: "GET",
+      url: "/api/users.json"
+    }).then(function (response){
+      console.log(response.data);
+      $scope.users = response.data;
+    },function (response){
+      console.log(response);
+    });
+  };
+  getUsers();
+  // $scope.challengeUser = "";
+  // $scope.userImage = {};
+  // // $scope.createChallenge = {};
+
+  // $scope.createChallenge = function(){
+  //   $http({
+  //     method: "GET",
+  //     url: "/api/recipes/"+$routeParams.id+".json"
+  //   }).then(function (response){
+  //     console.log(response.data);
+  //     $scope.recipe = response.data;
+  //     $scope.ingredients = $scope.recipe.ingredients;
+  //     $scope.instructions = $scope.recipe.instructions;
+  //     $scope.tools = $scope.recipe.equipment.split(",");
+  //     $scope.video = $sce.trustAsHtml('<iframe height="100%" src="'+$scope.recipe.video_url+'" frameborder="0" allowfullscreen></iframe>');
+  //   },function (response){
+  //     console.log(response);
+  //   });
+  // };
 
 }]);
