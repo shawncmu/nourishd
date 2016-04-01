@@ -8,32 +8,56 @@ catch(function(resp) {
   console.log(resp);
 });
 
-$scope.participatingRecipes = {};
-  var getAllParticipatingRecipes = function () {
+$scope.mychallenges = [];
+  var getAllChallenges = function () {
     $http({
       method: "GET",
-      url: "/api/challenges/participate/"+$scope.user.id+".json"
+      url: "/api/challenges/"+$scope.user.id+".json"
     }).then(function (response){
       console.log(response.data);
-      $scope.participatingRecipes = response.data;
+      $scope.mychallenges = response.data;
+      // getCompletedChallenges();
     },function (response){
       console.log(response);
     });
   };
+getAllChallenges();
 
-$scope.createdRecipes = {};
-  var getAllCreatedRecipes = function () {
-    $http({
-      method: "GET",
-      url: "/api/challenges/created/"+$scope.user.id+".json"
-    }).then(function (response){
-      console.log(response.data);
-      $scope.createdRecipes = response.data;
-    },function (response){
-      console.log(response);
-    });
-  };
+// $scope.myCompletedChallenges = [];
+//   var getCompletedChallenges = function () {
+//     for (var i=0; i<$scope.mychallenges.length;i++) {
+//       if ($scope.mychallenges[i].post_status == "complete") {
+//         $scope.myCompletedChallenges.push($scope.mychallenges[i]);
+//       };
+//     };
+//   };
 
-getAllParticipatingRecipes();
-getAllCreatedRecipes();
+// $scope.participatingRecipes = {};
+//   var getAllParticipatingRecipes = function () {
+//     $http({
+//       method: "GET",
+//       url: "/api/challenges/participate/"+$scope.user.id+".json"
+//     }).then(function (response){
+//       console.log(response.data);
+//       $scope.participatingRecipes = response.data;
+//     },function (response){
+//       console.log(response);
+//     });
+//   };
+
+// $scope.createdRecipes = {};
+//   var getAllCreatedRecipes = function () {
+//     $http({
+//       method: "GET",
+//       url: "/api/challenges/created/"+$scope.user.id+".json"
+//     }).then(function (response){
+//       console.log(response.data);
+//       $scope.createdRecipes = response.data;
+//     },function (response){
+//       console.log(response);
+//     });
+//   };
+
+// getAllParticipatingRecipes();
+// getAllCreatedRecipes();
 }]);

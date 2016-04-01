@@ -47,17 +47,24 @@ app.controller('RecipeCtrl', ['$scope','$auth','$location','$http','$routeParams
 
   $scope.formComplete.create = function(){
     var data = {
-      'completedRecipe[notes]': $scope.myNotes,
-      'completedRecipe[user_id]': $scope.user.id,
-      'completedRecipe[recipe_id]': $scope.recipe.id,
-      'completedRecipe[completed_image]':$scope.myImage.file
+      notes: $scope.myNotes,
+      creator_id: $scope.user.id,
+      participant_id: $scope.user.id,
+      recipe_id: $scope.recipe.id,
+      creator_status: "complete",
+      participant_acceptance: "accepted",
+      participant_status: "complete",
+      post_status: "complete",
+      post_type: "personal",
+      creator_image:$scope.myImage.file
     };
     Upload.upload({
-      url: 'http://localhost:3000/api/challenges.json',
+      url: '/api/challenges.json',
       method:'POST',
       fields: data
     }).success(function(response) {
         console.log(response);
+        $scope.showDialog = !$scope.showDialog;
     });
   };
 
@@ -82,8 +89,11 @@ app.controller('RecipeCtrl', ['$scope','$auth','$location','$http','$routeParams
       recipe_id: $scope.recipe.id,
       creator_id: $scope.user.id,
       participant_id: $scope.selectedUser.id,
+      participant_acceptance: "pending",
       participant_status: "pending",
-      post_status: "pending"
+      creator_status: "pending",
+      post_status: "pending",
+      post_type: "challenge"
     };
     $http({
       method: "POST",

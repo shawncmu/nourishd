@@ -1,13 +1,13 @@
 <section class="container-fluid">
   <div class="row">
-  <p>Participating in</p>
-    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 center-align" ng-repeat="recipe in participatingRecipes">
-      <div class="hvr-grow add-margin">
-        <div class="gradient"></div>
+  <p>All Challenges</p>
+    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 center-align" ng-repeat="recipe in mychallenges | filter:{post_status:'pending'}">
+      <div class="hover12 hover01 add-margin">
+        <!-- <div class="gradient"></div> -->
         <div class="ontop">
-          <div class="onbottom">{{recipe.name}}</div>
+          <div class="onbottom">{{recipe.recipe_name}}</div>
         </div>
-        <img  ng-src="{{recipe.image}}" class="main-images" ng-class="{'vegan': recipe.vegan,'gf': recipe.gluten_free,'lowcarb': recipe.low_carb}">
+        <figure><img  ng-src="{{recipe.dish_image}}" class="main-images hover-effect-link hover-effect-thumb" ng-class="{'vegan': recipe.vegan,'gf': recipe.gluten_free,'lowcarb': recipe.low_carb}"></figure>
       </div>
     </div>
   </div>
@@ -15,14 +15,14 @@
 
 <section class="container-fluid">
   <div class="row">
-  <p>Created:</p>
-    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 center-align" ng-repeat="recipe in createdRecipes">
+  <p>Completed</p>
+    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 center-align" ng-repeat="recipe in mychallenges | filter:{post_status:'complete'}">
       <div class="hvr-grow add-margin">
         <div class="gradient"></div>
         <div class="ontop">
           <div class="onbottom">{{recipe.name}}</div>
         </div>
-        <img  ng-src="{{recipe.image}}" class="main-images" ng-class="{'vegan': recipe.vegan,'gf': recipe.gluten_free,'lowcarb': recipe.low_carb}">
+        <img  ng-src="{{recipe.creator_image}}" class="main-images" ng-class="{'vegan': recipe.vegan,'gf': recipe.gluten_free,'lowcarb': recipe.low_carb}">
       </div>
     </div>
   </div>
