@@ -8,18 +8,32 @@ catch(function(resp) {
   console.log(resp);
 });
 
-$scope.completedRecipes = {};
-  var getAllCompletedRecipes = function () {
+$scope.participatingRecipes = {};
+  var getAllParticipatingRecipes = function () {
     $http({
       method: "GET",
-      url: "/api/challenges/"+$scope.user.id+".json"
+      url: "/api/challenges/participate/"+$scope.user.id+".json"
     }).then(function (response){
       console.log(response.data);
-      $scope.completedRecipes = response.data;
+      $scope.participatingRecipes = response.data;
     },function (response){
       console.log(response);
     });
   };
 
-getAllCompletedRecipes();
+$scope.createdRecipes = {};
+  var getAllCreatedRecipes = function () {
+    $http({
+      method: "GET",
+      url: "/api/challenges/created/"+$scope.user.id+".json"
+    }).then(function (response){
+      console.log(response.data);
+      $scope.createdRecipes = response.data;
+    },function (response){
+      console.log(response);
+    });
+  };
+
+getAllParticipatingRecipes();
+getAllCreatedRecipes();
 }]);

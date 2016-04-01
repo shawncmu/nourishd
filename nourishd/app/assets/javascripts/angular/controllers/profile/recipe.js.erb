@@ -2,6 +2,21 @@ app.controller('RecipeCtrl', ['$scope','$auth','$location','$http','$routeParams
 
   $scope.recipe = {};
   $scope.showDialog = false;
+  $scope.showDialog2 = false;
+  $scope.myNotes = "";
+  $scope.myImage = {};
+  $scope.formComplete = {};
+
+  var userSignedIn = function() {
+    $auth.validateUser().
+    then(function(resp) {
+      console.log(resp);
+      $scope.user = resp;
+    }).
+    catch(function(resp) {
+      console.log(resp);
+    });
+  };
 
   var getRecipeProfile = function () {
     $http({
@@ -19,20 +34,16 @@ app.controller('RecipeCtrl', ['$scope','$auth','$location','$http','$routeParams
     });
   };
 
-getRecipeProfile();
-
+  $scope.checkValid = function (num) {
     $auth.validateUser().
     then(function(resp) {
-      console.log(resp);
-      $scope.user = resp;
+      if (num==1){$scope.showDialog = !$scope.showDialog;};
+      if (num==2){$scope.showDialog2 = !$scope.showDialog2;};
     }).
     catch(function(resp) {
-      console.log(resp);
+      alert("PLease login to proceed");
     });
-
-  $scope.myNotes = "";
-  $scope.myImage = {};
-  $scope.formComplete = {};
+  };
 
   $scope.formComplete.create = function(){
     var data = {
@@ -41,17 +52,52 @@ getRecipeProfile();
       'completedRecipe[recipe_id]': $scope.recipe.id,
       'completedRecipe[completed_image]':$scope.myImage.file
     };
-
-    // ngFileUpload's method to upload a file
     Upload.upload({
       url: 'http://localhost:3000/api/challenges.json',
       method:'POST',
       fields: data
-      // file: $scope.dishImage.file,
-      // fileFormDataName: 'newRecipe[dish_image]'
     }).success(function(response) {
         console.log(response);
     });
   };
 
+  var getUsers = function () {
+    $http({
+      method: "GET",
+      url: "/api/users.json"
+    }).then(function (response){
+      console.log(response.data);
+      $scope.userlist = response.data;
+    },function (response){
+      console.log(response);
+    });
+  };
+
+  $scope.confirmChallenger = function(index) {
+    $scope.selectedUser = $scope.userlist[index];
+  };
+
+  $scope.createChallenge = function(){
+    var data = {
+      recipe_id: $scope.recipe.id,
+      creator_id: $scope.user.id,
+      participant_id: $scope.selectedUser.id,
+      participant_status: "pending",
+      post_status: "pending"
+    };
+    $http({
+      method: "POST",
+      url: "/api/challenges.json",
+      data: data
+    }).then(function (response){
+      console.log(response.data);
+      $scope.showDialog2 = !$scope.showDialog2;
+    },function (response){
+      console.log(response);
+    });
+  };
+
+  getRecipeProfile();
+  userSignedIn();
+  getUsers();
 }]);

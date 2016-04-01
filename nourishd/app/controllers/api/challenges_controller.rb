@@ -1,8 +1,15 @@
 class API::ChallengesController < ApplicationController
   # before_action :authenticate_current_user
 
-  def my_challenges
-    @challenges = Challenge.where(user_id: params[:id])
+  def participating_challenges
+    @challenges = Challenge.where(participant_id: params[:id])
+    respond_to do |format|
+      format.json { render 'mychallenges.jbuilder' }
+    end
+  end
+
+  def created_challenges
+    @challenges = Challenge.where(creator_id: params[:id])
     respond_to do |format|
       format.json { render 'mychallenges.jbuilder' }
     end
@@ -16,7 +23,7 @@ class API::ChallengesController < ApplicationController
   end
 
   def create
-    @challenge = Challenge.new(completed_params)
+    @challenge = Challenge.new(new_challenge_params)
     respond_to do |format|
       if @challenge.save
         format.json { render json: @challenge }
@@ -47,8 +54,11 @@ class API::ChallengesController < ApplicationController
 
   private
 
-  def completed_params
-    params.require(:completedRecipe).permit(:notes, :user_id, :recipe_id, :completed_image)
+  # def completed_params
+  #   params.require(:completedRecipe).permit(:notes, :user_id, :recipe_id, :completed_image)
+  # end
+  def new_challenge_params
+    params.permit(:recipe_id, :creator_id, :participant_id, :participant_status, :post_status)
   end
 
   # def edit_recipe_params
