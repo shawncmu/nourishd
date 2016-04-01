@@ -79,7 +79,7 @@
 /*  background-size: cover;
   background-position: center;*/
 }
-span {
+.span-positioning {
   position: absolute;
   bottom: 0px;
   left: 20px;
@@ -90,21 +90,20 @@ span {
   padding: 0;
   font-size: 20px;
   text-decoration: none;
-  /*text-align: center;*/
   -webkit-transition: .3s ease-in-out;
   transition: .3s ease-in-out;
   opacity: 0;
 }
-.position-image:hover span {
-    bottom: 20px;
-    opacity: 1;
+.position-image:hover .span-positioning {
+  bottom: 20px;
+  opacity: 1;
 }
 .position-image:hover .onbottom {
-    bottom: 40px;
+  bottom: 40px;
 }
 .vegan {
-    color: red;
+  color: red;
 }
 .gluten-free {
-    color: orange;
+  color: orange;
 }

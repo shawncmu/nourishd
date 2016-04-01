@@ -28,7 +28,7 @@ figure {
     background: #fff;
     overflow: hidden;
 }
-figure:hover+span {
+/*figure:hover+span {
     bottom: 18px;
     opacity: 1;
-}
+}*/
