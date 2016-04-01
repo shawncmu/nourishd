@@ -1,8 +1,15 @@
 class API::ChallengesController < ApplicationController
   # before_action :authenticate_current_user
 
-  def my_challenges
-    @challenges = Challenge.where(user_id: params[:id])
+  def participating_challenges
+    @challenges = Challenge.where(participant_id: params[:id])
+    respond_to do |format|
+      format.json { render 'mychallenges.jbuilder' }
+    end
+  end
+
+  def created_challenges
+    @challenges = Challenge.where(creator_id: params[:id])
     respond_to do |format|
       format.json { render 'mychallenges.jbuilder' }
     end

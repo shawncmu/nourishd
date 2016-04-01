@@ -8,8 +8,9 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :update]
 
     # challenges
-    get '/challenges/:id', to: 'challenges#my_challenges'
-    get '/challenges/:user/:id', to: 'challenges#show'
+    get '/challenges/participate/:id', to: 'challenges#participating_challenges'
+    get '/challenges/created/:id', to: 'challenges#created_challenges'
+    # get '/challenges/:user/:id', to: 'challenges#show'
     post '/challenges', to: 'challenges#create'
     # get '/posts/animals', to: 'posts#animals'
     # get '/posts/good_deeds', to: 'posts#good_deeds'
