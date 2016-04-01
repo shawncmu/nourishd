@@ -21,14 +21,14 @@
 }
 
 figure {
-    width: 300px;
-    height: 200px;
+    /*width: 300px;*/
+    height: 300px;
     margin: 0;
     padding: 0;
     background: #fff;
     overflow: hidden;
 }
 figure:hover+span {
-    bottom: -36px;
+    bottom: 18px;
     opacity: 1;
 }

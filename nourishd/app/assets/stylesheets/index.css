@@ -1,5 +1,7 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat|Quicksand:700);
+
 body {
-  font-family: 'Nunito','Signika', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   height: 100%;
   position: relative;
   background-color: #EBEBEB;
