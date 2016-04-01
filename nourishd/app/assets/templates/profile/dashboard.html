@@ -31,8 +31,35 @@
         <div class="ontop">
           <div class="onbottom">{{recipe.name}}</div>
         </div>
-        <img  ng-src="{{recipe.creator_image}}" class="main-images" ng-class="{'vegan': recipe.vegan,'gf': recipe.gluten_free,'lowcarb': recipe.low_carb}">
+        <img  ng-src="{{recipe.creator_image}}" class="main-images" >
+        <img  ng-src="{{recipe.participant_image}}" class="main-images">
       </div>
     </div>
   </div>
 </section>
+
+<!-- ACTIVE
+show user
+show dish name
+show cancel option
+show complete button
+show view recipe
+
+PENDING PARTICIPANT
+Show dark
+show block white "PENDING"
+show cancel option
+show user
+show view recipe
+show recipe name
+
+PENDING YOU
+show orange
+show PENDING
+show user
+show accept / decline
+show view recipe
+
+OTHER USER DECLINE
+show red
+show OK button -->

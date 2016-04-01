@@ -25,6 +25,7 @@ getAllChallenges();
 
   $scope.finishedImage = {};
   $scope.recipeDone = function(id, creator, other){
+    console.log(id, creator, other);
     var temp = "";
     if (other == "pending"){
       temp = "pending";

@@ -38,7 +38,7 @@ class API::ChallengesController < ApplicationController
   def update
     @challenge = Challenge.update(params[:id], edit_challenge_params)
     respond_to do |format|
-      if @recipe.save
+      if @challenge.save
         format.json { render json: @challenge }
       else
         format.json { render json: @challenge.errors, status: :unprocessable_entity }
