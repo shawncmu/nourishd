@@ -1,4 +1,4 @@
-app.controller('DashCtrl', ['$scope','$auth','$location','$http', function($scope, $auth, $location,$http){
+app.controller('DashCtrl', ['$scope','$auth','$location','$http','Upload', function($scope, $auth, $location,$http,Upload){
 
 $auth.validateUser().
 then(function(resp) {
@@ -22,6 +22,40 @@ $scope.mychallenges = [];
     });
   };
 getAllChallenges();
+
+  $scope.finishedImage = {};
+  $scope.recipeDone = function(id, creator, other){
+    var temp = "";
+    if (other == "pending"){
+      temp = "pending";
+    } else {
+      temp = "complete";
+    };
+    if(creator=="me"){
+      var data = {
+        // notes: $scope.finishedRecipe.notes,
+        creator_image:$scope.finishedImage.file,
+        creator_status: "complete",
+        post_status: temp
+      };
+    } else {
+      var data = {
+        // notes: $scope.finishedRecipe.notes,
+        participant_image:$scope.finishedImage.file,
+        participant_status: "complete",
+        post_status: temp
+      };
+    };
+    Upload.upload({
+      url: '/api/challenges/'+id+'.json',
+      method:'PUT',
+      fields: data
+    }).success(function(response) {
+        console.log(response);
+        getAllChallenges();
+    });
+  };
+
 
 // $scope.myCompletedChallenges = [];
 //   var getCompletedChallenges = function () {

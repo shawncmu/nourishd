@@ -35,16 +35,16 @@ class API::ChallengesController < ApplicationController
     end
   end
 
-  # def update
-  #   @recipe = Recipe.update(params[:id], edit_recipe_params)
-  #   respond_to do |format|
-  #     if @recipe.save
-  #       format.json { render json: @recipe }
-  #     else
-  #       format.json { render json: @recipe.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+  def update
+    @challenge = Challenge.update(params[:id], edit_challenge_params)
+    respond_to do |format|
+      if @recipe.save
+        format.json { render json: @challenge }
+      else
+        format.json { render json: @challenge.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # def destroy
   #   Recipe.destroy(params[:id])
@@ -63,7 +63,7 @@ class API::ChallengesController < ApplicationController
     params.permit(:recipe_id, :creator_id, :participant_id, :participant_acceptance, :participant_status, :creator_status, :post_status, :post_type, :creator_image, :notes)
   end
 
-  # def edit_recipe_params
-  #   params.require(:editRecipe).permit(:name, :instructions, :video_url, :cook_time, :serving, :course, :vegan, :gluten_free, :low_carb, :exp_value, :equipment, :dish_image, :ingredients_image)
-  # end
+  def edit_challenge_params
+    params.permit(:creator_image, :participant_image, :creator_status, :participant_status, :post_status)
+  end
 end
