@@ -1,0 +1,25 @@
+<section class="container-fluid">
+  <div class="row wooden-background">
+    <button ng-click="showAll()" class="position-button">Show All</button>
+    <button class="position-button">Open</button>
+    <button ng-click="showVegan()" class="position-button">Vegan</button>
+    <button ng-click="showGlutenFree()" class="position-button">GF</button>
+    <button ng-click="showLowCarb()" class="position-button">LC</button>
+    <button ng-click="getMeal('Appetizer')" class="position-button">App</button>
+    <button ng-click="getMeal('Main')" class="position-button">Main</button>
+    <button ng-click="getMeal('Dessert')" class="position-button">Dessert</button>
+  </div>
+</section>
+
+<section class="container">
+  <div class="row" id="recipe-page">
+    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 position-image hover12 hover01" ng-repeat="recipe in results | filter:{'course':meal} track by recipe.id">
+      <a href="/#/viewrecipe/{{recipe.id}}">
+        <figure><img ng-src="{{recipe.image}}" class="main-images"></figure>
+        <div class="onbottom">{{recipe.name}}</div>
+        <span ng-if="recipe.vegan" class="span-positioning vegan">vegan</span>
+        <span ng-if="recipe.gluten_free" class="span-positioning gluten-free">Gluten Free</span>
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,4 +1,4 @@
-var app = angular.module('nourishd', ['ngRoute', 'ng-token-auth', 'ngFileUpload']);
+var app = angular.module('nourishd', ['ngRoute', 'ng-token-auth', 'ngFileUpload', 'ngAnimate','ngSanitize']);
 
 app.config(['$routeProvider', '$authProvider', function($routeProvider, $authProvider) {
   // Configure Angular Routes
@@ -14,9 +14,30 @@ app.config(['$routeProvider', '$authProvider', function($routeProvider, $authPro
     when('/login', {
       templateUrl: "<%= asset_path('auth/login.html') %>",
       controller: 'LoginCtrl'
-    });;
+    }).
+    when('/newrecipe', {
+      templateUrl: "<%= asset_path('admin/create.html') %>",
+      controller: 'NewRecipeCtrl'
+    }).
+    when('/challenges', {
+      templateUrl: "<%= asset_path('challenges/index.html') %>",
+      controller: 'ChallengesCtrl'
+    }).
+    when('/dashboard', {
+      templateUrl: "<%= asset_path('profile/dashboard.html') %>",
+      controller: 'DashCtrl'
+    }).
+    when('/viewrecipe/:id',{
+      templateUrl: "<%= asset_path('profile/recipe.html') %>",
+      controller: 'RecipeCtrl'
+    });
 
   $authProvider.configure({
-    apiUrl: 'http://localhost:3000'
+    apiUrl: location.origin,
+    omniauthWindowType:  "newWindow",
+    authProviderPaths: {
+      facebook: '/auth/facebook'
+    }
   });
+
 }]);

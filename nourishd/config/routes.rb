@@ -5,22 +5,24 @@ Rails.application.routes.draw do
   namespace :api do
     # # users
     # get '/users/profile', to: 'users#profile'
-    # resources :users, only: [:index, :show, :update]
+    resources :users, only: [:index, :show, :update]
 
-    # #posts
-    # get '/posts/community', to: 'posts#community'
-    # get '/posts/youth', to: 'posts#youth'
-    # get '/posts/environment', to: 'posts#environment'
+    # challenges
+    get '/challenges/:id', to: 'challenges#mychallenges'
+    # get '/challenges/created/:id', to: 'challenges#created_challenges'
+    # get '/challenges/:user/:id', to: 'challenges#show'
+    post '/challenges', to: 'challenges#create'
+    put '/challenges/:id', to: 'challenges#update'
     # get '/posts/animals', to: 'posts#animals'
     # get '/posts/good_deeds', to: 'posts#good_deeds'
     # get '/posts/most_popular', to: 'posts#most_popular'
     # resources :posts, only: [:index, :show, :create, :update, :destroy] do
 
     #   # posts comments
-    #   resources :comments, only: [:index, :show, :create, :destroy]
+      resources :comments, only: [:index, :show, :create, :destroy]
 
     #   # posts votes
-    #   put '/votes', to: 'votes#update'
+      # put '/likes', to: 'votes#update'
 
     # end
 

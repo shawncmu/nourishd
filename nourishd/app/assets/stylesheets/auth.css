@@ -1,0 +1,142 @@
+div {
+  display: block;
+}
+
+.signupbody {
+  height:100vh;
+  margin-top: -50px;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("http://wallpapersandmore.com/admin/wllpapers/1512160534304Italian-Pizza-Close-Up-Food-Wallpaper.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.loginbody {
+  height:100vh;
+  margin-top: -50px;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("http://michaelarbore.com/sites/default/files/soba.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.shiftuprow {
+  margin-top: 100px;
+}
+
+.inputFacebook {
+  width: 320px;
+  height: 60px;
+  padding-left: 70px;
+  font-size: 16px;
+  color: #FFFFFF;
+  text-align: center;
+  border-radius: 3px;
+  line-height: 60px;
+  margin: 20px auto 0 auto;
+  display: block;
+  background: url("../img/inputGraphic/inputIcon.png");
+  background-position: 0px 0px;
+  background-repeat: no-repeat;
+  background-color: #507BBC;
+}
+
+.facebookEmailSeparater {
+    width: 320px;
+    text-align: center;
+    margin: 20px auto 0 auto;
+}
+.facebookEmailSeparater .separaterLine {
+    width: 100px;
+    height: 0;
+    border-bottom: 1px solid #FFFFFF;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.facebookEmailSeparater .separaterText {
+    font-size: 14px;
+    color: #FFFFFF;
+    display: inline-block;
+    margin: 0 20px;
+    vertical-align: middle;
+}
+.inputName {
+    width: 320px;
+    height: 60px;
+    padding-left: 70px;
+    font-size: 16px;
+    color: #FFFFFF;
+    border-radius: 3px;
+    line-height: 60px;
+    margin: 10px auto 0 auto;
+    display: block;
+    background: url("../img/inputGraphic/inputIcon.png");
+    background-position: 0px -60px;
+    background-repeat: no-repeat;
+    background-color: rgba(255,255,255,0.3);
+    border: 0;
+}
+
+.inputEmail {
+  width: 320px;
+  height: 60px;
+  padding-left: 70px;
+  font-size: 16px;
+  color: #FFFFFF;
+  border-radius: 3px;
+  line-height: 60px;
+  margin: 10px auto 0 auto;
+  display: block;
+  background: url("../img/inputGraphic/inputIcon.png");
+  background-position: 0px -120px;
+  background-repeat: no-repeat;
+  background-color: rgba(255,255,255,0.3);
+  border: 0;
+}
+
+.inputPassword {
+  width: 320px;
+  height: 60px;
+  padding-left: 70px;
+  font-size: 16px;
+  color: #FFFFFF;
+  border-radius: 3px;
+  line-height: 60px;
+  margin: 10px auto 0 auto;
+  display: block;
+  background: url("../img/inputGraphic/inputIcon.png");
+  background-position: 0px -120px;
+  background-repeat: no-repeat;
+  background-color: rgba(255,255,255,0.3);
+  border: 0;
+}
+
+.inputSubmit {
+  width: 320px;
+  height: 60px;
+  color: #FFFFFF;
+  font-size: 16px;
+  background-color: #B42F6E;
+  border: 0;
+  border-radius: 3px;
+  margin: 20px auto 0 auto;
+  display: block;
+  text-decoration: none;
+}
+
+.inputLoginOption {
+  width: 320px;
+  margin: 5px auto 0 auto;
+}
+
+.inputLoginOption .inputForget {
+  width: 100%;
+  text-align: right;
+  display: inline-block;
+  color: #FFFFFF;
+  font-size: 14px;
+  vertical-align: middle;
+}

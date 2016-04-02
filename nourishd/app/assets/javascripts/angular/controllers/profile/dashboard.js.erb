@@ -1,0 +1,98 @@
+app.controller('DashCtrl', ['$scope','$auth','$location','$http','Upload', function($scope, $auth, $location,$http,Upload){
+
+$auth.validateUser().
+then(function(resp) {
+  $scope.user = resp;
+}).
+catch(function(resp) {
+  console.log(resp);
+});
+
+$scope.mychallenges = [];
+  var getAllChallenges = function () {
+    $http({
+      method: "GET",
+      url: "/api/challenges/"+$scope.user.id+".json"
+    }).then(function (response){
+      console.log(response.data);
+      $scope.mychallenges = response.data;
+      // getCompletedChallenges();
+    },function (response){
+      console.log(response);
+    });
+  };
+getAllChallenges();
+
+  $scope.finishedImage = {};
+  $scope.recipeDone = function(id, creator, other){
+    console.log(id, creator, other);
+    var temp = "";
+    if (other == "pending"){
+      temp = "pending";
+    } else {
+      temp = "complete";
+    };
+    if(creator=="me"){
+      var data = {
+        // notes: $scope.finishedRecipe.notes,
+        creator_image:$scope.finishedImage.file,
+        creator_status: "complete",
+        post_status: temp
+      };
+    } else {
+      var data = {
+        // notes: $scope.finishedRecipe.notes,
+        participant_image:$scope.finishedImage.file,
+        participant_status: "complete",
+        post_status: temp
+      };
+    };
+    Upload.upload({
+      url: '/api/challenges/'+id+'.json',
+      method:'PUT',
+      fields: data
+    }).success(function(response) {
+        console.log(response);
+        getAllChallenges();
+    });
+  };
+
+
+// $scope.myCompletedChallenges = [];
+//   var getCompletedChallenges = function () {
+//     for (var i=0; i<$scope.mychallenges.length;i++) {
+//       if ($scope.mychallenges[i].post_status == "complete") {
+//         $scope.myCompletedChallenges.push($scope.mychallenges[i]);
+//       };
+//     };
+//   };
+
+// $scope.participatingRecipes = {};
+//   var getAllParticipatingRecipes = function () {
+//     $http({
+//       method: "GET",
+//       url: "/api/challenges/participate/"+$scope.user.id+".json"
+//     }).then(function (response){
+//       console.log(response.data);
+//       $scope.participatingRecipes = response.data;
+//     },function (response){
+//       console.log(response);
+//     });
+//   };
+
+// $scope.createdRecipes = {};
+//   var getAllCreatedRecipes = function () {
+//     $http({
+//       method: "GET",
+//       url: "/api/challenges/created/"+$scope.user.id+".json"
+//     }).then(function (response){
+//       console.log(response.data);
+//       $scope.createdRecipes = response.data;
+//     },function (response){
+//       console.log(response);
+//     });
+//   };
+
+// getAllParticipatingRecipes();
+// getAllCreatedRecipes();
+}]);

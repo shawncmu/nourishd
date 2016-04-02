@@ -9,9 +9,13 @@
     "ng-token-auth": "^0.0.28",
     "moment": "^2.12.0",
     "bootstrap": "^3.3.6",
-    "ng-file-upload": "^12.0.4"
+    "ng-file-upload": "^12.0.4",
+    "hover": "Hover#^2.0.2",
+    "angular-animate": "^1.5.3",
+    "angular-sanitize": "^1.5.3"
   },
   "resolutions": {
-    "angular": "1.5.2"
+    "angular": "^1.5.2",
+    "angular-cookie": "^4.1.0"
   }
 }

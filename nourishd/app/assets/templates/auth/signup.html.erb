@@ -1,0 +1,43 @@
+<div class="signupbody">
+  <div class="container">
+    <div class="row shiftuprow">
+
+      <form ng-submit="signup()" role="form">
+
+        <a href="#" class="inputFacebook" onclick="facebookLogin()"><div class="col-xs-4 fb-logo"><img src="<%= image_url( 'facebook.png' ) %>" /></div>Register with Facebook</a>
+
+        <div class="facebookEmailSeparater">
+          <div class="separaterLine"></div><div class="separaterText">OR E-MAIL</div><div class="separaterLine"></div>
+        </div>
+
+        <div class="form-group">
+          <input type="text" name="first-name" ng-model="registrationForm.first_name" required="required" class="form-control inputName" placeholder="First Name"/>
+        </div>
+
+        <div class="form-group">
+          <input type="text" name="last-name" ng-model="registrationForm.last_name" required="required" class="form-control inputName" placeholder="Last Name"/>
+        </div>
+
+        <div class="form-group">
+          <input type="text" name="username" ng-model="registrationForm.username" required="required" class="form-control inputName" placeholder="Username"/>
+        </div>
+
+        <div class="form-group">
+          <input type="email" name="email" ng-model="registrationForm.email" required="required" class="form-control inputEmail" placeholder="Email"/>
+        </div>
+
+        <div class="form-group">
+          <input type="password" name="password" ng-model="registrationForm.password" required="required" class="form-control inputPassword" placeholder="Password"/>
+        </div>
+
+        <div class="form-group">
+          <input type="password" name="password_confirmation" ng-model="registrationForm.password_confirmation" required="required" class="form-control inputPassword" placeholder="Password Confirmation"/>
+        </div>
+
+        <button type="submit" class="inputSubmit">Register</button>
+
+      </form>
+
+    </div>
+  </div>
+</div>
