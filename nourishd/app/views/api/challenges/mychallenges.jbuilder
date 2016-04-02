@@ -4,7 +4,7 @@ json.array! @challenges do |challenge|
   json.recipe_name challenge.recipe.name
   json.creator_id challenge.creator_id
   json.participant_id challenge.participant_id
-  json.participant_status challenge.participant_status
+  json.participant_acceptance challenge.participant_acceptance
   json.post_status challenge.post_status
   json.notes challenge.notes
   json.dish_image challenge.recipe.dish_image
