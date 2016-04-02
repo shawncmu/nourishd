@@ -49,6 +49,8 @@
 .comment-user-div {
   padding:0px;
   display: inline;
+  position: relative;
+  top: 4px;
 }
 .comment-user-diet {
   padding:0px;
@@ -78,5 +80,5 @@
 }
 
 .confirm {
-  display: inline;
+  display: inline-block;
 }
