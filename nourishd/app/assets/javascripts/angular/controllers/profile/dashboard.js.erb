@@ -1,4 +1,4 @@
-app.controller('DashCtrl', ['$scope','$auth','$location','$http','Upload', function($scope, $auth, $location,$http,Upload){
+app.controller('DashCtrl', ['$scope','$auth','$location','$http','Upload','angularGridInstance', function($scope, $auth, $location,$http,Upload,angularGridInstance){
 
 $auth.validateUser().
 then(function(resp) {
@@ -16,7 +16,8 @@ $scope.mychallenges = [];
     }).then(function (response){
       console.log(response.data);
       $scope.mychallenges = response.data;
-      // getCompletedChallenges();
+      getCompletedChallenges();
+      // $scope.refresh;
     },function (response){
       console.log(response);
     });
@@ -57,16 +58,43 @@ getAllChallenges();
     });
   };
 
+  $scope.refresh = function(){
+    angularGridInstance.gallery.refresh();
+  }
 
-// $scope.myCompletedChallenges = [];
-//   var getCompletedChallenges = function () {
-//     for (var i=0; i<$scope.mychallenges.length;i++) {
-//       if ($scope.mychallenges[i].post_status == "complete") {
-//         $scope.myCompletedChallenges.push($scope.mychallenges[i]);
-//       };
-//     };
-//   };
-
+$scope.likeRecipe = function(id, winner, index){
+  console.log(id, winner, index);
+  var data = {
+    user_id: $scope.user.id,
+    challenge_id: id,
+    winner: winner
+  }
+  $http({
+      method: "POST",
+      url: "/api/likes.json",
+      data: data
+    }).then(function (response){
+      console.log(response.data);
+      if (winner=="creator"){
+        $scope.myCompletedChallenges[index].creator_likes = $scope.myCompletedChallenges[index].creator_likes+1;
+        $scope.myCompletedChallenges[index].voted_before = true;
+      } else {
+        $scope.myCompletedChallenges[index].participant_likes = $scope.myCompletedChallenges[index].participant_likes+1;
+        $scope.myCompletedChallenges[index].voted_before = true;
+      }
+    },function (response){
+      console.log(response);
+    });
+};
+  var getCompletedChallenges = function () {
+    $scope.myCompletedChallenges = [];
+    for (var i=0; i<$scope.mychallenges.length;i++) {
+      if ($scope.mychallenges[i].post_status == "complete") {
+        $scope.myCompletedChallenges.push($scope.mychallenges[i]);
+      };
+    };
+    console.log($scope.myCompletedChallenges);
+  };
 // $scope.participatingRecipes = {};
 //   var getAllParticipatingRecipes = function () {
 //     $http({

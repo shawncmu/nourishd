@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:index, :show, :create, :destroy]
 
     #   # posts votes
-      # put '/likes', to: 'votes#update'
+    post '/likes', to: 'likes#create'
 
     # end
 

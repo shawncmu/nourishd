@@ -44,10 +44,6 @@
       </div>
 
 
-
-
-
-
 <!--             <p>Upload an image to complete this recipe</p>
             <div class="button" ngf-select ng-model="finishedImage.file">Select File</div>
             <img ngf-src="finishedImage.file" width="300" height="200"> -->
@@ -55,7 +51,7 @@
   </div>
 </section>
 
-<section class="container-fluid">
+<!-- <section class="container-fluid">
   <div class="row">
   <p>Completed</p>
     <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 center-align" ng-repeat="recipe in mychallenges | filter:{post_status:'complete'}">
@@ -69,7 +65,43 @@
       </div>
     </div>
   </div>
+</section> -->
+<section>
+    <ul class="dynamic-grid" angular-grid="myCompletedChallenges" ag-grid-width="300" ag-gutter-size="10" ag-id="gallery" ag-refresh-on-img-load="true">
+        <li data-ng-repeat="recipe in myCompletedChallenges track by $index" class="grid">
+
+            <img ng-src="{{recipe.creator_image}}" class="grid-img" />
+            <div ng-if="!recipe.voted_before" class="like-button">
+              <a ng-click="likeRecipe(recipe.id, 'creator', $index)"><img class="logosize" src="/assets/like.png" /></a>
+            </div>
+            <div class="comment-user-image confirm shift">
+              <img class="comment-image-raw" ng-src="{{recipe.creator_avatar}}">
+              <div class="comment-user-div confirm">{{recipe.creator_username}}</div>
+            </div>
+            <div class="likes">{{recipe.creator_likes}}</div>
+
+            <div ng-if="recipe.post_type=='challenge'" class="participant-img">
+              <img ng-src="{{recipe.participant_image}}" class="grid-img" />
+              <div ng-if="!recipe.voted_before" class="like-button">
+                <a ng-click="likeRecipe(recipe.id, 'participant', $index)"><img class="logosize" src="/assets/like.png" /></a>
+              </div>
+              <div class="comment-user-image confirm shift">
+                <img class="comment-image-raw" ng-src="{{recipe.participant_avatar}}">
+                <div class="comment-user-div confirm">{{recipe.participant_username}}</div>
+              </div>
+              <div class="likes">{{recipe.participant_likes}}</div>
+            </div>
+
+            <div>
+              <p class="adjust-left">{{recipe.recipe_name}}</p>
+            </div>
+        </li>
+    </ul>
 </section>
+
+
+
+
 
 <!-- ACTIVE
 show user

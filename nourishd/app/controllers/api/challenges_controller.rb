@@ -3,8 +3,9 @@ class API::ChallengesController < ApplicationController
 
   def mychallenges
     @user = User.find(params[:id])
-    # @challenges = Challenge.where(participant_id: params[:id]).or(Challenge.where(creator_id: params[:id]))
     @challenges = Challenge.where("participant_id = ? OR creator_id = ?", params[:id], params[:id])
+    # @creator_likes = Like.where()count
+    # @participant_likes
     respond_to do |format|
       format.json { render 'mychallenges.jbuilder' }
     end

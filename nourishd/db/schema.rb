@@ -79,8 +79,10 @@ ActiveRecord::Schema.define(version: 20160330174526) do
     t.integer  "user_id"
     t.integer  "challenge_id"
     t.string   "winner"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "creator_likes"
+    t.integer  "participant_likes"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   add_index "likes", ["challenge_id"], name: "index_likes_on_challenge_id", using: :btree
