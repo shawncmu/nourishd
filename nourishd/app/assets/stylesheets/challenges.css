@@ -13,81 +13,93 @@
   background-size: cover;
 }
 
-.add-margin {
-  margin:10px;
-}
-
-.ontop {
+/*.ontop {
   width:180px;
   height:130px;
   position: absolute;
   margin-left:-90px;
   left:50%;
   top:10px;
-}
+}*/
 
 .onbottom {
-  position: absolute;
+/*  position: absolute;
   bottom: 0px;
   text-align:left;
-  color:white;
+  color:white;*/
+  z-index: 50;
+  font-family: 'Montserrat', sans-serif;
+  color: #fff !important;
+  font-size: 1.375em;
+  line-height: 1.2em;
+  font-weight: 900;
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 20px;
+  left: 0px;
+  padding: 5px 20px 5px;
+  transform: none !important;
+  text-align: left;
+  transition: all .3s !important;
+  -webkit-transition: all .3s !important;
 }
 
-.gradient {
+/*.gradient {
+  z-index: 49;
   background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.75) 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.75)), color-stop(100%,rgba(0,0,0,0)));
   background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.75) 100%);
   background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.75) 100%);
   background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.75) 100%);
-  width:191px;
-  height:70px;
+  width:100%;
+  height:100%;
   position: absolute;
-  margin-left:-95px;
-  left:50%;
-  bottom: 4px;
-  border-radius: 10px;
 }
+.gradient:hover {
+  background: none;
+}*/
 
-.center-align {
-  text-align: center;
+.position-image {
+  padding: 0px;
 }
 
 .main-images {
-  width: 200px;
-  height: 150px;
-  border-radius: 15px;
-  border: 5px solid rgba(255,255,255,0.1);
+/*  width: 200px;
+  height: 150px;*/
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+/*  border-radius: 15px;
+  border: 5px solid rgba(255,255,255,0.1);*/
 /*  background-size: cover;
   background-position: center;*/
 }
-/*.main-images:hover {
-  border: 5px solid green;
-}*/
+.span-positioning {
+  position: absolute;
+  bottom: 0px;
+  left: 20px;
+  z-index: 52;
+  display: block;
+  width: 300px;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  text-decoration: none;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+  opacity: 0;
+}
+.position-image:hover .span-positioning {
+  bottom: 20px;
+  opacity: 1;
+}
+.position-image:hover .onbottom {
+  bottom: 40px;
+}
 .vegan {
-  border: 5px solid orange;
+  color: red;
 }
-.gf {
-  border: 5px solid green;
-}
-.lowcarb {
-  border: 5px solid purple;
-}
-
-.hvr-grow {
-  display: inline-block;
-  vertical-align: middle;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-property: transform;
-  transition-property: transform;
-}
-.hvr-grow:hover, .hvr-grow:focus, .hvr-grow:active {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
+.gluten-free {
+  color: orange;
 }
