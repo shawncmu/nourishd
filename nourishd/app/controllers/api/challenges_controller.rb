@@ -1,6 +1,21 @@
 class API::ChallengesController < ApplicationController
   # before_action :authenticate_current_user
 
+  def index
+    @user = User.find(params[:id])
+    @challenges = Challenge.where(post_status: "complete")
+    respond_to do |format|
+      format.json { render 'allchallenges.jbuilder' }
+    end
+  end
+
+  def allChallengesNoUser
+    @challenges = Challenge.where(post_status: "complete")
+    respond_to do |format|
+      format.json { render 'allchallenges.jbuilder' }
+    end
+  end
+
   def mychallenges
     @user = User.find(params[:id])
     @challenges = Challenge.where("participant_id = ? OR creator_id = ?", params[:id], params[:id])

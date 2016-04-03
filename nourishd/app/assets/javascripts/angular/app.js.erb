@@ -30,6 +30,10 @@ app.config(['$routeProvider', '$authProvider', function($routeProvider, $authPro
     when('/viewrecipe/:id',{
       templateUrl: "<%= asset_path('profile/recipe.html') %>",
       controller: 'RecipeCtrl'
+    }).
+    when('/community',{
+      templateUrl: "<%= asset_path('community/posts.html') %>",
+      controller: 'PostCtrl'
     });
 
   $authProvider.configure({
