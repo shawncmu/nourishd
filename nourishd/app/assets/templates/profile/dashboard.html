@@ -63,43 +63,72 @@
       </md-tab>
       <md-tab label="Completed">
         <md-content class="md-padding">
-          <ul class="dynamic-grid" angular-grid="myCompletedChallenges" ag-grid-width="300" ag-gutter-size="10" ag-id="gallery" ag-refresh-on-img-load="true">
-            <li data-ng-repeat="recipe in myCompletedChallenges track by $index" class="grid" ng-class="{'challenge-post':recipe.post_type=='challenge','personal-post':recipe.post_type=='personal'}" style="border:none">
-              <img ng-src="{{recipe.creator_image}}" class="grid-img max-height" />
+            <ul class="dynamic-grid" angular-grid="myCompletedChallenges" ag-infinite-scroll ag-grid-width="350" ag-id="gallery" ag-refresh-on-img-load="true">
+    <li data-ng-repeat="recipe in myCompletedChallenges track by $index" class="grid" ng-class="{'challenge-post':recipe.post_type=='challenge','personal-post':recipe.post_type=='personal'}">
+      <div class="participant-img">
+        <img class="grid-img" ng-src="{{recipe.creator_image}}">
+        <div class="comment-user-image confirm shift">
+          <img class="comment-image-raw" ng-src="{{recipe.creator_avatar}}">
+          <div class="comment-user-div confirm">{{recipe.creator_username}}</div>
+        </div>
+        <div class="likes">
+          <img class="scale-down" src="/assets/like.png" /> {{recipe.creator_likes}}
+        </div>
+        <div class="like-button">
+          <a ng-if="!recipe.voted_before" ng-click="likeRecipe(recipe.id, 'creator', $index)"><img class="likesize" src="/assets/like.png" /></a>
+        </div>
+      </div>
 
-              <div class="like-button">
-                <a ng-if="!recipe.voted_before" ng-click="likeRecipe(recipe.id, 'creator', $index)"><img class="logosize like-pad" src="/assets/like.png" /></a>
-                <a ng-click="showModal(recipe.id)"><img class="logosize com-pad" src="/assets/interface.png" /></a>
+
+
+      <div ng-if="recipe.post_type=='challenge'" class="participant-img">
+        <img ng-src="{{recipe.participant_image}}" class="grid-img" />
+        <div class="comment-user-image confirm shift">
+          <img class="comment-image-raw" ng-src="{{recipe.participant_avatar}}">
+          <div class="comment-user-div confirm">{{recipe.participant_username}}</div>
+        </div>
+
+        <div class="likes">
+          <img class="scale-down" src="/assets/like.png" /> {{recipe.participant_likes}}
+        </div>
+        <div class="like-button">
+          <a ng-if="!recipe.voted_before" ng-click="likeRecipe(recipe.id, 'participant', $index)"><img class="likesize" src="/assets/like.png" /></a>
+        </div>
+      </div>
+
+
+
+      <div class="animate-slide" ng-show="slide" ng-click="slide=!slide">
+
+        <div class="title" ng-class="{'add-top-margin':recipe.post_type=='challenge'}">
+          <p class="adjust-left">{{recipe.recipe_name}}
+          <a ng-click="slide=!slide"><img class="com-pad" src="/assets/interface.png" /></a></p>
+        </div>
+
+      <div class="scroll">
+        <md-content >
+          <md-list>
+            <md-list-item class="md-2-line" ng-repeat="comment in recipe.comments">
+              <img ng-src="{{comment.avatar}}" class="md-avatar">
+              <div class="md-list-item-text">
+                <h3>{{comment.username}}</h3>
+                <p>{{comment.comment}}</p>
               </div>
+              <md-divider md-inset ng-if="!$last"></md-divider>
 
-              <div class="comment-user-image confirm shift">
-                <img class="comment-image-raw" ng-src="{{recipe.creator_avatar}}">
-                <div class="comment-user-div confirm">{{recipe.creator_username}}</div>
-              </div>
+            </md-list-item>
+          </md-list>
+        </md-content>
+      </div>
 
-              <div class="likes"><img class="scale-down" src="/assets/like.png" /> {{recipe.creator_likes}}</div>
 
-              <div ng-if="recipe.post_type=='challenge'" class="participant-img max-height">
-                <img ng-src="{{recipe.participant_image}}" class="grid-img" />
 
-                <div class="like-button">
-                  <a ng-if="!recipe.voted_before" ng-click="likeRecipe(recipe.id, 'participant', $index)"><img class="logosize like-pad" src="/assets/like.png" /></a>
-                  <a ng-click="showModal(recipe.id)"><img class="logosize com-pad" src="/assets/interface.png" /></a>
-                </div>
 
-                <div class="comment-user-image confirm shift">
-                  <img class="comment-image-raw" ng-src="{{recipe.participant_avatar}}">
-                  <div class="comment-user-div confirm">{{recipe.participant_username}}</div>
-                </div>
 
-                <div class="likes"><img class="scale-down" src="/assets/like.png" /> {{recipe.participant_likes}}</div>
-              </div>
+      </div>
 
-              <div class="title">
-                <p class="adjust-left">{{recipe.recipe_name}}</p>
-              </div>
-            </li>
-          </ul>
+    </li>
+  </ul>
         </md-content>
       </md-tab>
     </md-tabs>
