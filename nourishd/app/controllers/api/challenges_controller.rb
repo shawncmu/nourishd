@@ -4,19 +4,10 @@ class API::ChallengesController < ApplicationController
   def mychallenges
     @user = User.find(params[:id])
     @challenges = Challenge.where("participant_id = ? OR creator_id = ?", params[:id], params[:id])
-    # @creator_likes = Like.where()count
-    # @participant_likes
     respond_to do |format|
       format.json { render 'mychallenges.jbuilder' }
     end
   end
-
-  # def created_challenges
-  #   @challenges = Challenge.where(creator_id: params[:id])
-  #   respond_to do |format|
-  #     format.json { render 'mychallenges.jbuilder' }
-  #   end
-  # end
 
   def show
     @challenge = Challenge.find(params[:id])
@@ -47,13 +38,12 @@ class API::ChallengesController < ApplicationController
     end
   end
 
-  # def destroy
-  #   Recipe.destroy(params[:id])
-  #   # respond_to do |format|
-  #   #   # format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
-  #   #   format.json { head :no_content }
-  #   # end
-  # end
+  def destroy
+    Challenge.destroy(params[:id])
+    respond_to do |format|
+      format.json { head :no_content }
+    end
+  end
 
   private
 
@@ -65,6 +55,6 @@ class API::ChallengesController < ApplicationController
   end
 
   def edit_challenge_params
-    params.permit(:creator_image, :participant_image, :creator_status, :participant_status, :post_status)
+    params.permit(:creator_image, :participant_image, :creator_status, :participant_status, :post_status, :participant_acceptance)
   end
 end

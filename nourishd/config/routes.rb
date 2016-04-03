@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     # get '/challenges/:user/:id', to: 'challenges#show'
     post '/challenges', to: 'challenges#create'
     put '/challenges/:id', to: 'challenges#update'
+    delete '/challenges/:id', to: 'challenges#destroy'
     # get '/posts/animals', to: 'posts#animals'
     # get '/posts/good_deeds', to: 'posts#good_deeds'
     # get '/posts/most_popular', to: 'posts#most_popular'

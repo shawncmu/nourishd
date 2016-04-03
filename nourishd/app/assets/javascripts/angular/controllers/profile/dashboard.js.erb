@@ -91,9 +91,46 @@ $scope.likeRecipe = function(id, winner, index){
     for (var i=0; i<$scope.mychallenges.length;i++) {
       if ($scope.mychallenges[i].post_status == "complete") {
         $scope.myCompletedChallenges.push($scope.mychallenges[i]);
+        $scope.mychallenges.splice(i,1);
+      };
+    };
+    for (var x=0; x<$scope.mychallenges.length;x++) {
+      if ($scope.mychallenges[x].participant_acceptance=='declined' && $scope.mychallenges[x].creator=='other') {
+        $scope.mychallenges.splice(x,1);
       };
     };
     console.log($scope.myCompletedChallenges);
+    console.log($scope.mychallenges);
+  };
+
+  $scope.declineChallenge = function (id, index) {
+    console.log(id, index);
+    var data = {
+      participant_acceptance: "declined",
+      participant_status: "declined"
+    };
+    $http({
+      method: "PUT",
+      url: "/api/challenges/"+id+".json",
+      data: data
+    }).then(function (response){
+      console.log(response.data);
+      $scope.mychallenges.splice(index,1);
+    },function (response){
+      console.log(response);
+    });
+  };
+  $scope.deleteChallenge = function (id, index) {
+    console.log(id, index);
+    $http({
+      method: "DELETE",
+      url: "/api/challenges/"+id+".json"
+    }).then(function (response){
+      console.log(response.data);
+      $scope.mychallenges.splice(index,1);
+    },function (response){
+      console.log(response);
+    });
   };
 // $scope.participatingRecipes = {};
 //   var getAllParticipatingRecipes = function () {

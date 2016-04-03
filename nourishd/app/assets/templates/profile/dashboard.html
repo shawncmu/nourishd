@@ -1,6 +1,6 @@
 <div ng-cloak>
   <md-content>
-    <md-tabs md-dynamic-height md-border-bottom md-center-tabs="true">
+    <md-tabs md-dynamic-height md-center-tabs="true">
       <md-tab label="Challenges">
         <md-content class="md-padding">
     <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 placement" ng-repeat="recipe in mychallenges | filter:{post_status:'pending'} track by recipe.id">
@@ -22,21 +22,16 @@
 
           <div ng-if="recipe.participant_acceptance=='pending' && recipe.creator=='other'" class="buttons list1">
             <a><img class="logosize" src="/assets/check.png" /></a>
-            <a><img class="logosize" src="/assets/caution.png" /></a>
+            <a ng-click="declineChallenge(recipe.id, $index)"><img class="logosize" src="/assets/caution.png" /></a>
           </div>
 
           <div ng-if="recipe.participant_acceptance=='pending' && recipe.creator=='me'" class="buttons list2">
             <p>PENDING</p>
           </div>
 
-          <div ng-if="recipe.participant_acceptance=='declined' && recipe.creator=='other'" class="buttons list3">
-            <!-- <button>You declined - delete</button> -->
-            <a><img class="logosize" src="/assets/caution.png" /></a>
-          </div>
-
           <div ng-if="recipe.participant_acceptance=='declined' && recipe.creator=='me'" class="buttons list4">
-            <!-- <button>Participant declined - delete</button> -->
-            <a><img class="logosize" src="/assets/caution.png" /></a>
+            <p>Your opponent has declined the challenge</p>
+            <a ng-click="deleteChallenge(recipe.id, $index)"><img class="logosize" src="/assets/caution.png" /></a>
           </div>
 
           <div ng-if="recipe.participant_acceptance=='accepted'" class="buttons list5">
