@@ -183,6 +183,7 @@ figure {
   height:82px;
   width: auto;
 }
+
 .grid-img:hover+.like-button {
   opacity: 1;
 }

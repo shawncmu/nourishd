@@ -55,18 +55,4 @@ $scope.likeRecipe = function(id, winner, index){
   });
 };
 
-$scope.postedComments = [];
-
-var getAllComments = function (id) {
-  $http({
-    method: "GET",
-    url: "/api/comments/"+id+".json"
-  }).then(function (response){
-    console.log(response.data);
-    $scope.postedComments = response.data;
-  },function (response){
-    console.log(response);
-  });
-};
-
 }]);

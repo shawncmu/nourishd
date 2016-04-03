@@ -21,12 +21,16 @@
 
 .title {
   width: 100%;
-  position: absolute;
+  height:65px;
+  position: relative;
   top: 0px;
   color: black;
   text-transform: uppercase;
   /*text-align: center;*/
   /*left: -10%;*/
+}
+.add-top-margin{
+  margin-top: 25px;
 }
 
 .com-pad {
@@ -135,4 +139,17 @@
 {
   0%  {top:0;}
   100%   {top:90%;}
+}
+
+.dividerdemoBasicUsage .face {
+  border-radius: 30px;
+  border: 1px solid #ddd;
+  width: 48px;
+  margin: 16px;
+}
+.scroll {
+  overflow-y:auto;
+  width:90%;
+  height:70%;
+  /*overflow: hidden;*/
 }
