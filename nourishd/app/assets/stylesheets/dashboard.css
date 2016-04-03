@@ -129,3 +129,81 @@ figure {
   text-align: center;
   width: 100%;
 }
+
+.dynamic-grid{
+  position: relative;
+  display: none;
+}
+
+.dynamic-grid.angular-grid{
+  display: block;
+}
+
+.grid {
+  border: 1px solid #cccccc;
+  position: absolute;
+  list-style: none;
+  background: #ffffff;
+  box-sizing: border-box;
+  -moz-box-sizing : border-box;
+  -webkit-transition: all 0.6s ease-out;
+  transition: all 0.6s ease-out;
+}
+.grid-img {
+  width: 100%;
+  vertical-align: middle;
+  -webkit-transition: opacity 0.6s ease-out;
+  transition: opacity 0.6s ease-out;
+  background-color: #fff;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.grid-img.img-loaded{
+  visibility: visible;
+  opacity: 1;
+}
+.dynamic-grid img{
+  display: inline;
+}
+
+.adjust-left {
+  position: relative;
+  left: 20px;
+}
+
+.like-button {
+  position: relative;
+  bottom: 131px;
+  text-align: center;
+  z-index: 100;
+  opacity: 0;
+  -webkit-transition: .2s ease-in-out;
+  transition: .2s ease-in-out;
+}
+.grid-img:hover+.like-button {
+  opacity: 1;
+}
+.like-button:hover {
+  opacity: 1;
+}
+.tabsdemoDynamicHeight md-content {
+  background-color: transparent !important;
+}
+.tabsdemoDynamicHeight md-content md-tabs {
+  background: #f6f6f6;
+  border: 1px solid #e1e1e1;
+}
+.tabsdemoDynamicHeight md-content md-tabs md-tabs-wrapper {
+  background: white;
+}
+.tabsdemoDynamicHeight md-content h1:first-child {
+  margin-top: 0;
+}
+md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
+    color: green !important;
+    background-color:green !important;
+}
+.buttons,.like-button a:hover {
+  cursor: pointer;
+}

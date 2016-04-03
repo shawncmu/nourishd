@@ -1,4 +1,4 @@
-var app = angular.module('nourishd', ['ngRoute', 'ng-token-auth', 'ngFileUpload', 'ngAnimate','ngSanitize']);
+var app = angular.module('nourishd', ['ngRoute', 'ng-token-auth', 'ngFileUpload', 'ngAnimate','ngSanitize','angularGrid','ngMaterial']);
 
 app.config(['$routeProvider', '$authProvider', function($routeProvider, $authProvider) {
   // Configure Angular Routes
@@ -30,6 +30,10 @@ app.config(['$routeProvider', '$authProvider', function($routeProvider, $authPro
     when('/viewrecipe/:id',{
       templateUrl: "<%= asset_path('profile/recipe.html') %>",
       controller: 'RecipeCtrl'
+    }).
+    when('/community',{
+      templateUrl: "<%= asset_path('community/posts.html') %>",
+      controller: 'PostCtrl'
     });
 
   $authProvider.configure({

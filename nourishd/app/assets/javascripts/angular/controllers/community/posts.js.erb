@@ -1,0 +1,57 @@
+app.controller('PostCtrl', ['$scope','$auth','$location','$http','angularGridInstance', function($scope, $auth, $location,$http,angularGridInstance){
+
+$scope.loggedIn = false;
+$auth.validateUser().
+then(function(resp) {
+  $scope.user = resp;
+  $scope.loggedIn = true;
+  getAllPosts("/api/challenges/all/"+$scope.user.id+".json");
+}).
+catch(function(resp) {
+  console.log(resp);
+  getAllPosts("/api/challenges/all.json");
+});
+
+$scope.allPosts = [];
+
+var getAllPosts = function (get) {
+  $http({
+    method: "GET",
+    url: get
+  }).then(function (response){
+    console.log(response.data);
+    $scope.allPosts = response.data;
+  },function (response){
+    console.log(response);
+  });
+};
+
+$scope.refresh = function(){
+  angularGridInstance.gallery.refresh();
+}
+
+$scope.likeRecipe = function(id, winner, index){
+  console.log(id, winner, index);
+  var data = {
+    user_id: $scope.user.id,
+    challenge_id: id,
+    winner: winner
+  }
+  $http({
+      method: "POST",
+      url: "/api/likes.json",
+      data: data
+  }).then(function (response){
+    console.log(response.data);
+    if (winner=="creator"){
+      $scope.allPosts[index].creator_likes = $scope.allPosts[index].creator_likes+1;
+      $scope.allPosts[index].voted_before = true;
+    } else {
+      $scope.allPosts[index].participant_likes = $scope.allPosts[index].participant_likes+1;
+      $scope.allPosts[index].voted_before = true;
+    }
+  },function (response){
+    console.log(response);
+  });
+};
+}]);

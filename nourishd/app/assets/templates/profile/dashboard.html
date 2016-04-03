@@ -1,75 +1,115 @@
-<section class="container-fluid">
-  <div class="row">
-  <p>All Challenges</p>
-    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 placement" ng-repeat="recipe in mychallenges | filter:{post_status:'pending'} track by recipe.id">
-      <div class="hover12 hover01">
-        <figure>
-          <img  ng-src="{{recipe.dish_image}}" class="main-images">
-          <div class="dash-text">{{recipe.recipe_name}}</div>
+<div ng-cloak>
+  <md-content>
+    <md-tabs md-dynamic-height md-center-tabs="true">
+      <md-tab label="Challenges">
+        <md-content class="md-padding">
+          <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 placement" ng-repeat="recipe in mychallenges | filter:{post_status:'pending'} track by recipe.id">
+            <div class="hover12 hover01">
+              <figure>
+                <img  ng-src="{{recipe.dish_image}}" class="main-images">
+                <div class="dash-text">{{recipe.recipe_name}}</div>
 
-          <div class="opponent comment-user-image confirm">
-            <img class="opponent-image" ng-src="{{recipe.other_player_image}}">
-            <div class="comment-user-div confirm">{{recipe.other_player}}</div>
+                <div class="opponent comment-user-image confirm">
+                  <img class="opponent-image" ng-src="{{recipe.other_player_image}}">
+                  <div class="comment-user-div confirm">{{recipe.other_player}}</div>
+                </div>
+
+                <div class="hold-position">
+                  <a href="/#/viewrecipe/{{recipe.recipe_id}}">
+                    <img class="logosize" src="/assets/book.png" />
+                  </a>
+                </div>
+
+                <div ng-if="recipe.participant_acceptance=='pending' && recipe.creator=='other'" class="buttons list1">
+                  <a ng-click="acceptChallenge(recipe.id, $index)"><img class="logosize" src="/assets/check.png" /></a>
+                  <a ng-click="declineChallenge(recipe.id, $index)"><img class="logosize" src="/assets/caution.png" /></a>
+                </div>
+
+                <div ng-if="recipe.participant_acceptance=='pending' && recipe.creator=='me' && recipe.post_type=='challenge'" class="buttons list2">
+                  <p>PENDING</p>
+                  <p>Your opponent has yet to accept your challenge</p>
+                </div>
+
+                <div ng-if="recipe.other_player_status=='pending' && recipe.creator=='me' && recipe.creator_status=='complete' && recipe.post_type=='challenge'" class="buttons list2">
+                  <p>PENDING</p>
+                  <p>Your opponent has yet to complete the challenge</p>
+                </div>
+
+                <div ng-if="recipe.participant_acceptance=='declined' && recipe.creator=='me'" class="buttons list4">
+                  <p>Your opponent has declined the challenge</p>
+                  <a ng-click="deleteChallenge(recipe.id, $index)"><img class="logosize" src="/assets/caution.png" /></a>
+                </div>
+
+                <div ng-if="recipe.participant_acceptance=='accepted' && recipe.creator=='other'" class="buttons list5">
+                  <a ng-click="recipeDone(recipe.id, recipe.creator, recipe.other_player_status)"><img class="logosize" src="/assets/knife.png" /></a>
+                </div>
+                <div ng-if="recipe.participant_acceptance=='accepted' && recipe.creator=='me' && recipe.creator_status!='complete'" class="buttons list5">
+                  <a ng-click="recipeDone(recipe.id, recipe.creator, recipe.other_player_status)"><img class="logosize" src="/assets/knife.png" /></a>
+                </div>
+                <div ng-if="recipe.post_type=='personal'" class="buttons list5">
+                  <a ng-click="recipeDone(recipe.id, recipe.creator, 'complete')"><img class="logosize" src="/assets/knife.png" /></a>
+                </div>
+
+              </figure>
+            </div>
+      <!--       <div>
+              <p>Upload an image to complete this recipe</p>
+              <div class="button" ngf-select ng-model="finishedImage.file">Select File</div>
+              <img ngf-src="finishedImage.file" width="150" height="100">
+            </div> -->
+
           </div>
+        </md-content>
+      </md-tab>
+      <md-tab label="Completed">
+        <md-content class="md-padding">
+          <ul class="dynamic-grid" angular-grid="myCompletedChallenges" ag-grid-width="300" ag-gutter-size="10" ag-id="gallery" ag-refresh-on-img-load="true">
+            <li data-ng-repeat="recipe in myCompletedChallenges track by $index" class="grid" ng-class="{'challenge-post':recipe.post_type=='challenge','personal-post':recipe.post_type=='personal'}" style="border:none">
+              <img ng-src="{{recipe.creator_image}}" class="grid-img max-height" />
 
-          <div class="hold-position">
-            <a href="/#/viewrecipe/{{recipe.recipe_id}}">
-              <img class="logosize" src="/assets/book.png" />
-            </a>
-          </div>
+              <div class="like-button">
+                <a ng-if="!recipe.voted_before" ng-click="likeRecipe(recipe.id, 'creator', $index)"><img class="logosize like-pad" src="/assets/like.png" /></a>
+                <a ng-click="showModal(recipe.id)"><img class="logosize com-pad" src="/assets/interface.png" /></a>
+              </div>
 
-          <div ng-if="recipe.participant_acceptance=='pending' && recipe.creator=='other'" class="buttons list1">
-            <a><img class="logosize" src="/assets/check.png" /></a>
-            <a><img class="logosize" src="/assets/caution.png" /></a>
-          </div>
+              <div class="comment-user-image confirm shift">
+                <img class="comment-image-raw" ng-src="{{recipe.creator_avatar}}">
+                <div class="comment-user-div confirm">{{recipe.creator_username}}</div>
+              </div>
 
-          <div ng-if="recipe.participant_acceptance=='pending' && recipe.creator=='me'" class="buttons list2">
-            <p>PENDING</p>
-          </div>
+              <div class="likes"><img class="scale-down" src="/assets/like.png" /> {{recipe.creator_likes}}</div>
 
-          <div ng-if="recipe.participant_acceptance=='declined' && recipe.creator=='other'" class="buttons list3">
-            <!-- <button>You declined - delete</button> -->
-            <a><img class="logosize" src="/assets/caution.png" /></a>
-          </div>
+              <div ng-if="recipe.post_type=='challenge'" class="participant-img max-height">
+                <img ng-src="{{recipe.participant_image}}" class="grid-img" />
 
-          <div ng-if="recipe.participant_acceptance=='declined' && recipe.creator=='me'" class="buttons list4">
-            <!-- <button>Participant declined - delete</button> -->
-            <a><img class="logosize" src="/assets/caution.png" /></a>
-          </div>
+                <div class="like-button">
+                  <a ng-if="!recipe.voted_before" ng-click="likeRecipe(recipe.id, 'participant', $index)"><img class="logosize like-pad" src="/assets/like.png" /></a>
+                  <a ng-click="showModal(recipe.id)"><img class="logosize com-pad" src="/assets/interface.png" /></a>
+                </div>
 
-          <div ng-if="recipe.participant_acceptance=='accepted'" class="buttons list1">
-            <a ng-click="recipeDone(recipe.id, recipe.creator, recipe.other_player_status)"><img class="logosize" src="/assets/knife.png" /></a>
-          </div>
-        </figure>
-      </div>
+                <div class="comment-user-image confirm shift">
+                  <img class="comment-image-raw" ng-src="{{recipe.participant_avatar}}">
+                  <div class="comment-user-div confirm">{{recipe.participant_username}}</div>
+                </div>
+
+                <div class="likes"><img class="scale-down" src="/assets/like.png" /> {{recipe.participant_likes}}</div>
+              </div>
+
+              <div class="title">
+                <p class="adjust-left">{{recipe.recipe_name}}</p>
+              </div>
+            </li>
+          </ul>
+        </md-content>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+</div>
 
 
 
 
 
-
-<!--             <p>Upload an image to complete this recipe</p>
-            <div class="button" ngf-select ng-model="finishedImage.file">Select File</div>
-            <img ngf-src="finishedImage.file" width="300" height="200"> -->
-    </div>
-  </div>
-</section>
-
-<section class="container-fluid">
-  <div class="row">
-  <p>Completed</p>
-    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 center-align" ng-repeat="recipe in mychallenges | filter:{post_status:'complete'}">
-      <div class="hvr-grow add-margin">
-        <div class="gradient"></div>
-        <div class="ontop">
-          <div class="onbottom">{{recipe.name}}</div>
-        </div>
-        <img  ng-src="{{recipe.creator_image}}" class="main-images" >
-        <img  ng-src="{{recipe.participant_image}}" class="main-images">
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ACTIVE
 show user
