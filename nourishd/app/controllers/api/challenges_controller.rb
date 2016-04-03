@@ -47,9 +47,6 @@ class API::ChallengesController < ApplicationController
 
   private
 
-  # def completed_params
-  #   params.require(:completedRecipe).permit(:notes, :user_id, :recipe_id, :completed_image)
-  # end
   def new_challenge_params
     params.permit(:recipe_id, :creator_id, :participant_id, :participant_acceptance, :participant_status, :creator_status, :post_status, :post_type, :creator_image, :notes)
   end

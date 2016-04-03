@@ -132,32 +132,20 @@ $scope.likeRecipe = function(id, winner, index){
       console.log(response);
     });
   };
-// $scope.participatingRecipes = {};
-//   var getAllParticipatingRecipes = function () {
-//     $http({
-//       method: "GET",
-//       url: "/api/challenges/participate/"+$scope.user.id+".json"
-//     }).then(function (response){
-//       console.log(response.data);
-//       $scope.participatingRecipes = response.data;
-//     },function (response){
-//       console.log(response);
-//     });
-//   };
-
-// $scope.createdRecipes = {};
-//   var getAllCreatedRecipes = function () {
-//     $http({
-//       method: "GET",
-//       url: "/api/challenges/created/"+$scope.user.id+".json"
-//     }).then(function (response){
-//       console.log(response.data);
-//       $scope.createdRecipes = response.data;
-//     },function (response){
-//       console.log(response);
-//     });
-//   };
-
-// getAllParticipatingRecipes();
-// getAllCreatedRecipes();
+  $scope.acceptChallenge = function (id, index) {
+    console.log(id, index);
+    var data = {
+      participant_acceptance: "accepted",
+    };
+    $http({
+      method: "PUT",
+      url: "/api/challenges/"+id+".json",
+      data: data
+    }).then(function (response){
+      console.log(response.data);
+      getAllChallenges();
+    },function (response){
+      console.log(response);
+    });
+  };
 }]);

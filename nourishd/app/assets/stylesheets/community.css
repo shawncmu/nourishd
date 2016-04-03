@@ -1,0 +1,47 @@
+.challenge-post {
+/*    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 356px;*/
+    height: 458px;
+    overflow: hidden;
+}
+.personal-post {
+/*    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 356px;*/
+    height: 229px;
+    overflow: hidden;
+}
+.title {
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  color: white;
+}
+.like-pad {
+  padding-right: 10px;
+}
+.com-pad {
+  padding-left: 10px;
+}
+
+.likes {
+  position:relative;
+  bottom: 110px;
+  text-align: right;
+  color: white;
+  margin-right: 20px;
+  font-weight: 700;
+}
+.shift {
+  position:relative;
+  bottom: 90px;
+  left: 20px;
+  color: white;
+}
+.scale-down {
+  height: 20px;
+  width: auto;
+}

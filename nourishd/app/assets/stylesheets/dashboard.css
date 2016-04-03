@@ -166,31 +166,30 @@ figure {
 .dynamic-grid img{
   display: inline;
 }
-.shift {
-  position:relative;
-  bottom: 40px;
-  left: 20px;
-  color: white;
-}
+
 .adjust-left {
   position: relative;
   left: 20px;
 }
-.likes {
-  position:relative;
-  bottom: 60px;
-  text-align: right;
-  color: white;
-}
+
 .participant-img {
   position: relative;
   top: -42px;
 }
 .like-button {
   position: relative;
-  bottom: 110px;
+  bottom: 131px;
   text-align: center;
   z-index: 100;
+  opacity: 0;
+  -webkit-transition: .2s ease-in-out;
+  transition: .2s ease-in-out;
+}
+.grid-img:hover+.like-button {
+  opacity: 1;
+}
+.like-button:hover {
+  opacity: 1;
 }
 .tabsdemoDynamicHeight md-content {
   background-color: transparent !important;
@@ -209,6 +208,6 @@ md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
     color: green !important;
     background-color:green !important;
 }
-.buttons a:hover {
+.buttons,.like-button a:hover {
   cursor: pointer;
 }

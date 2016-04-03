@@ -3,6 +3,7 @@ json.array! @challenges do |challenge|
   json.recipe_id challenge.recipe_id
   json.recipe_name challenge.recipe.name
   json.creator_id challenge.creator_id
+  json.creator_status challenge.creator_status
   json.participant_id challenge.participant_id
   json.participant_acceptance challenge.participant_acceptance
   json.post_status challenge.post_status

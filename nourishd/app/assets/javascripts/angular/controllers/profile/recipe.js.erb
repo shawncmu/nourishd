@@ -47,16 +47,15 @@ app.controller('RecipeCtrl', ['$scope','$auth','$location','$http','$routeParams
 
   $scope.formComplete.create = function(){
     var data = {
-      notes: $scope.myNotes,
       creator_id: $scope.user.id,
       participant_id: $scope.user.id,
       recipe_id: $scope.recipe.id,
-      creator_status: "complete",
+      creator_status: "pending",
       participant_acceptance: "accepted",
       participant_status: "complete",
-      post_status: "complete",
+      post_status: "pending",
       post_type: "personal",
-      creator_image:$scope.myImage.file
+      // creator_image:$scope.myImage.file
     };
     Upload.upload({
       url: '/api/challenges.json',
