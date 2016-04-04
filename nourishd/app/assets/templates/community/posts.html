@@ -10,10 +10,10 @@
         <div class="likes">
           <img class="scale-down" src="/assets/like.png" /> {{recipe.creator_likes}}
         </div>
-        <div class="like-button">
+<!--         <div class="like-button">
           <a ng-if="!recipe.voted_before" ng-click="likeRecipe(recipe.id, 'creator', $index)"><img class="likesize" src="/assets/like.png" /></a>
         </div>
-      </div>
+      </div> -->
 
 
 
@@ -34,7 +34,7 @@
 
 
 
-      <div class="animate-slide" ng-show="slide" ng-click="slide=!slide">
+      <div class="animate-slide" ng-show="slide">
 
         <div class="title" ng-class="{'add-top-margin':recipe.post_type=='challenge'}">
           <p class="adjust-left">{{recipe.recipe_name}}
@@ -43,6 +43,15 @@
 
       <div class="scroll">
         <md-content >
+
+          <form name="addCommentForm" ng-submit="addComment(recipe.id, $index)">
+            <md-input-container class="md-block">
+              <label>Comment</label>
+              <textarea ng-model="newComment.comment" md-maxlength="150" rows="2" md-select-on-focus></textarea>
+              <a ng-click="addComment(recipe.id, $index)"><img class="com-pad" src="/assets/arrows.png" /></a></p>
+            </md-input-container>
+          </form>
+
           <md-list>
             <md-list-item class="md-2-line" ng-repeat="comment in recipe.comments">
               <img ng-src="{{comment.avatar}}" class="md-avatar">
