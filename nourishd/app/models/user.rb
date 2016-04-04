@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
   has_many :created_challenges, class_name: 'Challenge', foreign_key: 'creator_id'
   has_many :participating_challenges, class_name: 'Challenge', foreign_key: 'participant_id'
   has_many :recipes
-  has_many :badges
   has_many :comments
   has_many :likes
 

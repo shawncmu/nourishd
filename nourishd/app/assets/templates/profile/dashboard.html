@@ -25,14 +25,14 @@
                   <a ng-click="declineChallenge(recipe.id, $index)"><img class="logosize" src="/assets/caution.png" /></a>
                 </div>
 
-                <div ng-if="recipe.participant_acceptance=='pending' && recipe.creator=='me' && recipe.post_type=='challenge'" class="buttons list2">
-                  <p>PENDING</p>
-                  <p>Your opponent has yet to accept your challenge</p>
+                <div ng-if="recipe.participant_acceptance=='pending' && recipe.creator=='me' && recipe.post_type=='challenge'">
+                  <div class="buttons list2"><p>PENDING</p></div>
+                  <div class="hover-text-format"><p>Your opponent has yet to accept your challenge</p></div>
                 </div>
 
-                <div ng-if="recipe.other_player_status=='pending' && recipe.creator=='me' && recipe.creator_status=='complete' && recipe.post_type=='challenge'" class="buttons list2">
-                  <p>PENDING</p>
-                  <p>Your opponent has yet to complete the challenge</p>
+                <div ng-if="recipe.other_player_status=='pending' && recipe.creator=='me' && recipe.creator_status=='complete' && recipe.post_type=='challenge'">
+                  <div class="buttons list2"><p>PENDING</p></div>
+                  <div class="hover-text-format"><p>Your opponent has yet to complete the challenge</p></div>
                 </div>
 
                 <div ng-if="recipe.participant_acceptance=='declined' && recipe.creator=='me'" class="buttons list4">
