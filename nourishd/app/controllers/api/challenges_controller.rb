@@ -63,7 +63,7 @@ class API::ChallengesController < ApplicationController
   private
 
   def new_challenge_params
-    params.permit(:recipe_id, :creator_id, :participant_id, :participant_acceptance, :participant_status, :creator_status, :post_status, :post_type, :creator_image, :notes)
+    params.permit(:recipe_id, :creator_id, :participant_id, :participant_acceptance, :participant_status, :creator_status, :post_status, :post_type, :creator_image)
   end
 
   def edit_challenge_params

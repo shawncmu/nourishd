@@ -8,7 +8,6 @@ json.array! @challenges do |challenge|
   json.participant_acceptance challenge.participant_acceptance
   json.post_status challenge.post_status
   json.post_type challenge.post_type
-  json.notes challenge.notes
   json.dish_image challenge.recipe.dish_image
   json.creator_image challenge.creator_image
   json.participant_image challenge.participant_image

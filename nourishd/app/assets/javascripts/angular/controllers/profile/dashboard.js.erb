@@ -35,14 +35,12 @@ getAllChallenges();
     };
     if(creator=="me"){
       var data = {
-        // notes: $scope.finishedRecipe.notes,
         creator_image:$scope.finishedImage.file,
         creator_status: "complete",
         post_status: temp
       };
     } else {
       var data = {
-        // notes: $scope.finishedRecipe.notes,
         participant_image:$scope.finishedImage.file,
         participant_status: "complete",
         post_status: temp

@@ -21,12 +21,27 @@
 }
 
 figure {
-    /*width: 300px;*/
     height: 300px;
     margin: 0;
     padding: 0;
     background: #fff;
     overflow: hidden;
+}
+.hover-text-format {
+  opacity: 0;
+  z-index: 50;
+  font-family: 'Montserrat', sans-serif;
+  color: #fff !important;
+  font-size: 1em;
+  line-height: 1em;
+  font-weight: 200;
+  position: absolute;
+  bottom: 0px;
+  text-align: center;
+  width: 100%;
+  transform: none !important;
+  transition: all .3s !important;
+  -webkit-transition: all .3s !important;
 }
 .placement {
   padding: 0px;
@@ -95,7 +110,11 @@ figure {
   transition: all .3s !important;
   -webkit-transition: all .3s !important;
 }
-.placement:hover .buttons {
+.placement:hover .buttons{
+  bottom: 40px;
+  opacity: 1;
+}
+.placement:hover .hover-text-format{
   bottom: 20px;
   opacity: 1;
 }

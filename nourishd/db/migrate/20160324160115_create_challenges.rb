@@ -9,7 +9,6 @@ class CreateChallenges < ActiveRecord::Migration
       t.string :participant_acceptance
       t.string :post_type
       t.string :post_status
-      t.text :notes
 
       t.timestamps null: false
     end

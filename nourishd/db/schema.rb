@@ -16,14 +16,6 @@ ActiveRecord::Schema.define(version: 20160330174526) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "badges", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "badge_name"
-    t.integer  "badge_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "challenges", force: :cascade do |t|
     t.integer  "recipe_id"
     t.integer  "creator_id"
@@ -33,7 +25,6 @@ ActiveRecord::Schema.define(version: 20160330174526) do
     t.string   "participant_acceptance"
     t.string   "post_type"
     t.string   "post_status"
-    t.text     "notes"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.string   "creator_image_file_name"
@@ -79,10 +70,8 @@ ActiveRecord::Schema.define(version: 20160330174526) do
     t.integer  "user_id"
     t.integer  "challenge_id"
     t.string   "winner"
-    t.integer  "creator_likes"
-    t.integer  "participant_likes"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   add_index "likes", ["challenge_id"], name: "index_likes_on_challenge_id", using: :btree
