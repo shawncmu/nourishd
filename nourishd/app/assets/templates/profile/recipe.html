@@ -1,38 +1,57 @@
 <section class="container-fluid">
-  <div class="row recipe-background center-align">
-    <img ng-src="{{recipe.dish_image}}" class="main-images center-profile">
-    <p class="info-position">{{recipe.name}} {{recipe.cook_time}} {{recipe.course}} {{recipe.exp_value}} {{recipe.serving}} <span ng-if="recipe.vegan">Vegan</span><span ng-if="recipe.gluten_free">Gluten Free</span><span ng-if="recipe.low_carb">Low Carb</span></p>
+  <div class="row recipe-background">
+    <div class="col-xs-12 col-md-4 header-height">
+      <p class="info-position">{{recipe.name}}<br>
+      <span ng-if="recipe.vegan">Vegan</span>
+      <span ng-if="recipe.gluten_free">Gluten Free</span>
+      <span ng-if="recipe.low_carb">Low Carb</span>
+      <span ng-if="recipe.low_carb">Dairy Free</span>
+      <span ng-if="recipe.low_carb">Nut Free</span>
+      <span ng-if="recipe.low_carb">Soy Free</span></p>
+    </div>
+    <div class="col-xs-12 col-md-4 header-height keepcentered">
+      <img ng-src="{{recipe.dish_image}}" class="resize center-profile">
+      <p class="time-position"> <img class="logosize" src="/assets/time.png" />{{recipe.cook_time}} mins | <img class="logosize" src="/assets/graphic.png" />
+      {{recipe.serving}}</p>
+    </div>
+    <div class="col-xs-12 col-md-4 header-height"></div>
   </div>
 </section>
 
-<section class="container-fluid" style="height:400px">
 
-  <div class="col-xs-12 col-md-4">
-    <div class="row" style="height:200px;overflow:hidden">
+<section class="container">
+
+  <div class="col-xs-12 col-md-6">
+    <div>
         <img class="ingredients-image" ng-src="{{recipe.ingredients_image}}">
     </div>
-    <div class="row" style="height:200px">
-      <div ng-repeat="ingredient in ingredients">
-        <p>{{ingredient.name}}</p>
-      </div>
-    </div>
+    <md-content>
+      <md-list>
+        <md-list-item class="md-1-line" ng-repeat="ingredient in ingredients">
+          <div class="md-list-item-text">
+            <p class="remove-margin">{{ingredient.ingredient}}</p>
+          </div>
+          <p class="quantity">{{ingredient.quantity}}</p>
+          <md-divider ng-if="!$last"></md-divider>
+        </md-list-item>
+      </md-list>
+    </md-content>
   </div>
-  <div class="col-xs-12 col-md-4">
-    <div class="row" style="height:200px">
-      <p  ng-repeat="instruction in instructions | orderBy: 'instruction.order'">{{instruction.step}}</p>
+  <div class="col-xs-12 col-md-6">
+    <div class="center-align">
+      <img ng-click="checkValid(1)" src="/assets/tool.png" />
+      <img ng-click="checkValid(2)"src="/assets/icon.png" />
     </div>
-      <button ng-click="checkValid(1)">Post Dish</button>
-      <button ng-click="checkValid(2)">Challenge</button>
-    <div class="row" style="height:200px"></div>
-  </div>
-  <div class="col-xs-12 col-md-4">
-    <div class="row" style="height:200px">
-      <div ng-bind-html="video"></div>
-    </div>
-    <div class="row" style="height:200px">
+    <div>
       <div ng-repeat="tool in tools">
         <p>{{tool}}</p>
       </div>
+    </div>
+    <div>
+      <p  ng-repeat="instruction in instructions | orderBy: 'instruction.order'">{{instruction.step}}</p>
+    </div>
+    <div>
+      <div ng-bind-html="video"></div>
     </div>
   </div>
 
@@ -51,12 +70,8 @@
 
         <div>
           <form ng-submit="formComplete.create()">
-            <p>Upload an image to complete this recipe</p>
-            <div class="button" ngf-select ng-model="myImage.file">Select File</div>
-            <img ngf-src="myImage.file" width="300" height="200">
-            <p>My Notes (if any):</p>
-            <p><textarea class="form-control" ng-model="myNotes" rows="5"></textarea></p>
-            <p><input type="submit" name="create" class="btn btn-info" value="Complete!"></p>
+            <p>Add recipe to profile?<p>
+            <p><input type="submit" name="create" class="btn btn-info" value="Add"></p>
           </form>
         </div>
 
@@ -71,7 +86,7 @@
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myChellengeRequest">Challenge a User!</h4>
+        <h4 class="modal-title" id="myChellengeRequest">Game On!</h4>
       </div>
 
       <div class="modal-body">
@@ -90,7 +105,7 @@
                         <img  class="comment-image-raw" ng-src="{{user.avatar_image}}" onerror="this.src=\'http://camaleon.tuzitio.com/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png\'">
                       </div>
                       <div class="comment-user-div">{{user.username}}</div>
-                      <div class="comment-user-diet pull-right"><span ng-if="user.vegan">Vegan</span><span ng-if="user.gluten_free">Gluten Free</span><span ng-if="user.dairy_free">Dairy Free</span><span ng-if="user.nut_free">Nut Free</span><span ng-if="user.soy_free">Soy Free</span></div>
+                      <div class="comment-user-diet pull-right"><span ng-if="user.vegan">Vegan | </span><span ng-if="user.gluten_free">Gluten Free | </span><span ng-if="user.dairy_free">Dairy Free | </span><span ng-if="user.nut_free">Nut Free | </span><span ng-if="user.soy_free">Soy Free</span></div>
                     </button>
                   </div>
               </div>
