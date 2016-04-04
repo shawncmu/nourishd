@@ -140,7 +140,7 @@ figure {
 }
 
 .grid {
-  border: 1px solid #cccccc;
+  border: none;
   position: absolute;
   list-style: none;
   background: #ffffff;
@@ -148,9 +148,12 @@ figure {
   -moz-box-sizing : border-box;
   -webkit-transition: all 0.6s ease-out;
   transition: all 0.6s ease-out;
+  overflow: hidden;
 }
 .grid-img {
-  width: 100%;
+  /*width: 100%;*/
+  height: 100%;
+  min-width: 100%;
   vertical-align: middle;
   -webkit-transition: opacity 0.6s ease-out;
   transition: opacity 0.6s ease-out;
@@ -167,23 +170,24 @@ figure {
   display: inline;
 }
 
-.adjust-left {
-  position: relative;
-  left: 20px;
-}
-
 .like-button {
   position: relative;
-  bottom: 131px;
+  bottom: 234px;
   text-align: center;
-  z-index: 100;
+  z-index: 80;
   opacity: 0;
   -webkit-transition: .2s ease-in-out;
   transition: .2s ease-in-out;
 }
+.likesize {
+  height:82px;
+  width: auto;
+}
+
 .grid-img:hover+.like-button {
   opacity: 1;
 }
+
 .like-button:hover {
   opacity: 1;
 }

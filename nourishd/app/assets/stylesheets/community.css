@@ -1,56 +1,155 @@
 .challenge-post {
-/*    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 356px;*/
-    height: 453px;
+    height: 650px;
     overflow: hidden;
 }
-.max-height {
-  max-height: 229px;
+.personal-post {
+    /*height: 250px;*/
+    overflow: hidden;
 }
 
 .participant-img {
-  position: relative;
-  top: -94px;
+/*  position: relative;
+  top: -94px;*/
+  height: 300px;
+  overflow: hidden;
 }
-.personal-post {
-/*    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 356px;*/
-    height: 229px;
-    overflow: hidden;
-}
+
+/*.test {
+    height: 100%;
+    width: auto;
+}*/
+
 .title {
   width: 100%;
-  position: absolute;
+  height:65px;
+  position: relative;
   top: 0px;
-  color: white;
+  color: black;
   text-transform: uppercase;
+  /*text-align: center;*/
+  /*left: -10%;*/
 }
-.like-pad {
-  padding-right: 10px;
+.add-top-margin{
+  margin-top: 25px;
 }
+
 .com-pad {
-  padding-left: 10px;
+  height: 16px;
+  width: auto;
+  position: relative;
+  top: -2px;
 }
+
 
 .likes {
   position:relative;
-  bottom: 110px;
+  bottom: 310px;
   text-align: right;
   color: white;
   margin-right: 20px;
   font-weight: 700;
+  /*display: inline;*/
 }
 .shift {
   position:relative;
-  bottom: 90px;
+  bottom: 290px;
   left: 20px;
   color: white;
+  /*display: inline;*/
 }
 .scale-down {
   height: 20px;
   width: auto;
+}
+
+/*#slide{
+  position:absolute;
+  width:100%;
+  height:100px;
+  top:90%;
+  background: red;
+  z-index: 100;
+}*/
+
+.adjust-left {
+  position: relative;
+  left: 20px;
+  display: inline;
+}
+
+.animate-slide {
+  border-top:3px solid gray;
+  background:white;
+  position:absolute;
+  width: 110%;
+  height:110%;
+  top: 0;
+  left:-1px;
+  -webkit-transform: translate3d(0,0,0); /* Chrome, Safari, Opera */
+  transform: translate3d(0,0,0,);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+}
+
+.animate-slide.ng-hide-add,
+.animate-slide.ng-hide-remove {
+  display:block!important;
+}
+
+.animate-slide.ng-hide-remove.ng-hide-remove-active {
+  -webkit-animation:0.5s slide-up;
+  animation:0.5s slide-up;
+}
+
+.animate-slide.ng-hide-add.ng-hide-add-active {
+  -webkit-animation:0.5s slide-down;
+  animation:0.5s slide-down;
+}
+
+.animate-slide.ng-hide {
+  top:90%;
+  display:block!important;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes slide-up
+{
+  0%   {top:90%;}
+  100%  {top:0;}
+}
+
+/* Standard syntax */
+@keyframes slide-up
+{
+  0%   {top:90%;}
+  100%  {top:0;}
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes slide-down
+{
+  0%  {top:0;}
+  100%   {top:90%;}
+}
+
+/* Standard syntax */
+@keyframes slide-down
+{
+  0%  {top:0;}
+  100%   {top:90%;}
+}
+
+.dividerdemoBasicUsage .face {
+  border-radius: 30px;
+  border: 1px solid #ddd;
+  width: 48px;
+  margin: 16px;
+}
+.scroll {
+  overflow-y:auto;
+  width:90%;
+  height:70%;
+  /*overflow: hidden;*/
 }

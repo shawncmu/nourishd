@@ -54,4 +54,28 @@ $scope.likeRecipe = function(id, winner, index){
     console.log(response);
   });
 };
+
+$scope.newComment={};
+$scope.addComment = function(id,index){
+  console.log(id, index);
+  var data = {
+    user_id: $scope.user.id,
+    challenge_id: id,
+    comment: $scope.newComment.comment
+  };
+  $http({
+      method: "POST",
+      url: "/api/comments.json",
+      data: data
+  }).then(function (response){
+    console.log(response.data);
+    $scope.allPosts[index].comments.push(response.data);
+    $scope.newComment = {};
+  },function (response){
+    console.log(response);
+  });
+};
+
+
+
 }]);
