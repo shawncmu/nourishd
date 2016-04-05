@@ -6,4 +6,12 @@ class API::UsersController < ApplicationController
       format.json { render 'users.jbuilder' }
     end
   end
+
+  def show
+    @user = User.find(params[:id])
+    respond_to do |format|
+      format.json { render 'avatar.jbuilder' }
+    end
+  end
+
 end

@@ -47,6 +47,24 @@ figure {
   padding: 0px;
   margin: 5px;
 }
+.avatar-image {
+  height: 200px;
+  width: auto;
+  border-radius: 10px;
+  position: relative;
+  top: 52px;
+}
+.username {
+  margin-top: 8px;
+  position: relative;
+  bottom: -50px;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  color: #fff !important;
+  font-size: 1.5em;
+  line-height: 1.2em;
+  font-weight: 700;
+}
 .user-background {
   height:350px;
   margin-top: -50px;

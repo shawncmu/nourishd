@@ -1,8 +1,9 @@
 <section class="container-fluid">
   <div class="row user-background">
     <div class="header-height keepcentered">
-      <p class="info-position">TEST<br>
-      <img ng-src="user.avatar_image">
+      <img class="avatar-image" ng-src="{{avatar}}">
+      <p class="username">{{user.username}}</p>
+      <p class="username"><span ng-if="user.vegan" class="vegan">Vegan </span><span ng-if="user.gluten_free" class="gluten-free">Gluten Free </span><span ng-if="user.nut_free" class="nut-free">Nut Free </span><span ng-if="user.soy_free" class="soy-free">Soy Free </span></p>
     </div>
   </div>
 </section>

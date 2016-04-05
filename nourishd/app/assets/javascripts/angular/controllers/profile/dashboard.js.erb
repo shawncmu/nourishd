@@ -4,10 +4,23 @@ $auth.validateUser().
 then(function(resp) {
   $scope.user = resp;
   console.log(resp);
+  getUserImage();
 }).
 catch(function(resp) {
   console.log(resp);
 });
+
+var getUserImage = function (){
+  $http({
+    method: "GET",
+    url: "/api/users/"+$scope.user.id+".json"
+  }).then(function (response){
+    console.log(response.data);
+    $scope.avatar = response.data.avatar_image;
+  },function (response){
+    console.log(response);
+  });
+};
 
 $scope.mychallenges = [];
   var getAllChallenges = function () {
