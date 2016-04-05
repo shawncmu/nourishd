@@ -6,7 +6,7 @@ $scope.results = [];
   var getAllRecipes = function () {
     $http({
       method: "GET",
-      url: "http://localhost:3000/api/recipes.json"
+      url: "/api/recipes.json"
     }).then(function (response){
       console.log(response.data);
       $scope.challenges = response.data;
@@ -20,7 +20,7 @@ $scope.results = [];
     console.log(id);
     $http({
       method: "GET",
-      url: "http://localhost:3000/api/recipes/"+id+".json"
+      url: "/api/recipes/"+id+".json"
     }).then(function (response){
       console.log(response.data);
     },function (response){
