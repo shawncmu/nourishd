@@ -84,7 +84,7 @@
         <img class="scale-down" src="<%= asset_path('like.png') %>" /> {{recipe.creator_likes}}
         </div>
         <div class="like-button">
-          <a ng-if="!recipe.voted_before" ng-click="likeRecipe(recipe.id, 'creator', $index)"><img class="likesize" src="/assets/like.png" /></a>
+          <a ng-if="!recipe.voted_before" ng-click="likeRecipe(recipe.id, 'creator', $index)"><img class="likesize" src="<%= asset_path('like.png') %>" /></a>
         </div>
       </div>
 
@@ -98,10 +98,10 @@
         </div>
 
         <div class="likes">
-          <img class="scale-down" src="/assets/like.png" /> {{recipe.participant_likes}}
+          <img class="scale-down" src="<%= asset_path('like.png') %>" /> {{recipe.participant_likes}}
         </div>
         <div class="like-button">
-          <a ng-if="!recipe.voted_before" ng-click="likeRecipe(recipe.id, 'participant', $index)"><img class="likesize" src="/assets/like.png" /></a>
+          <a ng-if="!recipe.voted_before" ng-click="likeRecipe(recipe.id, 'participant', $index)"><img class="likesize" src="<%= asset_path('like.png') %>" /></a>
         </div>
       </div>
 
