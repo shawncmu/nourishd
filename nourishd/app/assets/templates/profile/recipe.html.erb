@@ -11,7 +11,7 @@
     </div>
     <div class="col-xs-12 col-md-4 header-height keepcentered">
       <img ng-src="{{recipe.dish_image}}" class="resize center-profile">
-      <p class="time-position"> <img class="logosize" src="/assets/time.png" />{{recipe.cook_time}} mins | <img class="logosize" src="/assets/graphic.png" />
+      <p class="time-position"> <img class="logosize" ng-src="<%= asset_path( 'time.png' ) %>" />{{recipe.cook_time}} mins | <img class="logosize" ng-src="<%= asset_path( 'graphic.png' ) %>" />
       {{recipe.serving}}</p>
     </div>
     <div class="col-xs-12 col-md-4 header-height"></div>
@@ -39,8 +39,8 @@
   </div>
   <div class="col-xs-12 col-md-6">
     <div class="center-align">
-      <img ng-click="checkValid(1)" src="/assets/tool.png" />
-      <img ng-click="checkValid(2)"src="/assets/icon.png" />
+      <img ng-click="checkValid(1)" ng-src="<%= asset_path( 'tool.png' ) %>" />
+      <img ng-click="checkValid(2)" ng-src="<%= asset_path( 'icon.png' ) %>" />
     </div>
     <div>
       <div ng-repeat="tool in tools">
@@ -102,7 +102,7 @@
                   <div class="list-group">
                     <button type="button" class="list-group-item" ng-repeat="user in userlist | filter:{username: search} track by $index" ng-click="confirmChallenger($index)">
                       <div class="comment-user-image">
-                        <img  class="comment-image-raw" ng-src="{{user.avatar_image}}" onerror="this.src=\'http://camaleon.tuzitio.com/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png\'">
+                        <img  class="comment-image-raw" ng-src="{{user.avatar_image}}">
                       </div>
                       <div class="comment-user-div">{{user.username}}</div>
                       <div class="comment-user-diet pull-right"><span ng-if="user.vegan">Vegan | </span><span ng-if="user.gluten_free">Gluten Free | </span><span ng-if="user.dairy_free">Dairy Free | </span><span ng-if="user.nut_free">Nut Free | </span><span ng-if="user.soy_free">Soy Free</span></div>
@@ -113,7 +113,7 @@
 
             <p><input type="submit" name="create" class="btn btn-info confirm" value="Challenge!"></p>
             <div class="comment-user-image confirm">
-              <img  class="comment-image-raw" ng-src="{{selectedUser.avatar_image}}" onerror="this.src=\'http://camaleon.tuzitio.com/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png\'">
+              <img  class="comment-image-raw" ng-src="{{selectedUser.avatar_image}}">
             </div>
             <div class="comment-user-div confirm">{{selectedUser.username}}</div>
           </form>

@@ -4,7 +4,7 @@
 
       <form ng-submit="signup()" role="form">
 
-        <a href="#" class="inputFacebook" onclick="facebookLogin()"><div class="col-xs-4 fb-logo"><img src="<%= image_url( 'facebook.png' ) %>" /></div>Register with Facebook</a>
+        <a href="#" class="inputFacebook" onclick="facebookLogin()"><div class="col-xs-4 fb-logo"><img ng-src="<%= asset_path( 'facebook.png' ) %>" /></div>Register with Facebook</a>
 
         <div class="facebookEmailSeparater">
           <div class="separaterLine"></div><div class="separaterText">OR E-MAIL</div><div class="separaterLine"></div>

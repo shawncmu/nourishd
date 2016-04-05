@@ -8,10 +8,10 @@
           <div class="comment-user-div confirm">{{recipe.creator_username}}</div>
         </div>
         <div class="likes">
-          <img class="scale-down" src="/assets/like.png" /> {{recipe.creator_likes}}
+          <img class="scale-down" src="<%= asset_path( 'like.png' ) %>" /> {{recipe.creator_likes}}
         </div>
         <div class="like-button">
-          <a ng-if="!recipe.voted_before" ng-click="likeRecipe(recipe.id, 'creator', $index)"><img class="likesize" src="/assets/like.png" /></a>
+          <a ng-if="!recipe.voted_before" ng-click="likeRecipe(recipe.id, 'creator', $index)"><img class="likesize" src="<%= asset_path( 'like.png' ) %>" /></a>
         </div>
       </div>
 
@@ -23,10 +23,10 @@
         </div>
 
         <div class="likes">
-          <img class="scale-down" src="/assets/like.png" /> {{recipe.participant_likes}}
+          <img class="scale-down" src="<%= asset_path( 'like.png' ) %>" /> {{recipe.participant_likes}}
         </div>
         <div class="like-button">
-          <a ng-if="!recipe.voted_before" ng-click="likeRecipe(recipe.id, 'participant', $index)"><img class="likesize" src="/assets/like.png" /></a>
+          <a ng-if="!recipe.voted_before" ng-click="likeRecipe(recipe.id, 'participant', $index)"><img class="likesize" src="<%= asset_path( 'like.png' ) %>" /></a>
         </div>
       </div>
 
@@ -34,7 +34,7 @@
 
         <div class="title" ng-class="{'add-top-margin':recipe.post_type=='challenge'}">
           <p class="adjust-left">{{recipe.recipe_name}}
-          <a ng-click="slide=!slide"><img class="com-pad" src="/assets/interface.png" /></a></p>
+          <a ng-click="slide=!slide"><img class="com-pad" src="<%= asset_path( 'interface.png' ) %>" /></a></p>
         </div>
 
         <div class="scroll">
@@ -44,7 +44,7 @@
               <md-input-container class="md-block">
                 <label>Comment</label>
                 <textarea ng-model="newComment.comment" md-maxlength="150" rows="2" md-select-on-focus></textarea>
-                <a ng-click="addComment(recipe.id, $index)"><img class="com-pad" src="/assets/arrows.png" /></a></p>
+                <a ng-click="addComment(recipe.id, $index)"><img class="com-pad" src="<%= asset_path( 'arrows.png' ) %>" /></a></p>
               </md-input-container>
             </form>
 
