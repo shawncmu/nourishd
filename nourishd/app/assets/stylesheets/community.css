@@ -11,7 +11,6 @@
 /*  position: relative;
   top: -94px;*/
   height: 300px;
-  overflow: hidden;
 }
 
 /*.test {
@@ -85,8 +84,9 @@
   height:110%;
   top: 0;
   left:-1px;
+  z-index: 999;
   -webkit-transform: translate3d(0,0,0); /* Chrome, Safari, Opera */
-  transform: translate3d(0,0,0,);
+  transform: translate3d(0,0,0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   -webkit-perspective: 1000;

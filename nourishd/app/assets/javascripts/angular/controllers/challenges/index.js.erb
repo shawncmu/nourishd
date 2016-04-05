@@ -6,7 +6,7 @@ $scope.results = [];
   var getAllRecipes = function () {
     $http({
       method: "GET",
-      url: "http://localhost:3000/api/recipes.json"
+      url: "/api/recipes.json"
     }).then(function (response){
       console.log(response.data);
       $scope.challenges = response.data;
@@ -20,7 +20,7 @@ $scope.results = [];
     console.log(id);
     $http({
       method: "GET",
-      url: "http://localhost:3000/api/recipes/"+id+".json"
+      url: "/api/recipes/"+id+".json"
     }).then(function (response){
       console.log(response.data);
     },function (response){
@@ -54,6 +54,23 @@ $scope.showLowCarb = function () {
   $scope.results = [];
   for (var i=0;i<$scope.challenges.length;i++){
     if ($scope.challenges[i].low_carb==true){
+      $scope.results.push($scope.challenges[i]);
+    };
+  };
+};
+
+$scope.showNutFree = function () {
+  $scope.results = [];
+  for (var i=0;i<$scope.challenges.length;i++){
+    if ($scope.challenges[i].nut_free==true){
+      $scope.results.push($scope.challenges[i]);
+    };
+  };
+};
+$scope.showSoyFree = function () {
+  $scope.results = [];
+  for (var i=0;i<$scope.challenges.length;i++){
+    if ($scope.challenges[i].soy_free==true){
       $scope.results.push($scope.challenges[i]);
     };
   };

@@ -1,13 +1,21 @@
-<section class="container-fluid">
+<section class="container">
   <div class="row wooden-background">
-    <button ng-click="showAll()" class="position-button">Show All</button>
-    <button class="position-button">Open</button>
-    <button ng-click="showVegan()" class="position-button">Vegan</button>
-    <button ng-click="showGlutenFree()" class="position-button">GF</button>
-    <button ng-click="showLowCarb()" class="position-button">LC</button>
-    <button ng-click="getMeal('Appetizer')" class="position-button">App</button>
-    <button ng-click="getMeal('Main')" class="position-button">Main</button>
-    <button ng-click="getMeal('Dessert')" class="position-button">Dessert</button>
+    <div class="col-xs-12 border">
+    <div class="position-filter"><h3>FILTER</h3></div>
+    <div class="position-buttons">
+      <button ng-click="getMeal('Appetizer')">Appetizer</button>
+      <button ng-click="getMeal('Main')">Main</button>
+      <button ng-click="getMeal('Dessert')">Dessert</button>
+    </div>
+    <div>
+      <button ng-click="showAll()">Show All</button>
+      <button ng-click="showVegan()">Vegan</button>
+      <button ng-click="showGlutenFree()">Gluten Free</button>
+      <button ng-click="showLowCarb()">Low Carb</button>
+      <button ng-click="showNutFree()">Nut Free</button>
+      <button ng-click="showSoyFree()">Soy Free</button>
+    </div>
+    </div>
   </div>
 </section>
 
@@ -19,6 +27,9 @@
         <div class="onbottom">{{recipe.name}}</div>
         <span ng-if="recipe.vegan" class="span-positioning vegan">vegan</span>
         <span ng-if="recipe.gluten_free" class="span-positioning gluten-free">Gluten Free</span>
+        <span ng-if="recipe.low_carb" class="span-positioning low-carb">Low Carb</span>
+        <span ng-if="recipe.nut_free" class="span-positioning nut-free">Nut Free</span>
+        <span ng-if="recipe.soy_free" class="span-positioning soy-free">Soy Free</span>
       </a>
     </div>
   </div>

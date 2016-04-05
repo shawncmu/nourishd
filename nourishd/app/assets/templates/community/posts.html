@@ -10,12 +10,10 @@
         <div class="likes">
           <img class="scale-down" src="/assets/like.png" /> {{recipe.creator_likes}}
         </div>
-<!--         <div class="like-button">
+        <div class="like-button">
           <a ng-if="!recipe.voted_before" ng-click="likeRecipe(recipe.id, 'creator', $index)"><img class="likesize" src="/assets/like.png" /></a>
         </div>
-      </div> -->
-
-
+      </div>
 
       <div ng-if="recipe.post_type=='challenge'" class="participant-img">
         <img ng-src="{{recipe.participant_image}}" class="grid-img" />
@@ -32,8 +30,6 @@
         </div>
       </div>
 
-
-
       <div class="animate-slide" ng-show="slide">
 
         <div class="title" ng-class="{'add-top-margin':recipe.post_type=='challenge'}">
@@ -41,34 +37,30 @@
           <a ng-click="slide=!slide"><img class="com-pad" src="/assets/interface.png" /></a></p>
         </div>
 
-      <div class="scroll">
-        <md-content >
+        <div class="scroll">
+          <md-content >
 
-          <form name="addCommentForm" ng-submit="addComment(recipe.id, $index)">
-            <md-input-container class="md-block">
-              <label>Comment</label>
-              <textarea ng-model="newComment.comment" md-maxlength="150" rows="2" md-select-on-focus></textarea>
-              <a ng-click="addComment(recipe.id, $index)"><img class="com-pad" src="/assets/arrows.png" /></a></p>
-            </md-input-container>
-          </form>
+            <form name="addCommentForm" ng-submit="addComment(recipe.id, $index)">
+              <md-input-container class="md-block">
+                <label>Comment</label>
+                <textarea ng-model="newComment.comment" md-maxlength="150" rows="2" md-select-on-focus></textarea>
+                <a ng-click="addComment(recipe.id, $index)"><img class="com-pad" src="/assets/arrows.png" /></a></p>
+              </md-input-container>
+            </form>
 
-          <md-list>
-            <md-list-item class="md-2-line" ng-repeat="comment in recipe.comments">
-              <img ng-src="{{comment.avatar}}" class="md-avatar">
-              <div class="md-list-item-text">
-                <h3>{{comment.username}}</h3>
-                <p>{{comment.comment}}</p>
-              </div>
-              <md-divider md-inset ng-if="!$last"></md-divider>
+            <md-list>
+              <md-list-item class="md-2-line" ng-repeat="comment in recipe.comments">
+                <img ng-src="{{comment.avatar}}" class="md-avatar">
+                <div class="md-list-item-text">
+                  <h3>{{comment.username}}</h3>
+                  <p>{{comment.comment}}</p>
+                </div>
+                <md-divider md-inset ng-if="!$last"></md-divider>
 
-            </md-list-item>
-          </md-list>
-        </md-content>
-      </div>
-
-
-
-
+              </md-list-item>
+            </md-list>
+          </md-content>
+        </div>
 
       </div>
 

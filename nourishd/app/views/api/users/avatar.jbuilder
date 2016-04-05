@@ -1,0 +1,1 @@
+json.avatar_image @user.avatar_image
