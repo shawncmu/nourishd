@@ -10,12 +10,10 @@
         <div class="likes">
           <img class="scale-down" src="/assets/like.png" /> {{recipe.creator_likes}}
         </div>
-<!--         <div class="like-button">
+        <div class="like-button">
           <a ng-if="!recipe.voted_before" ng-click="likeRecipe(recipe.id, 'creator', $index)"><img class="likesize" src="/assets/like.png" /></a>
         </div>
-      </div> -->
-
-
+      </div>
 
       <div ng-if="recipe.post_type=='challenge'" class="participant-img">
         <img ng-src="{{recipe.participant_image}}" class="grid-img" />

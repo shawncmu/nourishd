@@ -59,6 +59,23 @@ $scope.showLowCarb = function () {
   };
 };
 
+$scope.showNutFree = function () {
+  $scope.results = [];
+  for (var i=0;i<$scope.challenges.length;i++){
+    if ($scope.challenges[i].nut_free==true){
+      $scope.results.push($scope.challenges[i]);
+    };
+  };
+};
+$scope.showSoyFree = function () {
+  $scope.results = [];
+  for (var i=0;i<$scope.challenges.length;i++){
+    if ($scope.challenges[i].soy_free==true){
+      $scope.results.push($scope.challenges[i]);
+    };
+  };
+};
+
 $scope.showAll = function () {
   $scope.results = $scope.challenges;
   $scope.meal = ""

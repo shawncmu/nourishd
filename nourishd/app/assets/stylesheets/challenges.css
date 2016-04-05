@@ -1,6 +1,18 @@
-.position-button {
+.position-filter {
   position: relative;
-  top: 100px;
+  top: -34px;
+  background-color: white;
+  width: 100px;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 1.375em;
+  font-family: 'Montserrat', sans-serif;
+  color: orange;
+}
+.position-buttons {
+  margin-bottom: -13px;
+  position: relative;
+  top: -37px;
 }
 
 .wooden-background {
@@ -23,7 +35,11 @@
   top:10px;
 }*/
 .border {
-  border: 2px solid green;
+  position: relative;
+  border: 2px solid orange;
+  bottom: -57px;
+  height: 123px;
+  border-radius: 5px;
 }
 
 .onbottom {
@@ -92,4 +108,13 @@
 }
 .gluten-free {
   color: orange;
+}
+.low-carb {
+  color: blue;
+}
+.nut-free {
+  color: purple;
+}
+.soy-free {
+  color: yellow;
 }

@@ -3,6 +3,7 @@ app.controller('DashCtrl', ['$scope','$auth','$location','$http','Upload','angul
 $auth.validateUser().
 then(function(resp) {
   $scope.user = resp;
+  console.log(resp);
 }).
 catch(function(resp) {
   console.log(resp);

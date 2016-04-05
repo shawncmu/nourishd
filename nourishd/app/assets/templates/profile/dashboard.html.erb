@@ -1,3 +1,12 @@
+<section class="container-fluid">
+  <div class="row user-background">
+    <div class="header-height keepcentered">
+      <p class="info-position">TEST<br>
+      <img ng-src="user.avatar_image">
+    </div>
+  </div>
+</section>
+
 <div ng-cloak>
   <md-content>
     <md-tabs md-dynamic-height md-center-tabs="true">
@@ -20,7 +29,7 @@
                   </a>
                 </div>
 
-                <div ng-if="recipe.participant_acceptance=='pending' && recipe.creator=='other'" class="buttons list1">
+                <div ng-if="recipe.participant_acceptance=='pending' && recipe.creator=='other'" class="buttons middle">
                   <a ng-click="acceptChallenge(recipe.id, $index)"><img class="logosize" src="/assets/check.png" /></a>
                   <a ng-click="declineChallenge(recipe.id, $index)"><img class="logosize" src="/assets/caution.png" /></a>
                 </div>
@@ -35,18 +44,18 @@
                   <div class="hover-text-format"><p>Your opponent has yet to complete the challenge</p></div>
                 </div>
 
-                <div ng-if="recipe.participant_acceptance=='declined' && recipe.creator=='me'" class="buttons list4">
+                <div ng-if="recipe.participant_acceptance=='declined' && recipe.creator=='me'" class="buttons middle">
                   <p>Your opponent has declined the challenge</p>
                   <a ng-click="deleteChallenge(recipe.id, $index)"><img class="logosize" src="/assets/caution.png" /></a>
                 </div>
 
-                <div ng-if="recipe.participant_acceptance=='accepted' && recipe.creator=='other'" class="buttons list5">
+                <div ng-if="recipe.participant_acceptance=='accepted' && recipe.creator=='other'" class="buttons middle">
                   <a ng-click="recipeDone(recipe.id, recipe.creator, recipe.other_player_status)"><img class="logosize" src="/assets/knife.png" /></a>
                 </div>
-                <div ng-if="recipe.participant_acceptance=='accepted' && recipe.creator=='me' && recipe.creator_status!='complete'" class="buttons list5">
+                <div ng-if="recipe.participant_acceptance=='accepted' && recipe.creator=='me' && recipe.creator_status!='complete'" class="buttons middle">
                   <a ng-click="recipeDone(recipe.id, recipe.creator, recipe.other_player_status)"><img class="logosize" src="/assets/knife.png" /></a>
                 </div>
-                <div ng-if="recipe.post_type=='personal'" class="buttons list5">
+                <div ng-if="recipe.post_type=='personal'" class="buttons middle">
                   <a ng-click="recipeDone(recipe.id, recipe.creator, 'complete')"><img class="logosize" src="/assets/knife.png" /></a>
                 </div>
 
@@ -72,7 +81,7 @@
           <div class="comment-user-div confirm">{{recipe.creator_username}}</div>
         </div>
         <div class="likes">
-          <img class="scale-down" src="/assets/like.png" /> {{recipe.creator_likes}}
+        <img class="scale-down" src="<%= asset_path('like.png') %>" /> {{recipe.creator_likes}}
         </div>
         <div class="like-button">
           <a ng-if="!recipe.voted_before" ng-click="likeRecipe(recipe.id, 'creator', $index)"><img class="likesize" src="/assets/like.png" /></a>
