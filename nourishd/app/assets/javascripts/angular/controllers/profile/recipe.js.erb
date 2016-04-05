@@ -55,15 +55,16 @@ app.controller('RecipeCtrl', ['$scope','$auth','$location','$http','$routeParams
       participant_status: "complete",
       post_status: "pending",
       post_type: "personal",
-      // creator_image:$scope.myImage.file
     };
-    Upload.upload({
-      url: '/api/challenges.json',
-      method:'POST',
-      fields: data
-    }).success(function(response) {
-        console.log(response);
-        $scope.showDialog = !$scope.showDialog;
+    $http({
+      method: "POST",
+      url: "/api/challenges.json",
+      data: data
+    }).then(function (response){
+      console.log(response);
+      $scope.showDialog = !$scope.showDialog;
+    },function (response){
+      console.log(response);
     });
   };
 
