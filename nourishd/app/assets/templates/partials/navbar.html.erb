@@ -23,9 +23,9 @@
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/#/signup"><button class="btn nav-right-link hvr-fade">Sign Up</button></a></li>
-          <li><a href="/#/login"><button class="btn nav-right-link hvr-fade">Sign In</button></a></li>
-          <li><a><button class="btn nav-right-link hvr-fade" ng-click="logout()">Logout</button></a></li>
+          <li ng-if="!loggedIn"><a href="/#/signup"><button class="btn nav-right-link hvr-fade">Sign Up</button></a></li>
+          <li ng-if="!loggedIn"><a href="/#/login"><button class="btn nav-right-link hvr-fade">Sign In</button></a></li>
+          <li ng-if="loggedIn"><a><button class="btn nav-right-link hvr-fade" ng-click="logout()">Logout</button></a></li>
         </ul>
       </div>
 

@@ -1,5 +1,6 @@
 app.controller('DashCtrl', ['$scope','$auth','$location','$http','Upload','angularGridInstance', function($scope, $auth, $location,$http,Upload,angularGridInstance){
 
+
 $auth.validateUser().
 then(function(resp) {
   $scope.user = resp;
@@ -8,6 +9,7 @@ then(function(resp) {
 }).
 catch(function(resp) {
   console.log(resp);
+  $location.path('/login');
 });
 
 var getUserImage = function (){

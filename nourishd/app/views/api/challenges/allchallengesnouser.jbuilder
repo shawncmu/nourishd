@@ -16,4 +16,9 @@ json.array! @challenges do |challenge|
   json.creator_likes challenge.likes.where(winner:"creator").count
   json.participant_likes challenge.likes.where(winner:"participant").count
   json.voted_before true
+  json.comments challenge.comments do |comment|
+    json.comment comment.comment
+    json.username comment.user.username
+    json.avatar comment.user.avatar_image
+  end
 end

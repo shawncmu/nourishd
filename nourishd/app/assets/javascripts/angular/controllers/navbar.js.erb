@@ -2,8 +2,21 @@ app.controller('NavCtrl', ['$scope','$auth','$location', function($scope, $auth,
   $scope.logout = function () {
     $auth.signOut().then(function(resp) {
       console.log(resp);
+      $scope.loggedIn = false;
+      $location.path('/');
     }).catch(function(resp) {
       console.log(resp);
     });
   };
+
+  // $scope.loggedIn = false;
+  $auth.validateUser().
+  then(function(resp) {
+    $scope.user = resp;
+    $scope.loggedIn = true;
+  }).
+  catch(function(resp) {
+    console.log(resp);
+    $scope.loggedIn = false;
+  });
 }]);

@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     put '/challenges/:id', to: 'challenges#update'
     delete '/challenges/:id', to: 'challenges#destroy'
     get '/challenges/all/:id', to: 'challenges#index'
-    get '/challenges/all', to: 'challenges#allChallengesNoUser'
+    get '/challengesX', to: 'challenges#allChallengesNoUser'
     # get '/posts/animals', to: 'posts#animals'
     # get '/posts/good_deeds', to: 'posts#good_deeds'
     # get '/posts/most_popular', to: 'posts#most_popular'

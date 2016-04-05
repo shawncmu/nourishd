@@ -12,7 +12,7 @@ class API::ChallengesController < ApplicationController
   def allChallengesNoUser
     @challenges = Challenge.where(post_status: "complete")
     respond_to do |format|
-      format.json { render 'allchallenges.jbuilder' }
+      format.json { render 'allchallengesnouser.jbuilder' }
     end
   end
 
