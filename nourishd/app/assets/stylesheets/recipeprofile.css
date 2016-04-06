@@ -13,9 +13,32 @@
   height:200px;
   width: auto;
 }
+.size {
+  font-size: 0.5em;
+  font-weight: 200;
+}
 .center-align{
   text-align: center;
 }
+.backwhite {
+  background: white;
+}
+.tool-border {
+  text-align: center;
+}
+.circle {
+  background-image: url("/assets/circle.png");
+  background-repeat: no-repeat;
+  float: left;
+  height: 70px;
+  width: 70px;
+  text-align: center;
+  line-height: 70px;
+}
+/*.column-margin {
+  margin-left: 5px;
+  margin-right: 5px;
+}*/
 /*.keepcentered {
     position:    absolute;
     left:        50%;

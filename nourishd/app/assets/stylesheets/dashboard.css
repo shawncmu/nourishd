@@ -19,6 +19,11 @@
     -webkit-transform: scale(1.3);
     transform: scale(1.3);
 }
+.remove-padding {
+  padding: 0px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
 
 figure {
     height: 300px;
@@ -42,6 +47,13 @@ figure {
   transform: none !important;
   transition: all .3s !important;
   -webkit-transition: all .3s !important;
+}
+.hover-text-format-destroy {
+  height: 20px;
+  width: auto;
+  margin:0px;
+  position: relative;
+  top: -10px;
 }
 .placement {
   padding: 3px;
@@ -139,6 +151,24 @@ figure {
   bottom: 0px;
   opacity: 0;
   left: 0px;
+  font-weight: 500;
+  padding: 5px 20px 5px;
+  transform: none !important;
+  text-align: center;
+  transition: all .3s !important;
+  -webkit-transition: all .3s !important;
+}
+
+ .buttons-decline {
+  z-index: 100;
+  line-height: 1.2em;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 0px;
+  opacity: 0;
+  left: 0px;
+  color: #DE7C8E;
   padding: 5px 20px 5px;
   transform: none !important;
   text-align: center;
@@ -149,7 +179,15 @@ figure {
   bottom: 40px;
   opacity: 1;
 }
+.placement:hover .buttons-decline{
+  bottom: 40px;
+  opacity: 1;
+}
 .placement:hover .hover-text-format{
+  bottom: 20px;
+  opacity: 1;
+}
+.placement:hover .hover-text-format-destroy{
   bottom: 20px;
   opacity: 1;
 }

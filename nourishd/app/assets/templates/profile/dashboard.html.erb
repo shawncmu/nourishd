@@ -8,13 +8,13 @@
   </div>
 </section>
 
-<section>
+<section class="container shadow-large remove-padding">
 <div ng-cloak>
   <md-content>
     <md-tabs md-dynamic-height md-center-tabs="true">
       <md-tab label="Challenges">
         <md-content class="md-padding">
-          <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 placement" ng-repeat="recipe in mychallenges | filter:{post_status:'pending'} track by recipe.id">
+          <div class="col-xs-12 col-sm-4 placement" ng-repeat="recipe in mychallenges | filter:{post_status:'pending'} track by recipe.id">
             <div class="hover12 hover01">
               <figure>
                 <img  ng-src="{{recipe.dish_image}}" class="main-images">
@@ -46,9 +46,9 @@
                   <div class="hover-text-format"><p>Your opponent has yet to complete the challenge</p></div>
                 </div>
 
-                <div ng-if="recipe.participant_acceptance=='declined' && recipe.creator=='me'" class="buttons middle">
-                  <p>Your opponent has declined the challenge</p>
-                  <a ng-click="deleteChallenge(recipe.id, $index)"><img class="status-icon" ng-src="<%= asset_path( 'caution.png' ) %>" /></a>
+                <div ng-if="recipe.participant_acceptance=='declined' && recipe.creator=='me'" class="buttons-decline middle">
+                  <div><p>Your opponent has declined the challenge</p></div>
+                  <a ng-click="deleteChallenge(recipe.id, $index)"><img class="hover-text-format-destroy" ng-src="<%= asset_path( 'caution.png' ) %>" /></a>
                 </div>
 
                 <div ng-if="recipe.participant_acceptance=='accepted' && recipe.creator=='other'" class="buttons middle">
@@ -63,18 +63,19 @@
 
               </figure>
             </div>
-            <div>
+<!--             <div>
               <p>Upload an image to complete this recipe</p>
               <div class="button" ngf-select ng-model="finishedImage.file">Select File</div>
               <img ngf-src="finishedImage.file" width="150" height="100">
-            </div>
+            </div> -->
+
 
           </div>
         </md-content>
       </md-tab>
       <md-tab label="Completed">
-        <md-content class="md-padding container">
-            <ul class="dynamic-grid" angular-grid="myCompletedChallenges" ag-infinite-scroll ag-grid-width="350" ag-gutter-size="30" ag-id="gallery" ag-refresh-on-img-load="true">
+        <md-content class="md-padding">
+            <ul class="dynamic-grid" angular-grid="myCompletedChallenges" ag-infinite-scroll ag-grid-width="300" ag-gutter-size="30" ag-id="gallery" ag-refresh-on-img-load="true">
     <li data-ng-repeat="recipe in myCompletedChallenges track by $index" class="grid shadow-large" ng-class="{'challenge-post':recipe.post_type=='challenge','personal-post':recipe.post_type=='personal'}">
       <div class="first-img">
         <img class="grid-img" ng-src="{{recipe.creator_image}}">
