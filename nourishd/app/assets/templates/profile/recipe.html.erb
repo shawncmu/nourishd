@@ -19,7 +19,7 @@
 
 
 <section class="container shadow-large remove-padding backwhite">
-<div class="row">
+<div class="row" style="margin-bottom:50px">
   <div class="col-xs-12 col-md-6">
     <div>
         <img class="ingredients-image" ng-src="{{recipe.ingredients_image}}">
@@ -57,11 +57,12 @@
     <div>
       <div  ng-repeat="instruction in instructions | orderBy: 'instruction.order'">
         <div class="circle">{{instruction.order}}</div>
-        <div style="margin-bottom:20px;margin-right:20px; margin-left: 80px">{{instruction.step}}</div>
+        <div class="nums">{{instruction.step}}</div>
         <br>
       </div>
     </div>
-    <div>
+    <hr width="50%">
+    <div style="text-align:center">
       <div ng-bind-html="video"></div>
     </div>
   </div>

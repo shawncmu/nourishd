@@ -30,10 +30,18 @@
   background-image: url("/assets/circle.png");
   background-repeat: no-repeat;
   float: left;
-  height: 70px;
-  width: 70px;
+  height: 65px;
+  width: 67px;
   text-align: center;
-  line-height: 70px;
+  line-height: 65px;
+  font-size:1.5em;
+  font-weight: 200;
+  color: #F0A646;
+}
+.nums {
+  margin-bottom:20px;
+  margin-right:20px;
+  margin-left: 80px;
 }
 /*.column-margin {
   margin-left: 5px;

@@ -11,17 +11,25 @@
     <div class="col-xs-12 border">
     <div class="position-filter"><h3>I'M HUNGRY FOR</h3></div>
     <div class="position-buttons">
-      <button ng-click="getMeal('Appetizer')">Appetizer</button>
+      <img ng-click="getMeal('Appetizer')" ng-src="<%= asset_path( 'app.png' ) %>" />
+      <img ng-click="getMeal('Main')" ng-src="<%= asset_path( 'main.png' ) %>" />
+      <img ng-click="getMeal('Dessert')" ng-src="<%= asset_path( 'dessert.png' ) %>" />
+      <p>Appetizer Main Dessert</p>
+<!--       <button ng-click="getMeal('Appetizer')">Appetizer</button>
       <button ng-click="getMeal('Main')">Main</button>
-      <button ng-click="getMeal('Dessert')">Dessert</button>
+      <button ng-click="getMeal('Dessert')">Dessert</button> -->
     </div>
     <div>
       <button ng-click="showAll()">I Want It All!</button>
-      <button ng-click="showVegan()">Vegan</button>
-      <button ng-click="showGlutenFree()">Gluten Free</button>
+      <img ng-click="showVegan()" style="height:70px;width:auto" ng-src="<%= asset_path( 'vegan.png' ) %>" />
+      <img ng-click="showGlutenFree()" style="height:70px;width:auto" ng-src="<%= asset_path( 'GF.png' ) %>" />
+      <img ng-click="showLowCarb()" style="height:70px;width:auto" ng-src="<%= asset_path( 'lc.png' ) %>" />
+      <img ng-click="showNutFree()" style="height:70px;width:auto" ng-src="<%= asset_path( 'nf.png' ) %>" />
+      <img ng-click="showSoyFree()" style="height:70px;width:auto" ng-src="<%= asset_path( 'soyfree.png' ) %>" />
+<!--       <button ng-click="showGlutenFree()">Gluten Free</button>
       <button ng-click="showLowCarb()">Low Carb</button>
       <button ng-click="showNutFree()">Nut Free</button>
-      <button ng-click="showSoyFree()">Soy Free</button>
+      <button ng-click="showSoyFree()">Soy Free</button> -->
     </div>
     </div>
   </div>
@@ -42,3 +50,4 @@
     </div>
   </div>
 </section>
+
