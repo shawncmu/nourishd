@@ -1,21 +1,21 @@
 <section class="container">
-  <ul class="dynamic-grid" angular-grid="allPosts" ag-infinite-scroll ag-grid-width="350" ag-id="gallery" ag-refresh-on-img-load="true">
-    <li data-ng-repeat="recipe in allPosts track by $index" class="grid" ng-class="{'challenge-post':recipe.post_type=='challenge','personal-post':recipe.post_type=='personal'}">
-      <div class="participant-img">
+  <ul class="dynamic-grid" angular-grid="allPosts" ag-infinite-scroll ag-gutter-size="30" ag-id="gallery" ag-refresh-on-img-load="true">
+    <li data-ng-repeat="recipe in allPosts track by $index" class="grid shadow-large" ng-class="{'challenge-post':recipe.post_type=='challenge','personal-post':recipe.post_type=='personal'}">
+      <div class="first-img">
         <img class="grid-img" ng-src="{{recipe.creator_image}}">
         <div class="comment-user-image confirm shift">
           <img class="comment-image-raw" ng-src="{{recipe.creator_avatar}}">
           <div class="comment-user-div confirm">{{recipe.creator_username}}</div>
         </div>
         <div class="likes">
-          <img class="scale-down" src="<%= asset_path( 'like.png' ) %>" /> {{recipe.creator_likes}}
+          <div class="clarity"><img class="scale-down like-position" src="<%= asset_path( 'like.png' ) %>" /> {{recipe.creator_likes}}</div>
         </div>
         <div ng-if="loggedIn" class="like-button">
           <a ng-if="!recipe.voted_before" ng-click="likeRecipe(recipe.id, 'creator', $index)"><img class="likesize" src="<%= asset_path( 'like.png' ) %>" /></a>
         </div>
       </div>
 
-      <div ng-if="recipe.post_type=='challenge'" class="participant-img">
+      <div ng-if="recipe.post_type=='challenge'" class="second-img">
         <img ng-src="{{recipe.participant_image}}" class="grid-img" />
         <div class="comment-user-image confirm shift">
           <img class="comment-image-raw" ng-src="{{recipe.participant_avatar}}">
@@ -23,7 +23,7 @@
         </div>
 
         <div class="likes">
-          <img class="scale-down" src="<%= asset_path( 'like.png' ) %>" /> {{recipe.participant_likes}}
+          <div class="clarity"><img class="scale-down like-position" src="<%= asset_path( 'like.png' ) %>" /> {{recipe.participant_likes}}</div>
         </div>
         <div ng-if="loggedIn" class="like-button">
           <a ng-if="!recipe.voted_before" ng-click="likeRecipe(recipe.id, 'participant', $index)"><img class="likesize" src="<%= asset_path( 'like.png' ) %>" /></a>

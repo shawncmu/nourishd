@@ -1,4 +1,4 @@
-app.controller('NavCtrl', ['$scope','$auth','$location', function($scope, $auth, $location){
+app.controller('NavCtrl', ['$scope','$auth','$location', '$rootScope', function($scope, $auth, $location, $rootScope){
   $scope.logout = function () {
     $auth.signOut().then(function(resp) {
       console.log(resp);
@@ -9,14 +9,27 @@ app.controller('NavCtrl', ['$scope','$auth','$location', function($scope, $auth,
     });
   };
 
-  // $scope.loggedIn = false;
-  $auth.validateUser().
-  then(function(resp) {
-    $scope.user = resp;
+  var validateUser = function () {
+    $auth.validateUser()
+    .then(function(resp) {
+      $scope.user = resp;
+      $scope.loggedIn = true;
+    })
+    .catch(function(resp) {
+      console.log(resp);
+      $scope.loggedIn = false;
+    });
+  }
+
+  $rootScope.$on('auth:login-success', function(ev, user) {
+    $scope.user = user;
     $scope.loggedIn = true;
-  }).
-  catch(function(resp) {
-    console.log(resp);
-    $scope.loggedIn = false;
   });
+
+  $scope.$on('auth:registration-email-success', function(ev, user) {
+    $scope.user = user;
+    $scope.loggedIn = true;
+  });
+
+  validateUser();
 }]);

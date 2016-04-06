@@ -37,7 +37,6 @@ div {
   line-height: 60px;
   margin: 20px auto 0 auto;
   display: block;
-  background: url("../img/inputGraphic/inputIcon.png");
   background-position: 0px 0px;
   background-repeat: no-repeat;
   background-color: #507BBC;
@@ -73,7 +72,6 @@ div {
     line-height: 60px;
     margin: 10px auto 0 auto;
     display: block;
-    background: url("../img/inputGraphic/inputIcon.png");
     background-position: 0px -60px;
     background-repeat: no-repeat;
     background-color: rgba(255,255,255,0.3);
@@ -90,7 +88,6 @@ div {
   line-height: 60px;
   margin: 10px auto 0 auto;
   display: block;
-  background: url("../img/inputGraphic/inputIcon.png");
   background-position: 0px -120px;
   background-repeat: no-repeat;
   background-color: rgba(255,255,255,0.3);
@@ -107,7 +104,6 @@ div {
   line-height: 60px;
   margin: 10px auto 0 auto;
   display: block;
-  background: url("../img/inputGraphic/inputIcon.png");
   background-position: 0px -120px;
   background-repeat: no-repeat;
   background-color: rgba(255,255,255,0.3);

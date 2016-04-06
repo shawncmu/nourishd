@@ -3,8 +3,28 @@
   color: white;
   border: none;
   border-radius: 0px;
+  -webkit-box-shadow: 0 8px 6px -6px #999;
+  -moz-box-shadow: 0 8px 6px -6px #999;
+  box-shadow: 0 8px 6px -6px #999;
 }
-
+.color {
+  color: white;
+}
+.navbar-collapse {
+  text-align:center;
+}
+.navbar-nav {
+    display:inline-block;
+    float:none;
+}
+.lefter {
+  position: relative;
+  right: 10px;
+}
+.righter {
+  position: relative;
+  left: 125px;
+}
 .navbar-brand {
   position: absolute;
   width: 100%;
@@ -32,7 +52,8 @@
 }
 
 .logosize {
-  height:50px;
+  height:210%;
+  width: auto;
   margin:0px;
   position: relative;
   top: -10px;
