@@ -3,7 +3,7 @@
     overflow: hidden;
 }
 .personal-post {
-    /*height: 250px;*/
+    height: 330px;
     overflow: hidden;
 }
 
@@ -41,28 +41,37 @@
   margin-top: 25px;
 }
 
+.container-shift {
+  margin-top: 30px;
+}
+
 .com-pad {
   height: 16px;
   width: auto;
   position: relative;
   top: -2px;
 }
-
+.eat {
+  position: relative;
+  top: 169px;
+  font-family: 'Montserrat', sans-serif;
+  color: #fff !important;
+  font-size: 2.0em;
+  font-weight: 800;
+}
 
 .likes {
   position:relative;
   bottom: 310px;
   text-align: right;
   color: white;
-  margin-right: 20px;
   font-weight: 700;
 }
 .clarity {
-  background-color: white;
-  border-radius: 8px;
+  background-color: #2BD8FF;
   float: right;
   padding: 0 5px;
-  color: #2BD8FF;
+  color: white;
 }
 .like-position {
   float: left;
@@ -96,7 +105,7 @@
 }
 
 .animate-slide {
-  border-top:3px solid #3289C7;
+  border-top:3px solid #2BD8FF;
   background:white;
   position:absolute;
   width: 110%;

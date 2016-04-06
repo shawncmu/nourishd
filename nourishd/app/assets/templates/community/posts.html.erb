@@ -1,4 +1,13 @@
-<section class="container">
+<section class="container-fluid">
+  <div class="row user-background">
+    <div class="header-height">
+      <p class="eat">EAT HAPPY. EAT WELL</p>
+    </div>
+  </div>
+</section>
+
+
+<section class="container container-shift">
   <ul class="dynamic-grid" angular-grid="allPosts" ag-infinite-scroll ag-gutter-size="30" ag-id="gallery" ag-refresh-on-img-load="true">
     <li data-ng-repeat="recipe in allPosts track by $index" class="grid shadow-large" ng-class="{'challenge-post':recipe.post_type=='challenge','personal-post':recipe.post_type=='personal'}">
       <div class="first-img">
