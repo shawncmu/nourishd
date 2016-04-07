@@ -4,17 +4,20 @@ div {
 
 .signupbody {
   height:100vh;
-  margin-top: -50px;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("http://wallpapersandmore.com/admin/wllpapers/1512160534304Italian-Pizza-Close-Up-Food-Wallpaper.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
+.fbposition {
+  position: relative;
+  right: 111px;
+  width: 360px;
+}
 
 .loginbody {
   height:100vh;
-  margin-top: -50px;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("http://michaelarbore.com/sites/default/files/soba.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
