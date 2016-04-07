@@ -1,4 +1,4 @@
-app.controller('DashCtrl', ['$scope','$auth','$location','$http','Upload','angularGridInstance', function($scope, $auth, $location,$http,Upload,angularGridInstance){
+app.controller('DashCtrl', ['$scope','$auth','$location','$http','Upload','angularGridInstance','$mdDialog', function($scope, $auth, $location,$http,Upload,angularGridInstance,$mdDialog){
 
 
 $auth.validateUser().
@@ -69,6 +69,7 @@ getAllChallenges();
     }).success(function(response) {
         console.log(response);
         getAllChallenges();
+        $scope.showDialog3 = !$scope.showDialog3;
     });
   };
 
@@ -162,4 +163,19 @@ $scope.likeRecipe = function(id, winner, index){
       console.log(response);
     });
   };
+  $scope.openComplete = function(id, person, otherPerson) {
+    $auth.validateUser().
+    then(function(resp) {
+      $scope.showDialog3 = !$scope.showDialog3;
+      $scope.holder1 = id;
+      $scope.holder2 = person;
+      $scope.holder3 = otherPerson;
+    }).
+    catch(function(resp) {
+      alert("Please login to proceed");
+    });
+  };
+
+
+
 }]);

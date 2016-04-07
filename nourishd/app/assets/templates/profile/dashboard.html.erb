@@ -52,20 +52,16 @@
                 </div>
 
                 <div ng-if="recipe.participant_acceptance=='accepted' && recipe.creator=='other'" class="buttons middle">
-                  <a ng-click="recipeDone(recipe.id, recipe.creator, recipe.other_player_status)"><img class="status-icon" ng-src="<%= asset_path( 'knife.png' ) %>" /></a>
+                  <a ng-click="openComplete(recipe.id, recipe.creator, recipe.other_player_status)" ><img class="status-icon" ng-src="<%= asset_path( 'knife.png' ) %>" /></a>
                 </div>
                 <div ng-if="recipe.participant_acceptance=='accepted' && recipe.creator=='me' && recipe.creator_status!='complete'" class="buttons middle">
-                  <a ng-click="recipeDone(recipe.id, recipe.creator, recipe.other_player_status)"><img class="status-icon" ng-src="<%= asset_path( 'knife.png' ) %>" /></a>
+                  <a ng-click="openComplete(recipe.id, recipe.creator, recipe.other_player_status)"><img class="status-icon" ng-src="<%= asset_path( 'knife.png' ) %>" /></a>
                 </div>
                 <div ng-if="recipe.post_type=='personal'" class="buttons middle">
-                  <a ng-click="recipeDone(recipe.id, recipe.creator, 'complete')"><img class="status-icon" ng-src="<%= asset_path( 'knife.png' ) %>" /></a>
+                  <a ng-click="openComplete(recipe.id, recipe.creator, 'complete')"><img class="status-icon" ng-src="<%= asset_path( 'knife.png' ) %>" /></a>
                 </div>
-
               </figure>
             </div>
-
-
-
           </div>
         </md-content>
       </md-tab>
@@ -139,10 +135,27 @@
 </section>
 
 
-<!-- <section class="container-fluid">
-  <div class="row user-background">
+<div modal-show modal-visible="showDialog3" class="modal fade" id="recipe-completed" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Good Job!</h4>
+      </div>
+
+      <div class="modal-body">
+        <div>
+          <p>Upload a photo to complete your challenge</p>
+          <button class="button" ngf-select ng-model="finishedImage.file">Select File</button>
+          <img ngf-src="finishedImage.file" width="350" height="300">
+          <buton ng-click="recipeDone(holder1, holder2, holder3)" class="btn btn-info confirm" value="ChallengeComplete!">Complete!</button>
+        </div>
+      </div>
+
+    </div>
   </div>
-</section> -->
+</div>
 
 
 
