@@ -127,8 +127,12 @@
   height: auto;
 }
 .modal-dialog {
-  color: green;
   border-radius: 0px;
+}
+.modal-header {
+  color: white;
+  background-color: #82C639;
+  text-align: center;
 }
 
 .comment {

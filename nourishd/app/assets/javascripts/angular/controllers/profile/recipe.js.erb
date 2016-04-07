@@ -108,6 +108,7 @@ app.controller('RecipeCtrl', ['$scope','$auth','$location','$http','$routeParams
   };
 
   $scope.createChallenge = function(){
+    console.log("testing");
     var data = {
       recipe_id: $scope.recipe.id,
       creator_id: $scope.user.id,

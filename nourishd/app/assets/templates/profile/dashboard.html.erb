@@ -141,8 +141,8 @@
       <div class="modal-body">
         <div>
           <p>Upload a photo to complete your challenge</p>
-          <button class="button" ngf-select ng-model="finishedImage.file">Select File</button>
-          <img ngf-src="finishedImage.file" width="350" height="300">
+          <button class="btn btn-info confirm" ngf-select ng-model="finishedImage.file" style="margin-bottom:30px">Select File</button><br>
+          <img ngf-src="finishedImage.file" width="350" height="300" style="margin-bottom:30px"><br>
           <buton ng-click="recipeDone(holder1, holder2, holder3)" class="btn btn-info confirm" value="ChallengeComplete!">Complete!</button>
         </div>
       </div>
