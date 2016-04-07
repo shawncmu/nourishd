@@ -101,21 +101,24 @@ $scope.likeRecipe = function(id, winner, index){
       console.log(response);
     });
 };
+
   var getCompletedChallenges = function () {
     $scope.myCompletedChallenges = [];
     for (var i=0; i<$scope.mychallenges.length;i++) {
       if ($scope.mychallenges[i].post_status == "complete") {
         $scope.myCompletedChallenges.push($scope.mychallenges[i]);
-        $scope.mychallenges.splice(i,1);
-      };
-    };
-    for (var x=0; x<$scope.mychallenges.length;x++) {
-      if ($scope.mychallenges[x].participant_acceptance=='declined' && $scope.mychallenges[x].creator=='other') {
-        $scope.mychallenges.splice(x,1);
       };
     };
     console.log($scope.myCompletedChallenges);
     console.log($scope.mychallenges);
+  };
+
+  $scope.checkDeclined = function (challenge){
+      if (challenge.participant_acceptance=='declined' && challenge.creator=='other') {
+        return false;
+      } else {
+        return true;
+      };
   };
 
   $scope.declineChallenge = function (id, index) {

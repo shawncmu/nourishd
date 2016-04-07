@@ -9,141 +9,135 @@
 </section>
 
 <section class="container shadow-large remove-padding">
-<div ng-cloak>
-  <md-content>
-    <md-tabs md-dynamic-height md-center-tabs="true">
-      <md-tab label="Challenges">
-        <md-content class="md-padding">
-          <div class="col-xs-12 col-sm-4 placement" ng-repeat="recipe in mychallenges | filter:{post_status:'pending'} track by recipe.id">
-            <div class="hover12 hover01">
-              <figure>
-                <img  ng-src="{{recipe.dish_image}}" class="main-images">
-                <div class="dash-text">{{recipe.recipe_name}}</div>
+  <div ng-cloak>
+    <md-content>
+      <md-tabs md-dynamic-height md-center-tabs="true">
+        <md-tab label="Challenges">
+          <md-content class="md-padding">
+            <div class="col-xs-12 col-sm-4 placement" ng-repeat="recipe in mychallenges | filter:{post_status:'pending'}|filter:checkDeclined track by recipe.id">
+              <div class="hover12 hover01">
+                <figure>
+                  <img  ng-src="{{recipe.dish_image}}" class="main-images">
+                  <div class="dash-text">{{recipe.recipe_name}}</div>
 
-                <div class="opponent comment-user-image confirm">
-                  <img class="opponent-image" ng-src="{{recipe.other_player_image}}">
-                  <div class="comment-user-div confirm">{{recipe.other_player}}</div>
-                </div>
+                  <div class="opponent comment-user-image confirm">
+                    <img class="opponent-image" ng-src="{{recipe.other_player_image}}">
+                    <div class="comment-user-div confirm">{{recipe.other_player}}</div>
+                  </div>
 
-                <div class="hold-position">
-                  <a href="/#/viewrecipe/{{recipe.recipe_id}}">
-                    <img class="status-icon" ng-src="<%= asset_path( 'book.png' ) %>" />
-                  </a>
-                </div>
+                  <div class="hold-position">
+                    <a href="/#/viewrecipe/{{recipe.recipe_id}}">
+                      <img class="status-icon" ng-src="<%= asset_path( 'book.png' ) %>" />
+                    </a>
+                  </div>
 
-                <div ng-if="recipe.participant_acceptance=='pending' && recipe.creator=='other'" class="buttons middle">
-                  <a ng-click="acceptChallenge(recipe.id, $index)"><img class="status-icon" ng-src="<%= asset_path( 'check.png' ) %>" /></a>
-                  <a ng-click="declineChallenge(recipe.id, $index)"><img class="status-icon" ng-src="<%= asset_path( 'caution.png' ) %>" /></a>
-                </div>
+                  <div ng-if="recipe.participant_acceptance=='pending' && recipe.creator=='other'" class="buttons middle">
+                    <a ng-click="acceptChallenge(recipe.id, $index)"><img class="status-icon" ng-src="<%= asset_path( 'check.png' ) %>" /></a>
+                    <a ng-click="declineChallenge(recipe.id, $index)"><img class="status-icon" ng-src="<%= asset_path( 'caution.png' ) %>" /></a>
+                  </div>
 
-                <div ng-if="recipe.participant_acceptance=='pending' && recipe.creator=='me' && recipe.post_type=='challenge'">
-                  <div class="buttons list2"><p>PENDING</p></div>
-                  <div class="hover-text-format"><p>Your opponent has yet to accept your challenge</p></div>
-                </div>
+                  <div ng-if="recipe.participant_acceptance=='pending' && recipe.creator=='me' && recipe.post_type=='challenge'">
+                    <div class="buttons list2"><p>PENDING</p></div>
+                    <div class="hover-text-format"><p>Your opponent has yet to accept your challenge</p></div>
+                  </div>
 
-                <div ng-if="recipe.other_player_status=='pending' && recipe.creator=='me' && recipe.creator_status=='complete' && recipe.post_type=='challenge'">
-                  <div class="buttons list2"><p>PENDING</p></div>
-                  <div class="hover-text-format"><p>Your opponent has yet to complete the challenge</p></div>
-                </div>
+                  <div ng-if="recipe.other_player_status=='pending' && recipe.creator=='me' && recipe.creator_status=='complete' && recipe.post_type=='challenge'">
+                    <div class="buttons list2"><p>PENDING</p></div>
+                    <div class="hover-text-format"><p>Your opponent has yet to complete the challenge</p></div>
+                  </div>
+                  <div ng-if="recipe.other_player_status=='pending' && recipe.creator=='other' && recipe.participant_status=='complete' && recipe.post_type=='challenge'">
+                    <div class="buttons list2"><p>PENDING</p></div>
+                    <div class="hover-text-format"><p>Your opponent has yet to complete the challenge</p></div>
+                  </div>
 
-                <div ng-if="recipe.participant_acceptance=='declined' && recipe.creator=='me'" class="buttons-decline middle">
-                  <div><p>Your opponent has declined the challenge</p></div>
-                  <a ng-click="deleteChallenge(recipe.id, $index)"><img class="hover-text-format-destroy" ng-src="<%= asset_path( 'caution.png' ) %>" /></a>
-                </div>
+                  <div ng-if="recipe.participant_acceptance=='declined' && recipe.creator=='me'" class="buttons-decline middle">
+                    <div><p>Your opponent has declined the challenge</p></div>
+                    <a ng-click="deleteChallenge(recipe.id, $index)"><img class="hover-text-format-destroy" ng-src="<%= asset_path( 'caution.png' ) %>" /></a>
+                  </div>
 
-                <div ng-if="recipe.participant_acceptance=='accepted' && recipe.creator=='other'" class="buttons middle">
-                  <a ng-click="openComplete(recipe.id, recipe.creator, recipe.other_player_status)" ><img class="status-icon" ng-src="<%= asset_path( 'knife.png' ) %>" /></a>
-                </div>
-                <div ng-if="recipe.participant_acceptance=='accepted' && recipe.creator=='me' && recipe.creator_status!='complete'" class="buttons middle">
-                  <a ng-click="openComplete(recipe.id, recipe.creator, recipe.other_player_status)"><img class="status-icon" ng-src="<%= asset_path( 'knife.png' ) %>" /></a>
-                </div>
-                <div ng-if="recipe.post_type=='personal'" class="buttons middle">
-                  <a ng-click="openComplete(recipe.id, recipe.creator, 'complete')"><img class="status-icon" ng-src="<%= asset_path( 'knife.png' ) %>" /></a>
-                </div>
-              </figure>
-            </div>
-          </div>
-        </md-content>
-      </md-tab>
-      <md-tab label="Completed">
-        <md-content class="md-padding">
-            <ul class="dynamic-grid" angular-grid="myCompletedChallenges" ag-infinite-scroll ag-grid-width="300" ag-gutter-size="30" ag-id="gallery" ag-refresh-on-img-load="true">
-    <li data-ng-repeat="recipe in myCompletedChallenges track by $index" class="grid shadow-large" ng-class="{'challenge-post':recipe.post_type=='challenge','personal-post':recipe.post_type=='personal'}">
-      <div class="first-img">
-        <img class="grid-img" ng-src="{{recipe.creator_image}}">
-        <div class="comment-user-image confirm shift">
-          <img class="comment-image-raw" ng-src="{{recipe.creator_avatar}}">
-          <div class="comment-user-div confirm">{{recipe.creator_username}}</div>
-        </div>
-        <div class="likes">
-        <div class="clarity"><img class="scale-down" src="<%= asset_path('food.png') %>" /> {{recipe.creator_likes}}</div>
-        </div>
-        <div class="like-button">
-          <a ng-if="!recipe.voted_before" ng-click="likeRecipe(recipe.id, 'creator', $index)"><img class="likesize" src="<%= asset_path('like.png') %>" /></a>
-        </div>
-      </div>
-
-
-
-      <div ng-if="recipe.post_type=='challenge'" class="second-img">
-        <img ng-src="{{recipe.participant_image}}" class="grid-img" />
-        <div class="comment-user-image confirm shift">
-          <img class="comment-image-raw" ng-src="{{recipe.participant_avatar}}">
-          <div class="comment-user-div confirm">{{recipe.participant_username}}</div>
-        </div>
-
-        <div class="likes">
-          <div class="clarity"><img class="scale-down" src="<%= asset_path('food.png') %>" /> {{recipe.participant_likes}}</div>
-        </div>
-        <div class="like-button">
-          <a ng-if="!recipe.voted_before" ng-click="likeRecipe(recipe.id, 'participant', $index)"><img class="likesize" src="<%= asset_path('like.png') %>" /></a>
-        </div>
-      </div>
-
-
-
-      <div class="animate-slide" ng-show="slide" ng-click="slide=!slide">
-
-        <div class="title" ng-class="{'add-top-margin':recipe.post_type=='challenge'}">
-          <p class="adjust-left">{{recipe.recipe_name}}
-          <a ng-click="slide=!slide"><img class="com-pad" ng-src="<%= asset_path( 'interface.png' ) %>" /></a></p>
-        </div>
-
-      <div class="scroll">
-        <md-content >
-          <md-list>
-            <md-list-item class="md-2-line" ng-repeat="comment in recipe.comments">
-              <img ng-src="{{comment.avatar}}" class="md-avatar">
-              <div class="md-list-item-text">
-                <h3>{{comment.username}}</h3>
-                <p>{{comment.comment}}</p>
+                  <div ng-if="recipe.participant_acceptance=='accepted' && recipe.creator=='other' && recipe.participant_status!='complete'" class="buttons middle">
+                    <a ng-click="openComplete(recipe.id, recipe.creator, recipe.other_player_status)" ><img class="status-icon" ng-src="<%= asset_path( 'knife.png' ) %>" /></a>
+                  </div>
+                  <div ng-if="recipe.participant_acceptance=='accepted' && recipe.creator=='me' && recipe.creator_status!='complete'" class="buttons middle">
+                    <a ng-click="openComplete(recipe.id, recipe.creator, recipe.other_player_status)"><img class="status-icon" ng-src="<%= asset_path( 'knife.png' ) %>" /></a>
+                  </div>
+                  <div ng-if="recipe.post_type=='personal'" class="buttons middle">
+                    <a ng-click="openComplete(recipe.id, recipe.creator, 'complete')"><img class="status-icon" ng-src="<%= asset_path( 'knife.png' ) %>" /></a>
+                  </div>
+                </figure>
               </div>
-              <md-divider md-inset ng-if="!$last"></md-divider>
+            </div>
+          </md-content>
+        </md-tab>
+        <md-tab label="Completed">
+          <md-content class="md-padding">
+            <ul class="dynamic-grid" angular-grid="myCompletedChallenges" ag-infinite-scroll ag-grid-width="300" ag-gutter-size="30" ag-id="gallery" ag-refresh-on-img-load="true">
+              <li data-ng-repeat="recipe in myCompletedChallenges track by $index" class="grid shadow-large" ng-class="{'challenge-post':recipe.post_type=='challenge','personal-post':recipe.post_type=='personal'}">
+                <div class="first-img">
+                  <img class="grid-img" ng-src="{{recipe.creator_image}}">
+                  <div class="comment-user-image confirm shift">
+                    <img class="comment-image-raw" ng-src="{{recipe.creator_avatar}}">
+                    <div class="comment-user-div confirm">{{recipe.creator_username}}</div>
+                  </div>
+                  <div class="likes">
+                    <div class="clarity"><img class="scale-down" src="<%= asset_path('food.png') %>" /> {{recipe.creator_likes}}</div>
+                  </div>
+                  <div class="like-button">
+                    <a ng-if="!recipe.voted_before" ng-click="likeRecipe(recipe.id, 'creator', $index)"><img class="likesize" src="<%= asset_path('like.png') %>" /></a>
+                  </div>
+                </div>
+                <div ng-if="recipe.post_type=='challenge'" class="second-img">
+                  <img ng-src="{{recipe.participant_image}}" class="grid-img" />
+                  <div class="comment-user-image confirm shift">
+                    <img class="comment-image-raw" ng-src="{{recipe.participant_avatar}}">
+                    <div class="comment-user-div confirm">{{recipe.participant_username}}</div>
+                  </div>
 
-            </md-list-item>
-          </md-list>
-        </md-content>
-      </div>
-      </div>
-    </li>
-  </ul>
-        </md-content>
-      </md-tab>
-    </md-tabs>
-  </md-content>
-</div>
+                  <div class="likes">
+                    <div class="clarity"><img class="scale-down" src="<%= asset_path('food.png') %>" /> {{recipe.participant_likes}}</div>
+                  </div>
+                  <div class="like-button">
+                    <a ng-if="!recipe.voted_before" ng-click="likeRecipe(recipe.id, 'participant', $index)"><img class="likesize" src="<%= asset_path('like.png') %>" /></a>
+                  </div>
+                </div>
+
+                <div class="animate-slide" ng-show="slide" ng-click="slide=!slide">
+                  <div class="title" ng-class="{'add-top-margin':recipe.post_type=='challenge'}">
+                    <p class="adjust-left">{{recipe.recipe_name}}
+                    <a ng-click="slide=!slide"><img class="com-pad" ng-src="<%= asset_path( 'interface.png' ) %>" /></a></p>
+                  </div>
+                  <div class="scroll">
+                    <md-content >
+                      <md-list>
+                        <md-list-item class="md-2-line" ng-repeat="comment in recipe.comments">
+                          <img ng-src="{{comment.avatar}}" class="md-avatar">
+                          <div class="md-list-item-text">
+                            <h3>{{comment.username}}</h3>
+                            <p>{{comment.comment}}</p>
+                          </div>
+                          <md-divider md-inset ng-if="!$last"></md-divider>
+                        </md-list-item>
+                      </md-list>
+                    </md-content>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </md-content>
+        </md-tab>
+      </md-tabs>
+    </md-content>
+  </div>
 </section>
 
 
 <div modal-show modal-visible="showDialog3" class="modal fade" id="recipe-completed" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Good Job!</h4>
       </div>
-
       <div class="modal-body">
         <div>
           <p>Upload a photo to complete your challenge</p>
@@ -152,13 +146,9 @@
           <buton ng-click="recipeDone(holder1, holder2, holder3)" class="btn btn-info confirm" value="ChallengeComplete!">Complete!</button>
         </div>
       </div>
-
     </div>
   </div>
 </div>
-
-
-
 
 
 <!-- ACTIVE
