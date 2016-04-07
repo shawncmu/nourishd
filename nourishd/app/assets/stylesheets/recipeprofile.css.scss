@@ -27,7 +27,7 @@
   text-align: center;
 }
 .circle {
-  background-image: url("/assets/circle.png");
+  background-image: image-url("circle.png");
   background-repeat: no-repeat;
   float: left;
   height: 65px;
@@ -127,8 +127,12 @@
   height: auto;
 }
 .modal-dialog {
-  color: green;
   border-radius: 0px;
+}
+.modal-header {
+  color: white;
+  background-color: #82C639;
+  text-align: center;
 }
 
 .comment {

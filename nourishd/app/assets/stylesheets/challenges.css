@@ -1,19 +1,28 @@
 .position-filter {
-  position: relative;
-  top: -34px;
-  background-color: white;
+/*  position: relative;
+  top: -34px;*/
   width: 235px;
   margin: 0 auto;
   text-transform: uppercase;
   font-weight: 900;
   font-size: 1.375em;
   font-family: 'Montserrat', sans-serif;
-  color: orange;
+  color: white;
 }
 .position-buttons {
-  margin-bottom: -125px;
+  margin-bottom: 55px;
   position: relative;
-  top: -141px;
+}
+.mushroom-background {
+  height:350px;
+  margin-top: 50px;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("http://www.wallpaperawesome.com/wallpapers-awesome/wallpapers-food-drinks-cocktails-cake-meat-pasta-pizza-awesome/wallpaper-plate-of-cooking-mushrooms.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  /*overflow: hidden;*/
+  text-align: center;
 }
 
 .wooden-background {
@@ -26,7 +35,10 @@
   background-size: cover;
   text-align: center;
 }
-
+.highlight-size {
+  height:20px;
+  width: auto;
+}
 /*.ontop {
   width:180px;
   height:130px;
@@ -68,6 +80,10 @@
 
 .position-image {
   padding: 0px;
+}
+.starting-point {
+  position: relative;
+  top: 50px;
 }
 
 .main-images {

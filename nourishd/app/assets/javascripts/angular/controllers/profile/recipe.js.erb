@@ -37,14 +37,14 @@ app.controller('RecipeCtrl', ['$scope','$auth','$location','$http','$routeParams
   };
 
   var getTools = function (){
-    if ($scope.tools.includes("1 pot")) {$scope.pot = true;}
-    if ($scope.tools.includes("1 pan")) {$scope.pan = true;}
-    if ($scope.tools.includes("1 bowl")) {$scope.bowl = true;}
-    if ($scope.tools.includes("1 stove")) {$scope.stove = true;}
-    if ($scope.tools.includes("1 measuring")) {$scope.measuring = true;}
-    if ($scope.tools.includes("1 oven")) {$scope.oven = true;}
-    if ($scope.tools.includes("1 blender")) {$scope.blender = true;}
-    if ($scope.tools.includes("1 rice")) {$scope.rice = true;}
+    if ($scope.tools.includes("pot")) {$scope.pot = true;}
+    if ($scope.tools.includes("pan")) {$scope.pan = true;}
+    if ($scope.tools.includes("bowl")) {$scope.bowl = true;}
+    if ($scope.tools.includes("stove")) {$scope.stove = true;}
+    if ($scope.tools.includes("measuring")) {$scope.measuring = true;}
+    if ($scope.tools.includes("oven")) {$scope.oven = true;}
+    if ($scope.tools.includes("blender")) {$scope.blender = true;}
+    if ($scope.tools.includes("rice")) {$scope.rice = true;}
   };
     var resetTools = function (){
     $scope.pot = false;
@@ -108,6 +108,7 @@ app.controller('RecipeCtrl', ['$scope','$auth','$location','$http','$routeParams
   };
 
   $scope.createChallenge = function(){
+    console.log("testing");
     var data = {
       recipe_id: $scope.recipe.id,
       creator_id: $scope.user.id,
