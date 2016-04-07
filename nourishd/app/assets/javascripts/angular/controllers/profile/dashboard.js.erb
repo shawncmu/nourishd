@@ -133,7 +133,7 @@ $scope.likeRecipe = function(id, winner, index){
       data: data
     }).then(function (response){
       console.log(response.data);
-      $scope.mychallenges.splice(index,1);
+      getAllChallenges();
     },function (response){
       console.log(response);
     });
@@ -145,7 +145,7 @@ $scope.likeRecipe = function(id, winner, index){
       url: "/api/challenges/"+id+".json"
     }).then(function (response){
       console.log(response.data);
-      $scope.mychallenges.splice(index,1);
+      getAllChallenges();
     },function (response){
       console.log(response);
     });
