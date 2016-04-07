@@ -1,0 +1,177 @@
+.recipe-background {
+  height:350px;
+  margin-top: 50px;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://wallpaperscraft.com/image/spices_pepper_garlic_cutting_board_78722_2560x1440.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  /*overflow: hidden;*/
+  text-align: center;
+}
+.resize {
+  height:200px;
+  width: auto;
+}
+.size {
+  font-size: 0.5em;
+  font-weight: 200;
+}
+.center-align{
+  text-align: center;
+}
+.backwhite {
+  background: white;
+}
+.tool-border {
+  text-align: center;
+}
+.circle {
+  background-image: url("/assets/circle.png");
+  background-repeat: no-repeat;
+  float: left;
+  height: 65px;
+  width: 67px;
+  text-align: center;
+  line-height: 65px;
+  font-size:1.5em;
+  font-weight: 200;
+  color: #F0A646;
+}
+.nums {
+  margin-bottom:20px;
+  margin-right:20px;
+  margin-left: 80px;
+}
+/*.column-margin {
+  margin-left: 5px;
+  margin-right: 5px;
+}*/
+/*.keepcentered {
+    position:    absolute;
+    left:        50%;
+    width:       300px;
+    height:      auto;
+    margin-left: -150px;
+    float: left;
+}*/
+
+/*.gradient {
+  z-index: 50;
+  background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.75) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.75)), color-stop(100%,rgba(0,0,0,0)));
+  background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.75) 100%);
+  background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.75) 100%);
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.75) 100%);
+  width:100%;
+  height:100%;
+  position: absolute;
+}
+.gradient:hover {
+  background: none;
+}*/
+.time-position {
+  position: relative;
+  bottom: -70px;
+  font-family: 'Montserrat', sans-serif;
+  color: #fff !important;
+  font-size: 2.0em;
+  font-weight: 200;
+}
+.quantity {
+  text-align: right;
+}
+.remove-margin {
+  margin-bottom: 0px;
+}
+.add-margin {
+  margin-left: 10px;
+  margin-right:10px;
+  margin-top: 5px;
+  padding-left: 8%;
+  padding-right: 8%;
+}
+.dark-image {
+  min-width: 100%;
+  min-height: 100%;
+  position: relative;
+  top: -200px;
+  z-index: -50;
+}
+.header-height {
+  height: 300px;
+}
+
+.center-profile {
+  position: relative;
+  top: 50px;
+}
+
+.info-position {
+  margin-top: 0px;
+  position: relative;
+  bottom: -50px;
+  color: white;
+  text-align: left;
+  margin-left: 130px;
+  font-family: 'Montserrat', sans-serif;
+  color: #fff !important;
+  font-size: 2.5em;
+  line-height: 1.2em;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.ingredients-image {
+  width: 100%;
+  height: auto;
+}
+.modal-dialog {
+  color: green;
+  border-radius: 0px;
+}
+
+.comment {
+  padding: 10px 0px 10px 0px;
+}
+
+.comment-user-image {
+  padding:0px;
+  display: inline;
+}
+.comment-user-div {
+  padding:0px;
+  display: inline;
+  position: relative;
+  top: 4px;
+}
+.comment-user-diet {
+  padding:0px;
+  display: inline;
+}
+
+.comment-user {
+  padding:0px;
+  font-weight: 300;
+}
+
+.comment-text {
+  padding:0px;
+  font-weight: lighter;
+}
+
+.comment-image-raw {
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
+}
+
+.panel-params {
+  height:300px;
+  overflow-y: scroll;
+  overflow-x: none;
+}
+
+.confirm {
+  display: inline-block;
+}

@@ -1,0 +1,24 @@
+app.controller('LoginCtrl', ['$scope','$auth','$location', '$rootScope', function($scope, $auth, $location, $rootScope){
+
+  $scope.login = function () {
+    $auth.submitLogin($scope.loginForm).
+    then(function(resp) {
+      // handle success response
+      console.log(resp);
+        // redirect back to root when registration succesfull
+      $location.path('/dashboard');
+    }).
+    catch(function(resp) {
+      // handle error response
+      console.log(resp);
+    });
+  };
+
+  $scope.facebookLogin = function (){
+    $auth.authenticate('facebook').then(function (resp) {
+      $location.path('/dashboard');
+    })
+  };
+
+}]);
+

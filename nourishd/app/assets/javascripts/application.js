@@ -16,6 +16,12 @@
 //= require angular/angular
 //= require angular-route/angular-route
 //= require angular-cookie/angular-cookie
+//= require angular-animate/angular-animate
+//= require angular-sanitize/angular-sanitize
+//= require angulargrid/angulargrid
+//= require angular-material/angular-material.min
+//= require angular-aria/angular-aria.min
+//=require angular-animate/angular-animate.min
 //= require ng-token-auth/dist/ng-token-auth
 //= require ng-file-upload/ng-file-upload.min
 //= require ng-file-upload/ng-file-upload-shim.min

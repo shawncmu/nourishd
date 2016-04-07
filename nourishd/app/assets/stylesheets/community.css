@@ -1,0 +1,183 @@
+.challenge-post {
+    height: 650px;
+    overflow: hidden;
+}
+.personal-post {
+    height: 330px;
+    overflow: hidden;
+}
+
+.second-img {
+  position: relative;
+  top: -41px;
+  height: 300px;
+}
+.first-img {
+  height: 300px;
+}
+
+/*.test {
+    height: 100%;
+    width: auto;
+}*/
+.shadow-large {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.border-card {
+  border-bottom: 5px solid gray;
+}
+
+.title {
+  width: 100%;
+  height:65px;
+  position: relative;
+  top: 0px;
+  color: black;
+  text-transform: uppercase;
+  /*text-align: center;*/
+  /*left: -10%;*/
+}
+.add-top-margin{
+  margin-top: 25px;
+}
+
+.container-shift {
+  margin-top: 30px;
+}
+
+.com-pad {
+  height: 16px;
+  width: auto;
+  position: relative;
+  top: -2px;
+}
+.eat {
+  position: relative;
+  top: 169px;
+  font-family: 'Montserrat', sans-serif;
+  color: #fff !important;
+  font-size: 2.0em;
+  font-weight: 800;
+}
+
+.likes {
+  position:relative;
+  bottom: 310px;
+  text-align: right;
+  color: white;
+  font-weight: 700;
+}
+.clarity {
+  background-color: #2BD8FF;
+  float: right;
+  padding: 0 5px;
+  color: white;
+}
+.like-position {
+  float: left;
+  padding-right: 10px;
+}
+.shift {
+  position:relative;
+  bottom: 290px;
+  left: 20px;
+  color: white;
+  /*display: inline;*/
+}
+.scale-down {
+  height: 20px;
+  width: auto;
+}
+
+/*#slide{
+  position:absolute;
+  width:100%;
+  height:100px;
+  top:90%;
+  background: red;
+  z-index: 100;
+}*/
+
+.adjust-left {
+  position: relative;
+  left: 20px;
+  display: inline;
+}
+
+.animate-slide {
+  border-top:3px solid #2BD8FF;
+  background:white;
+  position:absolute;
+  width: 110%;
+  height:110%;
+  top: 0;
+  left:-1px;
+  z-index: 999;
+  -webkit-transform: translate3d(0,0,0); /* Chrome, Safari, Opera */
+  transform: translate3d(0,0,0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+}
+
+.animate-slide.ng-hide-add,
+.animate-slide.ng-hide-remove {
+  display:block!important;
+}
+
+.animate-slide.ng-hide-remove.ng-hide-remove-active {
+  -webkit-animation:0.5s slide-up;
+  animation:0.5s slide-up;
+}
+
+.animate-slide.ng-hide-add.ng-hide-add-active {
+  -webkit-animation:0.5s slide-down;
+  animation:0.5s slide-down;
+}
+
+.animate-slide.ng-hide {
+  top:90%;
+  display:block!important;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes slide-up
+{
+  0%   {top:90%;}
+  100%  {top:0;}
+}
+
+/* Standard syntax */
+@keyframes slide-up
+{
+  0%   {top:90%;}
+  100%  {top:0;}
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes slide-down
+{
+  0%  {top:0;}
+  100%   {top:90%;}
+}
+
+/* Standard syntax */
+@keyframes slide-down
+{
+  0%  {top:0;}
+  100%   {top:90%;}
+}
+
+.dividerdemoBasicUsage .face {
+  border-radius: 30px;
+  border: 1px solid #ddd;
+  width: 48px;
+  margin: 16px;
+}
+.scroll {
+  overflow-y:auto;
+  width:90%;
+  height:70%;
+  /*overflow: hidden;*/
+}

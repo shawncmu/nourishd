@@ -1,0 +1,76 @@
+<section class="container-fluid">
+  <div class="row user-background">
+    <div class="header-height">
+      <p class="eat">EAT HAPPY. EAT WELL</p>
+    </div>
+  </div>
+</section>
+
+
+<section class="container container-shift">
+  <ul class="dynamic-grid" angular-grid="allPosts" ag-infinite-scroll ag-gutter-size="30" ag-id="gallery" ag-refresh-on-img-load="true">
+    <li data-ng-repeat="recipe in allPosts track by $index" class="grid shadow-large" ng-class="{'challenge-post':recipe.post_type=='challenge','personal-post':recipe.post_type=='personal'}">
+      <div class="first-img">
+        <img class="grid-img" ng-src="{{recipe.creator_image}}">
+        <div class="comment-user-image confirm shift">
+          <img class="comment-image-raw" ng-src="{{recipe.creator_avatar}}">
+          <div class="comment-user-div confirm">{{recipe.creator_username}}</div>
+        </div>
+        <div class="likes">
+          <div class="clarity"><img class="scale-down like-position" src="<%= asset_path( 'food.png' ) %>" /> {{recipe.creator_likes}}</div>
+        </div>
+        <div ng-if="loggedIn" class="like-button">
+          <a ng-if="!recipe.voted_before" ng-click="likeRecipe(recipe.id, 'creator', $index)"><img class="likesize" src="<%= asset_path( 'like.png' ) %>" /></a>
+        </div>
+      </div>
+
+      <div ng-if="recipe.post_type=='challenge'" class="second-img">
+        <img ng-src="{{recipe.participant_image}}" class="grid-img" />
+        <div class="comment-user-image confirm shift">
+          <img class="comment-image-raw" ng-src="{{recipe.participant_avatar}}">
+          <div class="comment-user-div confirm">{{recipe.participant_username}}</div>
+        </div>
+
+        <div class="likes">
+          <div class="clarity"><img class="scale-down like-position" src="<%= asset_path( 'food.png' ) %>" /> {{recipe.participant_likes}}</div>
+        </div>
+        <div ng-if="loggedIn" class="like-button">
+          <a ng-if="!recipe.voted_before" ng-click="likeRecipe(recipe.id, 'participant', $index)"><img class="likesize" src="<%= asset_path( 'like.png' ) %>" /></a>
+        </div>
+      </div>
+
+      <div class="animate-slide" ng-show="slide">
+
+        <div class="title" ng-class="{'add-top-margin':recipe.post_type=='challenge'}">
+          <p class="adjust-left">{{recipe.recipe_name}}
+            <a ng-click="slide=!slide"><img class="com-pad" src="<%= asset_path( 'interface.png' ) %>" /></a>
+          </p>
+        </div>
+
+        <div class="scroll">
+          <md-content >
+            <form ng-if="loggedIn" name="addCommentForm" ng-submit="addComment(recipe.id, $index)">
+              <md-input-container class="md-block">
+                <label>Comment</label>
+                <textarea ng-model="newComment.comment" md-maxlength="150" rows="2" md-select-on-focus></textarea>
+                <a ng-click="addComment(recipe.id, $index)"><img class="com-pad" src="<%= asset_path( 'arrows.png' ) %>" /></a></p>
+              </md-input-container>
+            </form>
+            <md-list>
+              <md-list-item class="md-2-line" ng-repeat="comment in recipe.comments">
+                <img ng-src="{{comment.avatar}}" class="md-avatar">
+                <div class="md-list-item-text">
+                  <h3>{{comment.username}}</h3>
+                  <p>{{comment.comment}}</p>
+                </div>
+                <md-divider md-inset ng-if="!$last"></md-divider>
+              </md-list-item>
+            </md-list>
+          </md-content>
+        </div>
+
+      </div>
+
+    </li>
+  </ul>
+</section>

@@ -1,0 +1,136 @@
+app.controller('RecipeCtrl', ['$scope','$auth','$location','$http','$routeParams','$sce','Upload', function($scope, $auth, $location,$http,$routeParams,$sce,Upload){
+
+  $scope.recipe = {};
+  $scope.showDialog = false;
+  $scope.showDialog2 = false;
+  $scope.myNotes = "";
+  $scope.myImage = {};
+  $scope.formComplete = {};
+
+  var userSignedIn = function() {
+    $auth.validateUser().
+    then(function(resp) {
+      console.log(resp);
+      $scope.user = resp;
+    }).
+    catch(function(resp) {
+      console.log(resp);
+    });
+  };
+
+  var getRecipeProfile = function () {
+    $http({
+      method: "GET",
+      url: "/api/recipes/"+$routeParams.id+".json"
+    }).then(function (response){
+      console.log(response.data);
+      resetTools();
+      $scope.recipe = response.data;
+      $scope.ingredients = $scope.recipe.ingredients;
+      $scope.instructions = $scope.recipe.instructions;
+      $scope.tools = $scope.recipe.equipment.split(",");
+      getTools();
+      $scope.video = $sce.trustAsHtml('<iframe height="100%" src="'+$scope.recipe.video_url+'" frameborder="0" allowfullscreen></iframe>');
+    },function (response){
+      console.log(response);
+    });
+  };
+
+  var getTools = function (){
+    if ($scope.tools.includes("1 pot")) {$scope.pot = true;}
+    if ($scope.tools.includes("1 pan")) {$scope.pan = true;}
+    if ($scope.tools.includes("1 bowl")) {$scope.bowl = true;}
+    if ($scope.tools.includes("1 stove")) {$scope.stove = true;}
+    if ($scope.tools.includes("1 measuring")) {$scope.measuring = true;}
+    if ($scope.tools.includes("1 oven")) {$scope.oven = true;}
+    if ($scope.tools.includes("1 blender")) {$scope.blender = true;}
+    if ($scope.tools.includes("1 rice")) {$scope.rice = true;}
+  };
+    var resetTools = function (){
+    $scope.pot = false;
+    $scope.pan = false;
+    $scope.bowl = false;
+    $scope.stove = false;
+    $scope.measuring = false;
+    $scope.oven = false;
+    $scope.blender = false;
+    $scope.rice = false;
+  };
+
+  $scope.checkValid = function (num) {
+    $auth.validateUser().
+    then(function(resp) {
+      if (num==1){$scope.showDialog = !$scope.showDialog;};
+      if (num==2){$scope.showDialog2 = !$scope.showDialog2;};
+    }).
+    catch(function(resp) {
+      alert("PLease login to proceed");
+    });
+  };
+
+  $scope.formComplete.create = function(){
+    var data = {
+      creator_id: $scope.user.id,
+      participant_id: $scope.user.id,
+      recipe_id: $scope.recipe.id,
+      creator_status: "pending",
+      participant_acceptance: "accepted",
+      participant_status: "complete",
+      post_status: "pending",
+      post_type: "personal",
+    };
+    $http({
+      method: "POST",
+      url: "/api/challenges.json",
+      data: data
+    }).then(function (response){
+      console.log(response);
+      $scope.showDialog = !$scope.showDialog;
+    },function (response){
+      console.log(response);
+    });
+  };
+
+  var getUsers = function () {
+    $http({
+      method: "GET",
+      url: "/api/users.json"
+    }).then(function (response){
+      console.log(response.data);
+      $scope.userlist = response.data;
+    },function (response){
+      console.log(response);
+    });
+  };
+
+  $scope.confirmChallenger = function(index) {
+    $scope.selectedUser = $scope.userlist[index];
+  };
+
+  $scope.createChallenge = function(){
+    var data = {
+      recipe_id: $scope.recipe.id,
+      creator_id: $scope.user.id,
+      participant_id: $scope.selectedUser.id,
+      participant_acceptance: "pending",
+      participant_status: "pending",
+      creator_status: "pending",
+      post_status: "pending",
+      post_type: "challenge"
+    };
+    $http({
+      method: "POST",
+      url: "/api/challenges.json",
+      data: data
+    }).then(function (response){
+      console.log(response.data);
+      $scope.showDialog2 = !$scope.showDialog2;
+    },function (response){
+      console.log(response);
+    });
+  };
+
+  getRecipeProfile();
+  userSignedIn();
+  getUsers();
+}]);
