@@ -3,16 +3,16 @@ class API::ChallengesController < ApplicationController
 
   def index
     @user = User.find(params[:id])
-    @challenges = Challenge.where(post_status: "complete")
+    @challenges = Challenge.where(post_status: "complete").order("created_at DESC")
     respond_to do |format|
       format.json { render 'allchallenges.jbuilder' }
     end
   end
 
   def allChallengesNoUser
-    @challenges = Challenge.where(post_status: "complete")
+    @challenges = Challenge.where(post_status: "complete").order("created_at DESC")
     respond_to do |format|
-      format.json { render 'allchallenges.jbuilder' }
+      format.json { render 'allchallengesnouser.jbuilder' }
     end
   end
 

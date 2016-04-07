@@ -2,15 +2,14 @@
   <div class="row recipe-background">
     <div class="col-xs-12 col-md-4 header-height">
       <p class="info-position">{{recipe.name}}<br>
-      <span ng-if="recipe.vegan">Vegan</span>
-      <span ng-if="recipe.gluten_free">Gluten Free</span>
-      <span ng-if="recipe.low_carb">Low Carb</span>
-      <span ng-if="recipe.low_carb">Dairy Free</span>
-      <span ng-if="recipe.low_carb">Nut Free</span>
-      <span ng-if="recipe.low_carb">Soy Free</span></p>
+      <span ng-if="recipe.vegan" class="vegan size">Vegan</span>
+      <span ng-if="recipe.gluten_free" class="gluten-free size">Gluten Free</span>
+      <span ng-if="recipe.low_carb" class="low-carb size">Low Carb</span>
+      <span ng-if="recipe.low_carb" class="nut-free size">Nut Free</span>
+      <span ng-if="recipe.low_carb" class="soy-free size">Soy Free</span></p>
     </div>
     <div class="col-xs-12 col-md-4 header-height keepcentered">
-      <img ng-src="{{recipe.dish_image}}" class="resize center-profile">
+      <img ng-src="{{recipe.dish_image}}" class="resize center-profile shadow-large">
       <p class="time-position"> <img class="logosize" ng-src="<%= asset_path( 'time.png' ) %>" />{{recipe.cook_time}} mins | <img class="logosize" ng-src="<%= asset_path( 'graphic.png' ) %>" />
       {{recipe.serving}}</p>
     </div>
@@ -19,8 +18,8 @@
 </section>
 
 
-<section class="container">
-
+<section class="container shadow-large remove-padding backwhite">
+<div class="row" style="margin-bottom:50px">
   <div class="col-xs-12 col-md-6">
     <div>
         <img class="ingredients-image" ng-src="{{recipe.ingredients_image}}">
@@ -37,24 +36,37 @@
       </md-list>
     </md-content>
   </div>
-  <div class="col-xs-12 col-md-6">
+  <div class="col-xs-12 col-md-6 column-margin">
     <div class="center-align">
       <img ng-click="checkValid(1)" ng-src="<%= asset_path( 'tool.png' ) %>" />
       <img ng-click="checkValid(2)" ng-src="<%= asset_path( 'icon.png' ) %>" />
     </div>
+    <div class="tool-border">
+      <!-- <div ng-repeat="tool in tools"> -->
+        <img ng-if="pot" ng-src="<%= asset_path( 'pot.png' ) %>" />
+        <img ng-if="pan" ng-src="<%= asset_path( 'pan.png' ) %>" />
+        <img ng-if="bowl" ng-src="<%= asset_path( 'bowl.png' ) %>" />
+        <img ng-if="stove" ng-src="<%= asset_path( 'stove.png' ) %>" />
+        <img ng-if="measuring" ng-src="<%= asset_path( 'measuring.png' ) %>" />
+        <img ng-if="oven" ng-src="<%= asset_path( 'oven.png' ) %>" />
+        <img ng-if="blender" ng-src="<%= asset_path( 'blender.png' ) %>" />
+        <img ng-if="rice" ng-src="<%= asset_path( 'rice.png' ) %>" />
+      <!-- </div> -->
+      <hr width="50%">
+    </div>
     <div>
-      <div ng-repeat="tool in tools">
-        <p>{{tool}}</p>
+      <div  ng-repeat="instruction in instructions | orderBy: 'instruction.order'">
+        <div class="circle">{{instruction.order}}</div>
+        <div class="nums">{{instruction.step}}</div>
+        <br>
       </div>
     </div>
-    <div>
-      <p  ng-repeat="instruction in instructions | orderBy: 'instruction.order'">{{instruction.step}}</p>
-    </div>
-    <div>
+    <hr width="50%">
+    <div style="text-align:center">
       <div ng-bind-html="video"></div>
     </div>
   </div>
-
+</div>
 </section>
 
 <div modal-show modal-visible="showDialog" class="modal fade" id="recipe-completed" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

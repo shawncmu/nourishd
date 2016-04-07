@@ -2,7 +2,8 @@
   position: relative;
   top: -34px;
   background-color: white;
-  width: 100px;
+  width: 235px;
+  margin: 0 auto;
   text-transform: uppercase;
   font-weight: 900;
   font-size: 1.375em;
@@ -10,14 +11,14 @@
   color: orange;
 }
 .position-buttons {
-  margin-bottom: -13px;
+  margin-bottom: -125px;
   position: relative;
-  top: -37px;
+  top: -141px;
 }
 
 .wooden-background {
   height:200px;
-  margin-top: -50px;
+  margin-top: 50px;
   /*background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url("https://d3ui957tjb5bqd.cloudfront.net/images/screenshots/products/22/228/228908/d8y1ucsf8z2b3k4vcqrq5id0rr9p0i00ehhqent2jwtqsxuwforyfm3ikkd5dznl-f.jpg?1415208277") no-repeat center center fixed;*/
   -webkit-background-size: cover;
   -moz-background-size: cover;

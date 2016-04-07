@@ -1,9 +1,35 @@
-app.controller('NavCtrl', ['$scope','$auth','$location', function($scope, $auth, $location){
+app.controller('NavCtrl', ['$scope','$auth','$location', '$rootScope', function($scope, $auth, $location, $rootScope){
   $scope.logout = function () {
     $auth.signOut().then(function(resp) {
       console.log(resp);
+      $scope.loggedIn = false;
+      $location.path('/');
     }).catch(function(resp) {
       console.log(resp);
     });
   };
+
+  var validateUser = function () {
+    $auth.validateUser()
+    .then(function(resp) {
+      $scope.user = resp;
+      $scope.loggedIn = true;
+    })
+    .catch(function(resp) {
+      console.log(resp);
+      $scope.loggedIn = false;
+    });
+  }
+
+  $rootScope.$on('auth:login-success', function(ev, user) {
+    $scope.user = user;
+    $scope.loggedIn = true;
+  });
+
+  $scope.$on('auth:registration-email-success', function(ev, user) {
+    $scope.user = user;
+    $scope.loggedIn = true;
+  });
+
+  validateUser();
 }]);
