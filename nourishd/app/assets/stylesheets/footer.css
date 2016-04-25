@@ -1,0 +1,22 @@
+.footer-top {
+  background-color: #222;
+  height: 100px;
+}
+.footer-bottom {
+  background-color: #82C639;
+  height: 50px;
+  color: white;
+  text-align: center;
+  line-height: 50px;
+}
+.footer-bottom > p {
+  margin: 0px;
+}
+.newsletter {
+  position: relative;
+  top: -60px;
+  height: 140px;
+  background-color: white;
+  margin-bottom: -60px;
+  text-align: center;
+}

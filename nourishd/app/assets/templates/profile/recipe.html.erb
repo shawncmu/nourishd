@@ -2,17 +2,21 @@
   <div class="row recipe-background">
     <div class="col-xs-12 col-md-4 header-height">
       <p class="info-position">{{recipe.name}}<br>
+        <span class="cook-time"><img class="timer-size" ng-src="<%= asset_path( 'time.png' ) %>" /> {{recipe.cook_time}} MINS |
+        <img class="timer-size" ng-src="<%= asset_path( 'graphic.png' ) %>" /> {{recipe.serving}} SERVINGS</span><br>
         <span ng-if="recipe.vegan" class="vegan"><img class="highlight-size" ng-src="<%= asset_path( 'vegan.png' ) %>" /></span>
         <span ng-if="recipe.gluten_free" class="gluten-free"><img class="highlight-size" ng-src="<%= asset_path( 'GF.png' ) %>" /></span>
         <span ng-if="recipe.low_carb" class="low-carb"><img class="highlight-size" ng-src="<%= asset_path( 'lc.png' ) %>" /></span>
         <span ng-if="recipe.nut_free" class="nut-free"><img class="highlight-size" ng-src="<%= asset_path( 'nf.png' ) %>" /></span>
-        <span ng-if="recipe.soy_free" class="soy-free"><img class="highlight-size" ng-src="<%= asset_path( 'soyfree.png' ) %>" /></span>
+        <span ng-if="recipe.soy_free" class="soy-free"><img class="highlight-size" ng-src="<%= asset_path( 'soyfree.png' ) %>" /></span><br>
       </p>
     </div>
     <div class="col-xs-12 col-md-4 header-height keepcentered">
       <img ng-src="{{recipe.dish_image}}" class="resize center-profile shadow-large">
-      <p class="time-position"> <img class="logosize" ng-src="<%= asset_path( 'time.png' ) %>" />{{recipe.cook_time}} mins | <img class="logosize" ng-src="<%= asset_path( 'graphic.png' ) %>" />
-      {{recipe.serving}}</p>
+      <div class="time-position">
+        <img class="try-pos" ng-click="checkValid(1)" ng-src="<%= asset_path( 'tool.png' ) %>" />
+        <img class="challenge-pos" ng-click="checkValid(2)" ng-src="<%= asset_path( 'icon.png' ) %>" />
+      </div>
     </div>
     <div class="col-xs-12 col-md-4 header-height"></div>
   </div>
@@ -38,13 +42,7 @@
       </md-content>
     </div>
     <div class="col-xs-12 col-md-6 column-margin">
-      <div class="center-align">
-        <img ng-click="checkValid(1)" ng-src="<%= asset_path( 'tool.png' ) %>" />
-        <img ng-click="checkValid(2)" ng-src="<%= asset_path( 'icon.png' ) %>" />
-      </div>
-      <hr width="50%">
       <div class="tool-border">
-        <!-- <div ng-repeat="tool in tools"> -->
           <img ng-if="pot" ng-src="<%= asset_path( 'pot.png' ) %>" />
           <img ng-if="pan" ng-src="<%= asset_path( 'pan.png' ) %>" />
           <img ng-if="bowl" ng-src="<%= asset_path( 'bowl.png' ) %>" />
@@ -53,7 +51,6 @@
           <img ng-if="oven" ng-src="<%= asset_path( 'oven.png' ) %>" />
           <img ng-if="blender" ng-src="<%= asset_path( 'blender.png' ) %>" />
           <img ng-if="rice" ng-src="<%= asset_path( 'rice.png' ) %>" />
-        <!-- </div> -->
         <hr width="50%">
       </div>
       <div  ng-repeat="instruction in instructions | orderBy: 'instruction.order'">
@@ -61,8 +58,8 @@
         <div class="nums">{{instruction.step}}</div>
         <br>
       </div>
-    </div>
     <hr width="50%">
+    </div>
     <div style="text-align:center">
       <div ng-bind-html="video"></div>
     </div>

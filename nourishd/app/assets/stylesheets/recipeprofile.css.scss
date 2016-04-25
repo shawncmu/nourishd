@@ -17,6 +17,22 @@
   font-size: 0.5em;
   font-weight: 200;
 }
+.cook-time {
+  font-size: 0.6em;
+  font-weight: 200;
+}
+.try-pos {
+  position: relative;
+  left: -15px;
+}
+.challenge-pos {
+  position: relative;
+  left: 15px;
+}
+.timer-size {
+  width:20px;
+  height: 20px;
+}
 .center-align{
   text-align: center;
 }
@@ -25,6 +41,7 @@
 }
 .tool-border {
   text-align: center;
+  margin-top: 25px;
 }
 .circle {
   background-image: image-url("circle.png");
