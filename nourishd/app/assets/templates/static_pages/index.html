@@ -1,10 +1,19 @@
-<div class="row homebody">
-  <div class="col-xs-0 col-sm-0 col-md-4"></div>
-  <div class="col-xs-0 col-sm-6 col-md-4"></div>
-  <div class="col-xs-12 col-sm-6 col-md-4">
-    <div id="home-about">
-      <h1>Welcome</h1>
-      <p>About us</p>
+<section class="container-fluid" style="margin-bottom:60px;margin-top:50px;">
+  <div class="row" id="recipe-page">
+    <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 position-image hover12 hover01" ng-repeat="recipe in results">
+      <figure><img ng-src="{{recipe.image}}" class="main-images"></figure>
+      <div class="span-positioning">{{recipe.name}}</div>
     </div>
   </div>
-</div>
+</section>
+
+<section class="container-fluid newsletter">
+  <div class="row">
+    <h1>JOIN OUR EAT WELL, BE WELL CULTURE</h1>
+    <p>Stay up to date with new recipes, specials and promotions</p>
+    <div class="form-group">
+      <input type="email" name="email" placeholder="Enter your email address"/>
+      <button type="submit">SIGN ME UP!</button>
+    </div>
+  </div>
+</section>

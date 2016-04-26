@@ -6,17 +6,17 @@
           <h3>PLEASE SELECT</h3>
         </div>
         <div class="position-buttons">
-          <img ng-click="getMeal('Appetizer')" ng-src="<%= asset_path( 'app.png' ) %>" />
-          <img ng-click="getMeal('Main')" ng-src="<%= asset_path( 'main.png' ) %>" />
-          <img ng-click="getMeal('Dessert')" ng-src="<%= asset_path( 'dessert.png' ) %>" />
+          <img style="margin-left:10px;margin-right:10px;" ng-click="getMeal('Appetizer')" ng-src="<%= asset_path( 'app.png' ) %>" />
+          <img style="margin-left:10px;margin-right:10px;" ng-click="getMeal('Main')" ng-src="<%= asset_path( 'main.png' ) %>" />
+          <img style="margin-left:10px;margin-right:10px;" ng-click="getMeal('Dessert')" ng-src="<%= asset_path( 'dessert.png' ) %>" />
         </div>
         <div>
           <!-- <button ng-click="showAll()">I Want It All!</button> -->
-          <img ng-click="showVegan()" style="height:70px;width:auto" ng-src="<%= asset_path( 'vegan.png' ) %>" />
-          <img ng-click="showGlutenFree()" style="height:70px;width:auto" ng-src="<%= asset_path( 'GF.png' ) %>" />
-          <img ng-click="showLowCarb()" style="height:70px;width:auto" ng-src="<%= asset_path( 'lc.png' ) %>" />
-          <img ng-click="showNutFree()" style="height:70px;width:auto" ng-src="<%= asset_path( 'nf.png' ) %>" />
-          <img ng-click="showSoyFree()" style="height:70px;width:auto" ng-src="<%= asset_path( 'soyfree.png' ) %>" />
+          <img ng-click="showVegan()" style="height:70px;width:auto;margin-left:5px;margin-right:5px;" ng-src="<%= asset_path( 'vegan.png' ) %>" />
+          <img ng-click="showGlutenFree()" style="height:70px;width:auto;margin-left:5px;margin-right:5px;" ng-src="<%= asset_path( 'GF.png' ) %>" />
+          <img ng-click="showLowCarb()" style="height:70px;width:auto;margin-left:5px;margin-right:5px;" ng-src="<%= asset_path( 'lc.png' ) %>" />
+          <img ng-click="showNutFree()" style="height:70px;width:auto;margin-left:5px;margin-right:5px;" ng-src="<%= asset_path( 'nf.png' ) %>" />
+          <img ng-click="showSoyFree()" style="height:70px;width:auto;margin-left:5px;margin-right:5px;" ng-src="<%= asset_path( 'soyfree.png' ) %>" />
         </div>
       </div>
     </div>
@@ -30,11 +30,11 @@
         <figure><img ng-src="{{recipe.image}}" class="main-images"></figure>
         <div class="onbottom">{{recipe.name}}</div>
         <p class="span-positioning">
-          <span ng-if="recipe.vegan" class="vegan"><img class="highlight-size" ng-src="<%= asset_path( 'vegan.png' ) %>" /></span>
-          <span ng-if="recipe.gluten_free" class="gluten-free"><img class="highlight-size" ng-src="<%= asset_path( 'GF.png' ) %>" /></span>
-          <span ng-if="recipe.low_carb" class="low-carb"><img class="highlight-size" ng-src="<%= asset_path( 'lc.png' ) %>" /></span>
-          <span ng-if="recipe.nut_free" class="nut-free"><img class="highlight-size" ng-src="<%= asset_path( 'nf.png' ) %>" /></span>
-          <span ng-if="recipe.soy_free" class="soy-free"><img class="highlight-size" ng-src="<%= asset_path( 'soyfree.png' ) %>" /></span>
+          <span ng-if="recipe.vegan" class="vegan"><img class="highlight-size" ng-src="<%= asset_path( 'VW.png' ) %>" /></span>
+          <span ng-if="recipe.gluten_free" class="gluten-free"><img class="highlight-size" ng-src="<%= asset_path( 'GFW.png' ) %>" /></span>
+          <span ng-if="recipe.low_carb" class="low-carb"><img class="highlight-size" ng-src="<%= asset_path( 'LCW.png' ) %>" /></span>
+          <span ng-if="recipe.nut_free" class="nut-free"><img class="highlight-size" ng-src="<%= asset_path( 'NFW.png' ) %>" /></span>
+          <span ng-if="recipe.soy_free" class="soy-free"><img class="highlight-size" ng-src="<%= asset_path( 'SFW.png' ) %>" /></span>
         </p>
       </a>
     </div>

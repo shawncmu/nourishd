@@ -139,11 +139,15 @@
         <h4 class="modal-title" id="myModalLabel">Good Job!</h4>
       </div>
       <div class="modal-body">
-        <div>
+        <div style="text-align:center">
           <p>Upload a photo to complete your challenge</p>
-          <button class="btn btn-info confirm" ngf-select ng-model="finishedImage.file" style="margin-bottom:30px">Select File</button><br>
+          <img ng-if="!finishedImage.file" ng-src="<%= asset_path( 'photo.png' ) %>" /><br>
           <img ngf-src="finishedImage.file" width="350" height="300" style="margin-bottom:30px"><br>
-          <buton ng-click="recipeDone(holder1, holder2, holder3)" class="btn btn-info confirm" value="ChallengeComplete!">Complete!</button>
+          <button ng-if="!loading" class="btn btn-info confirm" ngf-select ng-model="finishedImage.file" style="margin-bottom:30px">Select File</button><br>
+          <button ng-if="!loading && finishedImage.file" ng-click="recipeDone(holder1, holder2, holder3)" class="btn btn-info confirm" value="ChallengeComplete!">Complete!</button>
+          <div ng-if="loading" layout="row" layout-sm="column" layout-align="space-around">
+            <p><md-progress-circular md-mode="indeterminate" class="md-warn md-hue-3"></md-progress-circular>SAVING...</p>
+          </div
         </div>
       </div>
     </div>

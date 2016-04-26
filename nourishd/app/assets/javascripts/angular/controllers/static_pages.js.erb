@@ -1,4 +1,18 @@
-app.controller('StaticPagesCtrl', ['$scope','$auth','$location', function($scope, $auth, $location){
+app.controller('StaticPagesCtrl', ['$scope','$auth','$location','$http', function($scope, $auth, $location,$http){
 
+$scope.results = [];
+
+  var getAllRecipes = function () {
+    $http({
+      method: "GET",
+      url: "/api/recipes.json"
+    }).then(function (response){
+      console.log(response);
+      $scope.results = response.data;
+    },function (response){
+      console.log(response);
+    });
+  };
+getAllRecipes();
 
 }]);
