@@ -1,5 +1,6 @@
-app.controller('DashCtrl', ['$scope','$auth','$location','$http','Upload','angularGridInstance','$mdDialog', function($scope, $auth, $location,$http,Upload,angularGridInstance,$mdDialog){
+app.controller('DashCtrl', ['$scope','$auth','$location','$http','Upload','angularGridInstance','$mdDialog','$interval', function($scope, $auth, $location,$http,Upload,angularGridInstance,$mdDialog,$interval){
 
+$scope.loading=false;
 
 $auth.validateUser().
 then(function(resp) {
@@ -11,6 +12,7 @@ catch(function(resp) {
   console.log(resp);
   $location.path('/login');
 });
+
 
 var getUserImage = function (){
   $http({
@@ -42,7 +44,7 @@ getAllChallenges();
 
   $scope.finishedImage = {};
   $scope.recipeDone = function(id, creator, other){
-    console.log(id, creator, other);
+    $scope.loading=true;
     var temp = "";
     if (other == "pending"){
       temp = "pending";
@@ -70,6 +72,7 @@ getAllChallenges();
         console.log(response);
         getAllChallenges();
         $scope.showDialog3 = !$scope.showDialog3;
+        $scope.loading=false;
     });
   };
 
