@@ -4,7 +4,6 @@
 body {
   font-family: 'Montserrat', sans-serif;
   height: 100%;
-  /*position: relative;*/
   background-color: #EBEBEB;
   width: 100%;
   overflow-x: hidden;
@@ -40,9 +39,11 @@ a:-webkit-any-link {
   color: white;
   text-align: center;
 }
+
 .shadow {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
 .subscribe-button {
   color: white;
   display: block;
@@ -51,6 +52,7 @@ a:-webkit-any-link {
   background-color: orange;
   border: 2px solid orange;
 }
+
 .subscribe-fade {
   display: inline-block;
   vertical-align: middle;
@@ -66,14 +68,17 @@ a:-webkit-any-link {
   -webkit-transition-property: color, background-color;
   transition-property: color, background-color;
 }
+
 .subscribe-fade:hover, .subscribe-fade:focus, .subscribe-fade:active {
   background-color: white;
   color: orange;
   border-color: orange;
 }
+
 .subscribe-text {
   color: purple;
 }
+
 .subsEmail {
   position: relative;
   top: 2px;
@@ -85,9 +90,11 @@ a:-webkit-any-link {
   display: inline;
   border: 2px solid orange;
 }
+
 .subsEmail:focus {
   outline: none;
 }
+
 .welcome {
   position: absolute;
   left: 50%;
@@ -102,6 +109,7 @@ a:-webkit-any-link {
   color: white;
   text-align: center;
 }
+
 .welcome-title {
   position: relative;
   top: 20px;
@@ -110,35 +118,43 @@ a:-webkit-any-link {
   font-family: 'Nothing You Could Do', cursive;
   color: white;
 }
+
 .welcome-signup {
   position: relative;
   top: 20px;
 }
+
 .social-media-icons {
   width: 50px;
   height: auto;
 }
+
 .hover-home12 figure {
-    background: black;
+  background: black;
 }
+
 .hover-home12 figure img {
-    opacity: 0.5;
-    -webkit-transition: .3s ease-in-out;
-    transition: .3s ease-in-out;
+  opacity: 0.5;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
 }
+
 .hover-home12 figure:hover .main-images {
-    opacity: 1;
+  opacity: 1;
 }
+
 .hover-home01 figure .main-images {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    -webkit-transition: .3s ease-in-out;
-    transition: .3s ease-in-out;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
 }
+
 .hover-home01 figure:hover .main-images {
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
 }
+
 .hvr-fade2 {
   background: none;
   border: 1px solid white;
@@ -156,6 +172,7 @@ a:-webkit-any-link {
   -webkit-transition-property: color, background-color;
   transition-property: color, background-color;
 }
+
 .hvr-fade2:hover, .hvr-fade2:focus, .hvr-fade2:active {
   background-color: #82C639;
   color: white;

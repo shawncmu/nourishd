@@ -1,7 +1,8 @@
 app.controller('StaticPagesCtrl', ['$scope','$auth','$location','$http', function($scope, $auth, $location,$http){
 
-$scope.results = [];
+  $scope.results = [];
 
+  //GET IMAGES FOR WALLPAPER
   var getAllRecipes = function () {
     $http({
       method: "GET",

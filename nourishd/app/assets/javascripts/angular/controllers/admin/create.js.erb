@@ -1,12 +1,11 @@
 app.controller('NewRecipeCtrl', ['$scope', '$http', 'Upload', function($scope, $http, Upload){
 
-  var url = "<%= ENV['URL'] %>" || "http://localhost:3000/";
-
   $scope.recipe = {};
   $scope.dishImage = {};
   $scope.ingredientsImage = {};
   $scope.form = {};
 
+//ADD NEW RECIPE TO DATABASE
   $scope.form.create = function(){
     var data = {
       'newRecipe[name]': $scope.recipe.name,
@@ -24,13 +23,10 @@ app.controller('NewRecipeCtrl', ['$scope', '$http', 'Upload', function($scope, $
       'newRecipe[dish_image]':$scope.dishImage.file
     };
 
-    // ngFileUpload's method to upload a file
     Upload.upload({
-      url: 'http://localhost:3000/api/recipes.json',
+      url: '/api/recipes.json',
       method:'POST',
       fields: data
-      // file: $scope.dishImage.file,
-      // fileFormDataName: 'newRecipe[dish_image]'
     }).success(function(response) {
         console.log(response);
     });

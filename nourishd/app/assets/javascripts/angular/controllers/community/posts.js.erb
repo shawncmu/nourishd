@@ -1,81 +1,81 @@
 app.controller('PostCtrl', ['$scope','$auth','$location','$http','angularGridInstance', function($scope, $auth, $location,$http,angularGridInstance){
 
-$scope.loggedIn = false;
-$auth.validateUser().
-then(function(resp) {
-  $scope.user = resp;
-  $scope.loggedIn = true;
-  getAllPosts("/api/challenges/all/"+$scope.user.id+".json");
-}).
-catch(function(resp) {
-  console.log(resp);
-  getAllPosts("/api/challengesX.json");
-});
+  $scope.loggedIn = false;
+  $scope.allPosts = [];
+  $scope.newComment={};
 
-$scope.allPosts = [];
-
-var getAllPosts = function (get) {
-  $http({
-    method: "GET",
-    url: get
-  }).then(function (response){
-    console.log(response.data);
-    $scope.allPosts = response.data;
-  },function (response){
-    console.log(response);
+  //CHECK IF USER IS LOGGED IN AND ASSIGN ROUTE FOR CHECKING IF USER HAS LIKED POST BEFORE
+  $auth.validateUser().
+  then(function(resp) {
+    $scope.user = resp;
+    $scope.loggedIn = true;
+    getAllPosts("/api/challenges/all/"+$scope.user.id+".json");
+  }).
+  catch(function(resp) {
+    console.log(resp);
+    getAllPosts("/api/challengesX.json");
   });
-};
 
-$scope.refresh = function(){
-  angularGridInstance.gallery.refresh();
-}
-
-$scope.likeRecipe = function(id, winner, index){
-  console.log(id, winner, index);
-  var data = {
-    user_id: $scope.user.id,
-    challenge_id: id,
-    winner: winner
-  }
-  $http({
-      method: "POST",
-      url: "/api/likes.json",
-      data: data
-  }).then(function (response){
-    console.log(response.data);
-    if (winner=="creator"){
-      $scope.allPosts[index].creator_likes = $scope.allPosts[index].creator_likes+1;
-      $scope.allPosts[index].voted_before = true;
-    } else {
-      $scope.allPosts[index].participant_likes = $scope.allPosts[index].participant_likes+1;
-      $scope.allPosts[index].voted_before = true;
-    }
-  },function (response){
-    console.log(response);
-  });
-};
-
-$scope.newComment={};
-$scope.addComment = function(id,index){
-  console.log(id, index);
-  var data = {
-    user_id: $scope.user.id,
-    challenge_id: id,
-    comment: $scope.newComment.comment
+  //GET ALL POSTS
+  var getAllPosts = function (get) {
+    $http({
+      method: "GET",
+      url: get
+    }).then(function (response){
+      console.log(response.data);
+      $scope.allPosts = response.data;
+    },function (response){
+      console.log(response);
+    });
   };
-  $http({
-      method: "POST",
-      url: "/api/comments.json",
-      data: data
-  }).then(function (response){
-    console.log(response.data);
-    $scope.allPosts[index].comments.push(response.data);
-    $scope.newComment = {};
-  },function (response){
-    console.log(response);
-  });
-};
 
+  //REFRESH GRID
+  $scope.refresh = function(){
+    angularGridInstance.gallery.refresh();
+  }
 
+  //ADD 1 LIKE TO RECIPE THE USER HAS CLICKED ON
+  $scope.likeRecipe = function(id, winner, index){
+    var data = {
+      user_id: $scope.user.id,
+      challenge_id: id,
+      winner: winner
+    }
+    $http({
+        method: "POST",
+        url: "/api/likes.json",
+        data: data
+    }).then(function (response){
+      console.log(response.data);
+      if (winner=="creator"){
+        $scope.allPosts[index].creator_likes = $scope.allPosts[index].creator_likes+1;
+        $scope.allPosts[index].voted_before = true;
+      } else {
+        $scope.allPosts[index].participant_likes = $scope.allPosts[index].participant_likes+1;
+        $scope.allPosts[index].voted_before = true;
+      }
+    },function (response){
+      console.log(response);
+    });
+  };
 
+  //ADD A COMMENT TO A SPECIFIC POST
+  $scope.addComment = function(id,index){
+    var data = {
+      user_id: $scope.user.id,
+      challenge_id: id,
+      comment: $scope.newComment.comment
+    };
+    $http({
+        method: "POST",
+        url: "/api/comments.json",
+        data: data
+    }).then(function (response){
+      console.log(response.data);
+      $scope.allPosts[index].comments.push(response.data);
+      $scope.newComment = {};
+    },function (response){
+      console.log(response);
+    });
+  };
 }]);

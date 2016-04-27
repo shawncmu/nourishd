@@ -1,6 +1,4 @@
 .position-filter {
-/*  position: relative;
-  top: -34px;*/
   width: 235px;
   margin: 0 auto;
   text-transform: uppercase;
@@ -9,10 +7,12 @@
   font-family: 'Montserrat', sans-serif;
   color: white;
 }
+
 .position-buttons {
   margin-bottom: 55px;
   position: relative;
 }
+
 .mushroom-background {
   height:350px;
   margin-top: 50px;
@@ -21,32 +21,25 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  /*overflow: hidden;*/
   text-align: center;
 }
 
-.wooden-background {
+/*.wooden-background {
   height:200px;
   margin-top: 50px;
-  /*background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url("https://d3ui957tjb5bqd.cloudfront.net/images/screenshots/products/22/228/228908/d8y1ucsf8z2b3k4vcqrq5id0rr9p0i00ehhqent2jwtqsxuwforyfm3ikkd5dznl-f.jpg?1415208277") no-repeat center center fixed;*/
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url("https://d3ui957tjb5bqd.cloudfront.net/images/screenshots/products/22/228/228908/d8y1ucsf8z2b3k4vcqrq5id0rr9p0i00ehhqent2jwtqsxuwforyfm3ikkd5dznl-f.jpg?1415208277") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   text-align: center;
-}
+}*/
+
 .highlight-size {
   height:20px;
   width: auto;
 }
-/*.ontop {
-  width:180px;
-  height:130px;
-  position: absolute;
-  margin-left:-90px;
-  left:50%;
-  top:10px;
-}*/
+
 .border {
   position: relative;
   border: 2px solid orange;
@@ -56,10 +49,6 @@
 }
 
 .onbottom {
-/*  position: absolute;
-  bottom: 0px;
-  text-align:left;
-  color:white;*/
   z-index: 50;
   font-family: 'Montserrat', sans-serif;
   color: #fff !important;
@@ -81,23 +70,19 @@
 .position-image {
   padding: 0px;
 }
+
 .starting-point {
   position: relative;
   top: 50px;
 }
 
 .main-images {
-/*  width: 200px;
-  height: 150px;*/
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: 50% 50%;
-/*  border-radius: 15px;
-  border: 5px solid rgba(255,255,255,0.1);*/
-/*  background-size: cover;
-  background-position: center;*/
 }
+
 .span-positioning {
   position: absolute;
   bottom: 0px;
@@ -113,25 +98,32 @@
   transition: .3s ease-in-out;
   opacity: 0;
 }
+
 .position-image:hover .span-positioning {
   bottom: 20px;
   opacity: 1;
 }
+
 .position-image:hover .onbottom {
   bottom: 40px;
 }
+
 .vegan {
   color: red;
 }
+
 .gluten-free {
   color: orange;
 }
+
 .low-carb {
   color: blue;
 }
+
 .nut-free {
   color: purple;
 }
+
 .soy-free {
   color: yellow;
 }

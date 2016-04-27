@@ -1,7 +1,8 @@
 app.controller('NavCtrl', ['$scope','$auth','$location', '$rootScope', function($scope, $auth, $location, $rootScope){
+
+  //LOGOUT USER
   $scope.logout = function () {
     $auth.signOut().then(function(resp) {
-      console.log(resp);
       $scope.loggedIn = false;
       $location.path('/');
     }).catch(function(resp) {
@@ -9,6 +10,7 @@ app.controller('NavCtrl', ['$scope','$auth','$location', '$rootScope', function(
     });
   };
 
+  //CHECK IF USER IS LOGGED IN
   var validateUser = function () {
     $auth.validateUser()
     .then(function(resp) {

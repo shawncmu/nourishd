@@ -2,6 +2,7 @@
   background-color: #222;
   height: 100px;
 }
+
 .footer-bottom {
   background-color: #82C639;
   height: 50px;
@@ -9,9 +10,11 @@
   text-align: center;
   line-height: 50px;
 }
+
 .footer-bottom > p {
   margin: 0px;
 }
+
 .newsletter {
   position: relative;
   top: -60px;
@@ -20,6 +23,7 @@
   margin-bottom: -60px;
   text-align: center;
 }
+
 .social-media-position {
   position: relative;
   top: 25px;

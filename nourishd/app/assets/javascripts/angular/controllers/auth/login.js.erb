@@ -3,13 +3,10 @@ app.controller('LoginCtrl', ['$scope','$auth','$location', '$rootScope', functio
   $scope.login = function () {
     $auth.submitLogin($scope.loginForm).
     then(function(resp) {
-      // handle success response
-      console.log(resp);
         // redirect back to root when registration succesfull
       $location.path('/dashboard');
     }).
     catch(function(resp) {
-      // handle error response
       console.log(resp);
     });
   };
