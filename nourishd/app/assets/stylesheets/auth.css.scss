@@ -10,6 +10,7 @@ div {
   -o-background-size: cover;
   background-size: cover;
 }
+
 .fbposition {
   position: relative;
   right: 111px;
@@ -46,39 +47,57 @@ div {
 }
 
 .facebookEmailSeparater {
-    width: 320px;
-    text-align: center;
-    margin: 20px auto 0 auto;
+  width: 320px;
+  text-align: center;
+  margin: 20px auto 0 auto;
 }
+
 .facebookEmailSeparater .separaterLine {
-    width: 100px;
-    height: 0;
-    border-bottom: 1px solid #FFFFFF;
-    display: inline-block;
-    vertical-align: middle;
+  width: 100px;
+  height: 0;
+  border-bottom: 1px solid #FFFFFF;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .facebookEmailSeparater .separaterText {
-    font-size: 14px;
-    color: #FFFFFF;
-    display: inline-block;
-    margin: 0 20px;
-    vertical-align: middle;
+  font-size: 14px;
+  color: #FFFFFF;
+  display: inline-block;
+  margin: 0 20px;
+  vertical-align: middle;
 }
 .inputName {
-    width: 320px;
-    height: 60px;
-    padding-left: 70px;
-    font-size: 16px;
-    color: #FFFFFF;
-    border-radius: 3px;
-    line-height: 60px;
-    margin: 10px auto 0 auto;
-    display: block;
-    background-position: 0px -60px;
-    background-repeat: no-repeat;
-    background-color: rgba(255,255,255,0.3);
-    border: 0;
+  width: 320px;
+  height: 60px;
+  padding-left: 70px;
+  font-size: 16px;
+  color: #FFFFFF;
+  border-radius: 3px;
+  line-height: 60px;
+  margin: 10px auto 0 auto;
+  display: block;
+  background: image-url("name.png");
+  background-position: 15px 14px;
+  background-repeat: no-repeat;
+  background-color: rgba(255,255,255,0.3);
+  border: 0;
+}
+.inputUsername {
+  width: 320px;
+  height: 60px;
+  padding-left: 70px;
+  font-size: 16px;
+  color: #FFFFFF;
+  border-radius: 3px;
+  line-height: 60px;
+  margin: 10px auto 0 auto;
+  display: block;
+  background: image-url("user.png");
+  background-position: 15px 14px;
+  background-repeat: no-repeat;
+  background-color: rgba(255,255,255,0.3);
+  border: 0;
 }
 
 .inputEmail {
@@ -91,7 +110,8 @@ div {
   line-height: 60px;
   margin: 10px auto 0 auto;
   display: block;
-  background-position: 0px -120px;
+  background: image-url("envelope.png");
+  background-position: 15px 14px;
   background-repeat: no-repeat;
   background-color: rgba(255,255,255,0.3);
   border: 0;
@@ -107,7 +127,8 @@ div {
   line-height: 60px;
   margin: 10px auto 0 auto;
   display: block;
-  background-position: 0px -120px;
+  background: image-url("key.png");
+  background-position: 15px 14px;
   background-repeat: no-repeat;
   background-color: rgba(255,255,255,0.3);
   border: 0;
@@ -138,4 +159,20 @@ div {
   color: #FFFFFF;
   font-size: 14px;
   vertical-align: middle;
+}
+
+input[name="email"]::-webkit-input-placeholder {
+   color: white;
+}
+input[type="password"]::-webkit-input-placeholder {
+   color: white;
+}
+input[name="first-name"]::-webkit-input-placeholder {
+   color: white;
+}
+input[name="last-name"]::-webkit-input-placeholder {
+   color: white;
+}
+input[name="username"]::-webkit-input-placeholder {
+   color: white;
 }

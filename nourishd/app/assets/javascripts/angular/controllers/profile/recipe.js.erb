@@ -7,10 +7,10 @@ app.controller('RecipeCtrl', ['$scope','$auth','$location','$http','$routeParams
   $scope.myImage = {};
   $scope.formComplete = {};
 
+  //CHECK IF USER IS LOGGED IN
   var userSignedIn = function() {
     $auth.validateUser().
     then(function(resp) {
-      console.log(resp);
       $scope.user = resp;
     }).
     catch(function(resp) {
@@ -18,12 +18,12 @@ app.controller('RecipeCtrl', ['$scope','$auth','$location','$http','$routeParams
     });
   };
 
+  //GET INFORMATION ON ONE RECIPE
   var getRecipeProfile = function () {
     $http({
       method: "GET",
       url: "/api/recipes/"+$routeParams.id+".json"
     }).then(function (response){
-      console.log(response.data);
       resetTools();
       $scope.recipe = response.data;
       $scope.ingredients = $scope.recipe.ingredients;
@@ -36,6 +36,7 @@ app.controller('RecipeCtrl', ['$scope','$auth','$location','$http','$routeParams
     });
   };
 
+  //DISPLAY EQUIPMENT REQUIRED
   var getTools = function (){
     if ($scope.tools.includes("pot")) {$scope.pot = true;}
     if ($scope.tools.includes("pan")) {$scope.pan = true;}
@@ -46,7 +47,9 @@ app.controller('RecipeCtrl', ['$scope','$auth','$location','$http','$routeParams
     if ($scope.tools.includes("blender")) {$scope.blender = true;}
     if ($scope.tools.includes("rice")) {$scope.rice = true;}
   };
-    var resetTools = function (){
+
+  //RESET EQUIPMENT BOOLEAN FOR NEW RECIPE
+  var resetTools = function (){
     $scope.pot = false;
     $scope.pan = false;
     $scope.bowl = false;
@@ -57,6 +60,7 @@ app.controller('RecipeCtrl', ['$scope','$auth','$location','$http','$routeParams
     $scope.rice = false;
   };
 
+  //DISPLAY MODAL FOR PERSONAL TRIAL OR CHALLENGE
   $scope.checkValid = function (num) {
     $auth.validateUser().
     then(function(resp) {
@@ -64,10 +68,11 @@ app.controller('RecipeCtrl', ['$scope','$auth','$location','$http','$routeParams
       if (num==2){$scope.showDialog2 = !$scope.showDialog2;};
     }).
     catch(function(resp) {
-      alert("PLease login to proceed");
+      alert("Please login to proceed");
     });
   };
 
+  //CREATE DATABASE ENTRY FOR PERSONAL TRIAL
   $scope.formComplete.create = function(){
     var data = {
       creator_id: $scope.user.id,
@@ -91,6 +96,7 @@ app.controller('RecipeCtrl', ['$scope','$auth','$location','$http','$routeParams
     });
   };
 
+  //GET ALL USERS FOR CHALLENGE SELECTION
   var getUsers = function () {
     $http({
       method: "GET",
@@ -103,12 +109,13 @@ app.controller('RecipeCtrl', ['$scope','$auth','$location','$http','$routeParams
     });
   };
 
+  //DISPLAY SELECTED CHALLENGER
   $scope.confirmChallenger = function(index) {
     $scope.selectedUser = $scope.userlist[index];
   };
 
+  //CREATE DATABASE ENTRY FOR CHALLENGING OTHER USER
   $scope.createChallenge = function(){
-    console.log("testing");
     var data = {
       recipe_id: $scope.recipe.id,
       creator_id: $scope.user.id,

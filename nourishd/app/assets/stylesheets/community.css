@@ -1,10 +1,11 @@
 .challenge-post {
-    height: 650px;
-    overflow: hidden;
+  height: 650px;
+  overflow: hidden;
 }
+
 .personal-post {
-    height: 330px;
-    overflow: hidden;
+  height: 330px;
+  overflow: hidden;
 }
 
 .second-img {
@@ -12,9 +13,11 @@
   top: -41px;
   height: 300px;
 }
+
 .first-img {
   height: 300px;
 }
+
 .community-background {
   height:350px;
   margin-top: 50px;
@@ -24,17 +27,13 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  /*overflow: hidden;*/
   text-align: center;
 }
 
-/*.test {
-    height: 100%;
-    width: auto;
-}*/
 .shadow-large {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
 .border-card {
   border-bottom: 5px solid gray;
 }
@@ -46,9 +45,8 @@
   top: 0px;
   color: black;
   text-transform: uppercase;
-  /*text-align: center;*/
-  /*left: -10%;*/
 }
+
 .add-top-margin{
   margin-top: 25px;
 }
@@ -63,6 +61,15 @@
   position: relative;
   top: -2px;
 }
+
+.com-add {
+  height: 16px;
+  width: auto;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
 .eat {
   position: relative;
   top: 169px;
@@ -79,23 +86,26 @@
   color: white;
   font-weight: 700;
 }
+
 .clarity {
   background-color: #2BD8FF;
   float: right;
   padding: 0 5px;
   color: white;
 }
+
 .like-position {
   float: left;
   padding-right: 10px;
 }
+
 .shift {
   position:relative;
   bottom: 290px;
   left: 20px;
   color: white;
-  /*display: inline;*/
 }
+
 .scale-down {
   height: 20px;
   width: auto;
@@ -187,9 +197,9 @@
   width: 48px;
   margin: 16px;
 }
+
 .scroll {
   overflow-y:auto;
   width:90%;
   height:70%;
-  /*overflow: hidden;*/
 }

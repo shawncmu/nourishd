@@ -1,48 +1,47 @@
 app.controller('DashCtrl', ['$scope','$auth','$location','$http','Upload','angularGridInstance','$mdDialog','$interval', function($scope, $auth, $location,$http,Upload,angularGridInstance,$mdDialog,$interval){
 
-$scope.loading=false;
+  $scope.loading=false;
+  $scope.mychallenges = [];
+  $scope.finishedImage = {};
 
-$auth.validateUser().
-then(function(resp) {
-  $scope.user = resp;
-  console.log(resp);
-  getUserImage();
-}).
-catch(function(resp) {
-  console.log(resp);
-  $location.path('/login');
-});
-
-
-var getUserImage = function (){
-  $http({
-    method: "GET",
-    url: "/api/users/"+$scope.user.id+".json"
-  }).then(function (response){
-    console.log(response.data);
-    $scope.avatar = response.data.avatar_image;
-  },function (response){
-    console.log(response);
+  //CHECK IF USER IS LOGGED IN AND GET USER INFORMATION
+  $auth.validateUser().
+  then(function(resp) {
+    $scope.user = resp;
+    getUserImage();
+  }).
+  catch(function(resp) {
+    console.log(resp);
+    $location.path('/login');
   });
-};
 
-$scope.mychallenges = [];
+  //GET USER IMAGE FOR DISPLAY IN PROFILE
+  var getUserImage = function (){
+    $http({
+      method: "GET",
+      url: "/api/users/"+$scope.user.id+".json"
+    }).then(function (response){
+      console.log(response.data);
+      $scope.avatar = response.data.avatar_image;
+    },function (response){
+      console.log(response);
+    });
+  };
+
+  //GET ALL CHALLENGES FOR CURRENT USER
   var getAllChallenges = function () {
     $http({
       method: "GET",
       url: "/api/challenges/"+$scope.user.id+".json"
     }).then(function (response){
-      console.log(response.data);
       $scope.mychallenges = response.data;
       getCompletedChallenges();
-      // $scope.refresh;
     },function (response){
       console.log(response);
     });
   };
-getAllChallenges();
 
-  $scope.finishedImage = {};
+  //UPLOAD COMPLETED RECIPE
   $scope.recipeDone = function(id, creator, other){
     $scope.loading=true;
     var temp = "";
@@ -69,25 +68,26 @@ getAllChallenges();
       method:'PUT',
       fields: data
     }).success(function(response) {
-        console.log(response);
-        getAllChallenges();
-        $scope.showDialog3 = !$scope.showDialog3;
-        $scope.loading=false;
+      console.log(response);
+      getAllChallenges();
+      $scope.showDialog3 = !$scope.showDialog3;
+      $scope.loading=false;
     });
   };
 
+  //REFRESH DISPLAY GRID
   $scope.refresh = function(){
     angularGridInstance.gallery.refresh();
   }
 
-$scope.likeRecipe = function(id, winner, index){
-  console.log(id, winner, index);
-  var data = {
-    user_id: $scope.user.id,
-    challenge_id: id,
-    winner: winner
-  }
-  $http({
+  //ADD 1 LIKE TO SELECTED RECIPE
+  $scope.likeRecipe = function(id, winner, index){
+    var data = {
+      user_id: $scope.user.id,
+      challenge_id: id,
+      winner: winner
+    }
+    $http({
       method: "POST",
       url: "/api/likes.json",
       data: data
@@ -103,8 +103,9 @@ $scope.likeRecipe = function(id, winner, index){
     },function (response){
       console.log(response);
     });
-};
+  };
 
+  //FILTER RESULTS FOR ALL COMPLETED CHALLENGES BY CURRENT USER
   var getCompletedChallenges = function () {
     $scope.myCompletedChallenges = [];
     for (var i=0; i<$scope.mychallenges.length;i++) {
@@ -112,10 +113,9 @@ $scope.likeRecipe = function(id, winner, index){
         $scope.myCompletedChallenges.push($scope.mychallenges[i]);
       };
     };
-    console.log($scope.myCompletedChallenges);
-    console.log($scope.mychallenges);
   };
 
+  //FILTER RESULTS FOR CHALLENGES DECLINED BY USER
   $scope.checkDeclined = function (challenge){
       if (challenge.participant_acceptance=='declined' && challenge.creator=='other') {
         return false;
@@ -124,6 +124,7 @@ $scope.likeRecipe = function(id, winner, index){
       };
   };
 
+  //DECLINE A CHALLENGE
   $scope.declineChallenge = function (id, index) {
     console.log(id, index);
     var data = {
@@ -141,6 +142,8 @@ $scope.likeRecipe = function(id, winner, index){
       console.log(response);
     });
   };
+
+  //DELETE A CHALLENGE
   $scope.deleteChallenge = function (id, index) {
     console.log(id, index);
     $http({
@@ -153,6 +156,8 @@ $scope.likeRecipe = function(id, winner, index){
       console.log(response);
     });
   };
+
+  //ACCEPT A CHALLENGE
   $scope.acceptChallenge = function (id, index) {
     console.log(id, index);
     var data = {
@@ -169,6 +174,8 @@ $scope.likeRecipe = function(id, winner, index){
       console.log(response);
     });
   };
+
+  //DISPLAY MODAL UPON CHALLENGE COMPLETION
   $scope.openComplete = function(id, person, otherPerson) {
     $auth.validateUser().
     then(function(resp) {
@@ -182,6 +189,5 @@ $scope.likeRecipe = function(id, winner, index){
     });
   };
 
-
-
+getAllChallenges();
 }]);
