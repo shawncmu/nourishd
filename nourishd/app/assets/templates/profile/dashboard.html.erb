@@ -103,8 +103,7 @@
 
                 <div class="animate-slide" ng-show="slide" ng-click="slide=!slide">
                   <div class="title" ng-class="{'add-top-margin':recipe.post_type=='challenge'}">
-                    <p class="adjust-left">{{recipe.recipe_name}}
-                    <a ng-click="slide=!slide"><img class="com-pad" ng-src="<%= asset_path( 'interface.png' ) %>" /></a></p>
+                    <p class="adjust-left">{{recipe.recipe_name}}</p>
                   </div>
                   <div class="scroll">
                     <md-content >
@@ -147,7 +146,7 @@
           <button ng-if="!loading && finishedImage.file" ng-click="recipeDone(holder1, holder2, holder3)" class="btn btn-info confirm" value="ChallengeComplete!">Complete!</button>
           <div ng-if="loading" layout="row" layout-sm="column" layout-align="space-around">
             <p><md-progress-circular md-mode="indeterminate" class="md-warn md-hue-3"></md-progress-circular>SAVING...</p>
-          </div
+          </div>
         </div>
       </div>
     </div>

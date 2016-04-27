@@ -63,6 +63,13 @@
   position: relative;
   top: -2px;
 }
+.com-add {
+  height: 16px;
+  width: auto;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
 .eat {
   position: relative;
   top: 169px;

@@ -34,7 +34,11 @@ app.config(['$routeProvider', '$authProvider', function($routeProvider, $authPro
     when('/community',{
       templateUrl: "<%= asset_path('community/posts.html') %>",
       controller: 'PostCtrl'
-    });
+    }).
+    when('/about',{
+      templateUrl: "<%= asset_path('static_pages/about.html') %>",
+      controller: 'AboutCtrl'
+    });;
 
   $authProvider.configure({
     apiUrl: location.origin,
