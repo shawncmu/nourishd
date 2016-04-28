@@ -1,6 +1,6 @@
 <section class="container-fluid" style="margin-bottom:60px;margin-top:50px;">
   <div class="row" id="recipe-page">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 position-image hover-home12 hover-home01" ng-repeat="recipe in results">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 position-image hover-home12 hover-home01" ng-repeat="recipe in results | limitTo: 18">
       <figure><img ng-src="{{recipe.image}}" class="main-images"></figure>
     </div>
     <div class="welcome">
